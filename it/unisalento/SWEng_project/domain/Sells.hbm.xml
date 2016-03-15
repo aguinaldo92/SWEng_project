@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 15-mar-2016 15.13.56 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="it.unisalento.SWEng_project.domain.Sells" table="sells" catalog="swengdb" optimistic-lock="version">
+        <composite-id name="id" class="it.unisalento.SWEng_project.domain.SellsId">
+            <key-property name="sellingPrice" type="big_decimal">
+                <column name="selling_price" precision="10" />
+            </key-property>
+            <key-property name="sellingDiscount" type="big_decimal">
+                <column name="selling_discount" precision="10" />
+            </key-property>
+            <key-property name="quantityAvailable" type="java.lang.Integer">
+                <column name="quantity_available" />
+            </key-property>
+            <key-property name="shopId" type="int">
+                <column name="shop_ID" />
+            </key-property>
+            <key-property name="productId" type="int">
+                <column name="product_ID" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="product" class="it.unisalento.SWEng_project.domain.Product" update="false" insert="false" fetch="select">
+            <column name="product_ID" not-null="true" />
+        </many-to-one>
+        <many-to-one name="shop" class="it.unisalento.SWEng_project.domain.Shop" update="false" insert="false" fetch="select">
+            <column name="shop_ID" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

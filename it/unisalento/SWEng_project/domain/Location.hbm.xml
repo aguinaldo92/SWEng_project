@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 15-mar-2016 15.13.56 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="it.unisalento.SWEng_project.domain.Location" table="location" catalog="swengdb" optimistic-lock="version">
+        <composite-id name="id" class="it.unisalento.SWEng_project.domain.LocationId">
+            <key-property name="name" type="string">
+                <column name="name" length="45" />
+            </key-property>
+            <key-property name="userId" type="int">
+                <column name="user_ID" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="user" class="it.unisalento.SWEng_project.domain.User" update="false" insert="false" fetch="select">
+            <column name="user_ID" not-null="true" />
+        </many-to-one>
+        <property name="cap" type="string">
+            <column name="cap" length="10" />
+        </property>
+        <property name="address" type="string">
+            <column name="address" length="45" />
+        </property>
+        <property name="number" type="string">
+            <column name="number" length="45" />
+        </property>
+        <property name="city" type="string">
+            <column name="city" length="45" />
+        </property>
+        <property name="province" type="string">
+            <column name="province" length="45" />
+        </property>
+        <property name="state" type="string">
+            <column name="state" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>

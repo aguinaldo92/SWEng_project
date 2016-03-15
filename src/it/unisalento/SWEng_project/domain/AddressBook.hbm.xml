@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 15-mar-2016 15.20.50 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="it.unisalento.SWEng_project.domain.AddressBook" table="address_book" catalog="swengdb" optimistic-lock="version">
+        <id name="userId" type="int">
+            <column name="user_ID" />
+            <generator class="foreign">
+                <param name="property">user</param>
+            </generator>
+        </id>
+        <one-to-one name="user" class="it.unisalento.SWEng_project.domain.User" constrained="true"></one-to-one>
+        <property name="type" type="string">
+            <column name="type" length="45" />
+        </property>
+        <property name="contact" type="string">
+            <column name="contact" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>

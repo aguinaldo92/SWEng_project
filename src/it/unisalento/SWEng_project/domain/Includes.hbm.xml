@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 15-mar-2016 15.20.50 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="it.unisalento.SWEng_project.domain.Includes" table="includes" catalog="swengdb" optimistic-lock="version">
+        <composite-id name="id" class="it.unisalento.SWEng_project.domain.IncludesId">
+            <key-property name="orderId" type="int">
+                <column name="order_ID" />
+            </key-property>
+            <key-property name="shopId" type="int">
+                <column name="shop_ID" />
+            </key-property>
+            <key-property name="productId" type="int">
+                <column name="product_ID" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="order" class="it.unisalento.SWEng_project.domain.Order" update="false" insert="false" fetch="select">
+            <column name="order_ID" not-null="true" />
+        </many-to-one>
+        <many-to-one name="product" class="it.unisalento.SWEng_project.domain.Product" update="false" insert="false" fetch="select">
+            <column name="product_ID" not-null="true" />
+        </many-to-one>
+        <many-to-one name="shop" class="it.unisalento.SWEng_project.domain.Shop" update="false" insert="false" fetch="select">
+            <column name="shop_ID" not-null="true" />
+        </many-to-one>
+        <property name="state" type="string">
+            <column name="state" length="20" not-null="true" />
+        </property>
+        <property name="collectModality" type="string">
+            <column name="collect_modality" length="45" />
+        </property>
+        <property name="quantityPurchased" type="java.lang.Integer">
+            <column name="quantity_purchased" />
+        </property>
+        <property name="purchasePrice" type="big_decimal">
+            <column name="purchase_price" precision="10" />
+        </property>
+        <property name="purchaseDiscount" type="big_decimal">
+            <column name="purchase_discount" precision="3" />
+        </property>
+        <property name="partialPrice" type="big_decimal">
+            <column name="partial_price" precision="10" />
+        </property>
+    </class>
+</hibernate-mapping>
