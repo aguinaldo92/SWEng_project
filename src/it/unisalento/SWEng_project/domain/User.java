@@ -1,6 +1,6 @@
 package it.unisalento.SWEng_project.domain;
 
-// Generated 15-mar-2016 15.20.49 by Hibernate Tools 4.3.1
+// Generated 16-mar-2016 14.43.11 by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -13,13 +13,12 @@ public class User implements java.io.Serializable {
 
 	private Integer id;
 	private String ssn;
-	private String residence;
 	private String username;
 	private String password;
 	private Date createTime;
 	private String name;
 	private String surname;
-	private String dateOfBirth;
+	private Date dateOfBirth;
 	private Set sellers = new HashSet(0);
 	private Set orders = new HashSet(0);
 	private AddressBook addressBook;
@@ -34,11 +33,10 @@ public class User implements java.io.Serializable {
 		this.password = password;
 	}
 
-	public User(String ssn, String residence, String username, String password,
-			Date createTime, String name, String surname, String dateOfBirth,
-			Set sellers, Set orders, AddressBook addressBook, Set locations) {
+	public User(String ssn, String username, String password, Date createTime,
+			String name, String surname, Date dateOfBirth, Set sellers,
+			Set orders, AddressBook addressBook, Set locations) {
 		this.ssn = ssn;
-		this.residence = residence;
 		this.username = username;
 		this.password = password;
 		this.createTime = createTime;
@@ -65,14 +63,6 @@ public class User implements java.io.Serializable {
 
 	public void setSsn(String ssn) {
 		this.ssn = ssn;
-	}
-
-	public String getResidence() {
-		return this.residence;
-	}
-
-	public void setResidence(String residence) {
-		this.residence = residence;
 	}
 
 	public String getUsername() {
@@ -115,11 +105,11 @@ public class User implements java.io.Serializable {
 		this.surname = surname;
 	}
 
-	public String getDateOfBirth() {
+	public Date getDateOfBirth() {
 		return this.dateOfBirth;
 	}
 
-	public void setDateOfBirth(String dateOfBirth) {
+	public void setDateOfBirth(Date dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
 

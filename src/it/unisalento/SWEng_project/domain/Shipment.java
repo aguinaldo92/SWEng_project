@@ -1,7 +1,8 @@
 package it.unisalento.SWEng_project.domain;
 
-// Generated 15-mar-2016 15.20.49 by Hibernate Tools 4.3.1
+// Generated 16-mar-2016 14.43.11 by Hibernate Tools 4.3.1
 
+import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,6 +15,7 @@ public class Shipment implements java.io.Serializable {
 	private Order order;
 	private String carrier;
 	private String trackingCode;
+	private BigDecimal shipmentPrice;
 	private Set products = new HashSet(0);
 
 	public Shipment() {
@@ -24,10 +26,11 @@ public class Shipment implements java.io.Serializable {
 	}
 
 	public Shipment(Order order, String carrier, String trackingCode,
-			Set products) {
+			BigDecimal shipmentPrice, Set products) {
 		this.order = order;
 		this.carrier = carrier;
 		this.trackingCode = trackingCode;
+		this.shipmentPrice = shipmentPrice;
 		this.products = products;
 	}
 
@@ -61,6 +64,14 @@ public class Shipment implements java.io.Serializable {
 
 	public void setTrackingCode(String trackingCode) {
 		this.trackingCode = trackingCode;
+	}
+
+	public BigDecimal getShipmentPrice() {
+		return this.shipmentPrice;
+	}
+
+	public void setShipmentPrice(BigDecimal shipmentPrice) {
+		this.shipmentPrice = shipmentPrice;
 	}
 
 	public Set getProducts() {
