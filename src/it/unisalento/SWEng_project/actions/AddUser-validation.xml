@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.3//EN"
+ "http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+
+ <validators>
+     <field name="name">
+         <field-validator type="myvalidator">
+             <param name="nomedaescludere">Alessandro</param>
+             <message>Gli ${nomedaescludere} non si possono registrare</message>
+         </field-validator>    
+         <field-validator type="myvalidator">
+             <param name="nomedaescludere">Giacomo</param>
+             <message>Gli ${nomedaescludere} non si possono registrare</message>
+         </field-validator>    
+     </field>
+     <field name="surname">
+         <field-validator type="requiredstring">
+             <message>Cognome richiesto</message>
+         </field-validator>
+     </field>
+     <field name="email">
+         <field-validator type="requiredstring">
+             <message>Email richiesta</message>
+         </field-validator>
+         <field-validator type="email">
+             <message>Formato email non corretto</message>
+         </field-validator>
+     </field>
+     <field name="age">
+         <field-validator type="int">
+             <param name="min">18</param>
+             <param name="max">32</param>
+             <message>Devi avere un'età compresa tra i ${min} e i ${max} anni</message>
+         </field-validator>
+     </field>
+     
+ </validators>

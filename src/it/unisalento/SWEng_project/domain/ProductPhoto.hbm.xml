@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 15-mar-2016 15.20.50 by Hibernate Tools 4.3.1 -->
+<!-- Generated 16-mar-2016 14.43.12 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="it.unisalento.SWEng_project.domain.ProductPhoto" table="product_photo" catalog="swengdb" optimistic-lock="version">
         <composite-id name="id" class="it.unisalento.SWEng_project.domain.ProductPhotoId">
