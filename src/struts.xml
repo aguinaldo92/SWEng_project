@@ -35,7 +35,7 @@
     		<action name="contatti">
     		    <result type="tiles">contatti</result>
     		</action>
-    		<action name="AddStudent" class="it.unisalento.SWEng_project.actions.AddStudent">
+    		<action name="AddUser" class="it.unisalento.SWEng_project.actions.AddUser">
     		    <interceptor-ref name="mystack" />
     		    <result name="success">views/success.jsp</result>
     		    <result name="error">views/index.jsp</result>
