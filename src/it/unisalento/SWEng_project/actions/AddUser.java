@@ -1,9 +1,10 @@
 package it.unisalento.SWEng_project.actions;
 
-import it.unisalento.SWEng_project.dao.impl.UserDao;
+import it.unisalento.SWEng_project.dao.UserDao;
 import it.unisalento.SWEng_project.dao.impl.UserDaoImpl;
 import it.unisalento.SWEng_project.models.StudentModel;
 import it.unisalento.SWEng_project.domain.User;
+import it.unisalento.SWEng_project.factories.FactoryDao;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
@@ -34,14 +35,18 @@ public class AddUser extends ActionSupport implements ModelDriven<User>{
 		System.out.println("Nome inserito:"+userForm.getName());
 		//System.out.println("Età  inserita:"+studentModel.getAge());
 		
-		UserDaoImpl dao = new UserDaoImpl();
 		User user = new User();
 		
+		user.setSsn(userForm.getSsn());
+		user.setUsername(userForm.getUsername());
+		user.setPassword(userForm.getPassword());
+		user.setCreateTime(userForm.getCreateTime());
 		user.setName(userForm.getName());
 		user.setSurname(userForm.getSurname());
-		user.setSsn(userForm.getSsn());
+		user.setDateOfBirth(userForm.getDateOfBirth());
 		
-		dao.set(user);
+		
+		FactoryDao.getIstance().getUserDao().set(user);
 		
 		
 		return "success";
