@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 16-mar-2016 14.43.12 by Hibernate Tools 4.3.1 -->
+<!-- Generated 18-mar-2016 23.51.27 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="it.unisalento.SWEng_project.domain.User" table="user" catalog="swengdb" optimistic-lock="version">
         <id name="id" type="java.lang.Integer">
@@ -29,11 +29,29 @@
         <property name="dateOfBirth" type="date">
             <column name="date_of_birth" length="10" />
         </property>
-        <set name="sellers" table="seller" inverse="true" lazy="true" fetch="select">
+        <property name="gender" type="string">
+            <column name="gender" length="1" />
+        </property>
+        <property name="telephone" type="string">
+            <column name="telephone" length="15" />
+        </property>
+        <property name="cellular" type="string">
+            <column name="cellular" length="15" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="45" />
+        </property>
+        <property name="seller" type="java.lang.Boolean">
+            <column name="seller" />
+        </property>
+        <property name="vatNumber" type="string">
+            <column name="VAT_number" length="45" />
+        </property>
+        <set name="shops" table="shop" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="user_ID" not-null="true" />
+                <column name="seller_user_ID" not-null="true" />
             </key>
-            <one-to-many class="it.unisalento.SWEng_project.domain.Seller" />
+            <one-to-many class="it.unisalento.SWEng_project.domain.Shop" />
         </set>
         <set name="orders" table="order" inverse="true" lazy="true" fetch="select">
             <key>
@@ -41,7 +59,6 @@
             </key>
             <one-to-many class="it.unisalento.SWEng_project.domain.Order" />
         </set>
-        <one-to-one name="addressBook" class="it.unisalento.SWEng_project.domain.AddressBook"></one-to-one>
         <set name="locations" table="location" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="user_ID" not-null="true" />

@@ -26,7 +26,4 @@ public class MyValidator extends FieldValidatorSupport{
 	public void setNomedaescludere(String nomedaescludere) {
 		this.nomedaescludere = nomedaescludere;
 	}
-	
-	
-
 }

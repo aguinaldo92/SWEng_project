@@ -80,4 +80,8 @@ public class FactoryDao {
 	public UserDao getUserDao(){
 		return new UserDaoImpl();
 	}
+	
+	public LocationDao getLocationDao(){
+		return new LocationDaoImpl();
+	}
 }

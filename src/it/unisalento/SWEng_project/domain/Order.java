@@ -1,6 +1,6 @@
 package it.unisalento.SWEng_project.domain;
 
-// Generated 16-mar-2016 14.43.11 by Hibernate Tools 4.3.1
+// Generated 18-mar-2016 23.51.26 by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.Date;

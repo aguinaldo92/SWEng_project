@@ -11,14 +11,25 @@
 
 <head>
 <sj:head/>
+
+<script language="JavaScript">
+
+function enable_text(status)
+{
+	document.registration.VAT_number.disabled = !status;
+}
+
+</script>
+
 </head>
 
 <body>
 
-<s:form action="AddUser">
+<s:form name="registration" action="AddUser">
 	<s:textfield name="ssn" label="Codice Fiscale" />
 	<s:textfield name="username" label="Username" />
 	<s:password name="password" label="Password" />
+	<s:password name="password2" label="Conferma password"/>
 	<s:textfield name="name" label="Nome" />
 	<s:textfield name="surname" label="Cognome"/>
 	<sj:datepicker name="dateOfBirth" label="Data di nascita" displayFormat="dd/mm/yy" changeMonth="true" changeYear="true"/>
@@ -32,8 +43,8 @@
 	<s:textfield name="city" label="Città"/>
 	<s:textfield name="province" label="Provincia"/>
 	<s:textfield name="state" label="Stato" value="Italia"/>
-	<s:checkbox name="seller" label="Venditore" value="aBoolean"/>
-	<s:textfield name="VAT_number" label="Partita IVA"/>
+	<s:checkbox name="seller" label="Venditore" value="aBoolean" onclick="enable_text(this.checked)"/>
+	<s:textfield name="VAT_number" label="Partita IVA" disabled="true"/>
 	<s:submit value="Invia"/>
 </s:form>
 

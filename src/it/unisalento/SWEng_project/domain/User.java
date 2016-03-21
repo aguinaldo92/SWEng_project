@@ -1,6 +1,6 @@
 package it.unisalento.SWEng_project.domain;
 
-// Generated 16-mar-2016 14.43.11 by Hibernate Tools 4.3.1
+// Generated 18-mar-2016 23.51.26 by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -19,9 +19,14 @@ public class User implements java.io.Serializable {
 	private String name;
 	private String surname;
 	private Date dateOfBirth;
-	private Set sellers = new HashSet(0);
+	private String gender;
+	private String telephone;
+	private String cellular;
+	private String email;
+	private Boolean seller;
+	private String vatNumber;
+	private Set shops = new HashSet(0);
 	private Set orders = new HashSet(0);
-	private AddressBook addressBook;
 	private Set locations = new HashSet(0);
 
 	public User() {
@@ -34,8 +39,9 @@ public class User implements java.io.Serializable {
 	}
 
 	public User(String ssn, String username, String password, Date createTime,
-			String name, String surname, Date dateOfBirth, Set sellers,
-			Set orders, AddressBook addressBook, Set locations) {
+			String name, String surname, Date dateOfBirth, String gender,
+			String telephone, String cellular, String email, Boolean seller,
+			String vatNumber, Set shops, Set orders, Set locations) {
 		this.ssn = ssn;
 		this.username = username;
 		this.password = password;
@@ -43,9 +49,14 @@ public class User implements java.io.Serializable {
 		this.name = name;
 		this.surname = surname;
 		this.dateOfBirth = dateOfBirth;
-		this.sellers = sellers;
+		this.gender = gender;
+		this.telephone = telephone;
+		this.cellular = cellular;
+		this.email = email;
+		this.seller = seller;
+		this.vatNumber = vatNumber;
+		this.shops = shops;
 		this.orders = orders;
-		this.addressBook = addressBook;
 		this.locations = locations;
 	}
 
@@ -113,12 +124,60 @@ public class User implements java.io.Serializable {
 		this.dateOfBirth = dateOfBirth;
 	}
 
-	public Set getSellers() {
-		return this.sellers;
+	public String getGender() {
+		return this.gender;
 	}
 
-	public void setSellers(Set sellers) {
-		this.sellers = sellers;
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public String getTelephone() {
+		return this.telephone;
+	}
+
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
+	}
+
+	public String getCellular() {
+		return this.cellular;
+	}
+
+	public void setCellular(String cellular) {
+		this.cellular = cellular;
+	}
+
+	public String getEmail() {
+		return this.email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public Boolean getSeller() {
+		return this.seller;
+	}
+
+	public void setSeller(Boolean seller) {
+		this.seller = seller;
+	}
+
+	public String getVatNumber() {
+		return this.vatNumber;
+	}
+
+	public void setVatNumber(String vatNumber) {
+		this.vatNumber = vatNumber;
+	}
+
+	public Set getShops() {
+		return this.shops;
+	}
+
+	public void setShops(Set shops) {
+		this.shops = shops;
 	}
 
 	public Set getOrders() {
@@ -129,14 +188,6 @@ public class User implements java.io.Serializable {
 		this.orders = orders;
 	}
 
-	public AddressBook getAddressBook() {
-		return this.addressBook;
-	}
-
-	public void setAddressBook(AddressBook addressBook) {
-		this.addressBook = addressBook;
-	}
-
 	public Set getLocations() {
 		return this.locations;
 	}
@@ -144,5 +195,4 @@ public class User implements java.io.Serializable {
 	public void setLocations(Set locations) {
 		this.locations = locations;
 	}
-
 }

@@ -1,6 +1,6 @@
 package it.unisalento.SWEng_project.domain;
 
-// Generated 16-mar-2016 14.43.11 by Hibernate Tools 4.3.1
+// Generated 18-mar-2016 23.51.26 by Hibernate Tools 4.3.1
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -13,7 +13,7 @@ import java.util.Set;
 public class Shop implements java.io.Serializable {
 
 	private Integer id;
-	private Seller seller;
+	private User user;
 	private String name;
 	private BigDecimal lat;
 	private BigDecimal long_;
@@ -30,16 +30,16 @@ public class Shop implements java.io.Serializable {
 	public Shop() {
 	}
 
-	public Shop(Seller seller, String name) {
-		this.seller = seller;
+	public Shop(User user, String name) {
+		this.user = user;
 		this.name = name;
 	}
 
-	public Shop(Seller seller, String name, BigDecimal lat, BigDecimal long_,
+	public Shop(User user, String name, BigDecimal lat, BigDecimal long_,
 			String address, String cap, String city, String province,
 			String state, String typology, Date registrationDate, Set sellses,
 			Set includeses) {
-		this.seller = seller;
+		this.user = user;
 		this.name = name;
 		this.lat = lat;
 		this.long_ = long_;
@@ -62,12 +62,12 @@ public class Shop implements java.io.Serializable {
 		this.id = id;
 	}
 
-	public Seller getSeller() {
-		return this.seller;
+	public User getUser() {
+		return this.user;
 	}
 
-	public void setSeller(Seller seller) {
-		this.seller = seller;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public String getName() {
