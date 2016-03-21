@@ -1,5 +1,9 @@
 package it.unisalento.SWEng_project.factories;
 
+import javax.servlet.ServletContext;
+
+import org.hibernate.SessionFactory;
+
 import it.unisalento.SWEng_project.dao.*;
 import it.unisalento.SWEng_project.dao.impl.*;
 
@@ -77,7 +81,7 @@ public class FactoryDao {
 		return Holder.ISTANCE;
 	}
 	
-	public UserDao getUserDao(){
-		return new UserDaoImpl();
+	public UserDao getUserDao(SessionFactory sf){
+		return new UserDaoImpl(sf);
 	}
 }

@@ -1,6 +1,6 @@
 package it.unisalento.SWEng_project.models;
 
-public class StudentModel {
+public class UserModel {
 	String name;
 	String surname;
 	String province;

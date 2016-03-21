@@ -33,8 +33,11 @@ public class MyInterceptor implements Interceptor {
 		
 		System.out.println("CODICE DA ESEGUIRE PRIMA DELLA INVOCAZIONE DELLA ACTION "+parametro);
 		
-		String result = action.invoke();
 		
+		String result = action.invoke();
+		if(action.getAction().equals("Login")){
+			System.out.println(action.getResult());
+		}
 		System.out.println("CODICE CHE VIENE ESEGUITO DOPO L'INVOCAZIONE DELLA ACTION"+parametro);
 		
 		return result;

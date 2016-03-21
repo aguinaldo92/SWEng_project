@@ -5,42 +5,48 @@
 <struts>
 	<constant name="struts.devMode" value="true" />
 	<constant name="struts.i18n.reload" value="false" />
-   	<constant name="struts.configuration.xml.reload" value="false" />
-   		
+	<constant name="struts.configuration.xml.reload" value="false" />
 
-    <package name="default" extends="struts-default">
-     <result-types>
-		<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" />
-	</result-types>
+	<package name="default" extends="struts-default">
+		<result-types>
+			<result-type name="tiles"
+				class="org.apache.struts2.views.tiles.TilesResult" />
+		</result-types>
 
-        
-        <interceptors>
-            
-            <interceptor name="myInterceptor" class="it.unisalento.SWEng_project.interceptors.MyInterceptor" />
-                
-       
-            <interceptor-stack name="mystack">
-                <interceptor-ref name="myInterceptor">
-                	<param name="parametro">Parametro passato</param>    
-                </interceptor-ref>
-                <interceptor-ref name="timer"/>
-                <interceptor-ref name="defaultStack" />
-            </interceptor-stack>
-            
-        </interceptors>
-        	<default-action-ref name="index"/>
-    		<action name="index">
-    			<result type="tiles">index</result>
-    		</action>
-    		<action name="contatti">
-    		    <result type="tiles">contatti</result>
-    		</action>
-    		<action name="AddUser" class="it.unisalento.SWEng_project.actions.AddUser">
-    		    <interceptor-ref name="mystack" />
-    		    <result name="success">views/success.jsp</result>
-    		    <result name="error">views/index.jsp</result>
-    		    <result name="input">views/index.jsp</result>
-    		</action>
-    </package>
+		<interceptors>
+			<interceptor name="myInterceptor"
+				class="it.unisalento.SWEng_project.interceptors.MyInterceptor" />
+			<interceptor-stack name="mystack">
+				<interceptor-ref name="myInterceptor">
+					<param name="parametro">Parametro passato</param>
+				</interceptor-ref>
+				<interceptor-ref name="timer" />
+
+				<interceptor-ref name="defaultStack">
+<!-- 	per il momento commento questo interceptor per i problemi di sicurezza di sessionAware <param name="params.excludeParams">dojo\..*,^struts\..*,^session\..*,^request\..*,^application\..*,^servlet(Request|Response)\..*,parameters\...*</param> -->
+				</interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+
+		<default-action-ref name="index" />
+		<action name="index">
+			<result type="tiles">index</result>
+		</action>
+		<action name="contatti">
+			<result type="tiles">contatti</result>
+		</action>
+		<action name="AddUser" class="it.unisalento.SWEng_project.actions.AddUser">
+			<interceptor-ref name="mystack" />
+			<result name="success" type="tiles">success</result>
+			<result name="error" type="tiles">error</result>
+			<result name="input" type="tiles">error</result>
+		</action>
+		<action name="Login" class="it.unisalento.SWEng_project.actions.Login">
+			<interceptor-ref name="mystack" />
+			<result name="success" type="tiles">profile</result>
+			<result name="error" type="tiles">error</result>
+			<result name="input" type="tiles">input</result>
+		</action>
+	</package>
 
 </struts>
