@@ -8,7 +8,15 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+
+import javax.servlet.ServletContext;
+
+import org.apache.struts2.dispatcher.SessionMap;
+import org.apache.struts2.interceptor.SessionAware;
+import org.apache.struts2.util.ServletContextAware;
+import org.hibernate.SessionFactory;
 
 import it.unisalento.SWEng_project.dao.UserDao;
 import it.unisalento.SWEng_project.dao.impl.UserDaoImpl;
@@ -26,7 +34,7 @@ import com.opensymphony.xwork2.ModelDriven;
  *
  *	Per sfuttare l'interceptor ModelDriven la action deve implementare l'interfaccia ModelDriven
  */
-public class AddUser extends ActionSupport implements ModelDriven<UserModel>{
+public class AddUser extends ActionSupport implements ModelDriven<UserModel>, ServletContextAware, SessionAware{
 	
 	/***
 	 * Dichiarare delle proprietà il cui nome corrisponde a quello specificato nel nome
@@ -34,6 +42,9 @@ public class AddUser extends ActionSupport implements ModelDriven<UserModel>{
 	 */
 	
 	private UserModel userForm = new UserModel();
+    private ServletContext ctx;
+    private SessionMap<String, Object> userSession ;
+    
 	
 	
 	/* E' necessario implementare il metodo execute() 
@@ -43,6 +54,8 @@ public class AddUser extends ActionSupport implements ModelDriven<UserModel>{
 	public String execute () {
 		System.out.println("Sono entrato nella action");
 		System.out.println("Nome inserito: "+userForm.getName());
+		
+		SessionFactory sf = (SessionFactory) ctx.getAttribute("SessionFactory");
 		
 		User user = new User();
 		Date datenow = new Date();
@@ -79,7 +92,7 @@ public class AddUser extends ActionSupport implements ModelDriven<UserModel>{
 		user_location.add(location);
 		user.setLocations(user_location);
 		
-		int iduser=FactoryDao.getIstance().getUserDao().set(user);
+		int iduser=FactoryDao.getIstance().getUserDao(sf).set(user);
 		
 		locationID.setUserId(iduser);
 		location.setId(locationID);
@@ -115,5 +128,17 @@ public class AddUser extends ActionSupport implements ModelDriven<UserModel>{
 	public UserModel getModel() {
 		// TODO Auto-generated method stub
 		return userForm;
+	}
+
+	@Override
+	public void setServletContext(ServletContext sc) {
+		 this.ctx = sc;
+		
+	}
+
+	@Override
+	public void setSession(Map<String, Object> map) {
+		this.userSession = (SessionMap)map;
+		
 	}	
 }
