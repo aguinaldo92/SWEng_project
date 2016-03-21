@@ -84,4 +84,8 @@ public class FactoryDao {
 	public UserDao getUserDao(SessionFactory sf){
 		return new UserDaoImpl(sf);
 	}
+	
+	public LocationDao getLocationDao(){
+		return new LocationDaoImpl();
+	}
 }

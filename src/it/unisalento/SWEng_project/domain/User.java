@@ -1,6 +1,10 @@
 package it.unisalento.SWEng_project.domain;
 
+<<<<<<< HEAD
 // Generated 21-mar-2016 17.28.49 by Hibernate Tools 4.3.1
+=======
+// Generated 18-mar-2016 23.51.26 by Hibernate Tools 4.3.1
+>>>>>>> refs/remotes/origin/master
 
 import java.util.Date;
 import java.util.HashSet;
@@ -195,5 +199,4 @@ public class User implements java.io.Serializable {
 	public void setLocations(Set locations) {
 		this.locations = locations;
 	}
-
 }

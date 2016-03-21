@@ -28,6 +28,8 @@ public class UserDaoImpl implements UserDao {
 		session.save(user);
 		//FINE TRANSAZIONE
 		tx.commit();
+		session.close();
+		
 		return user.getId();
 	}
 
