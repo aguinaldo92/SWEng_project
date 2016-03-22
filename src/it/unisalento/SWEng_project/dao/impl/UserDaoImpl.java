@@ -34,15 +34,17 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	 @Override
-	    public User getUserByCredentials(String email, String password) {
+	    public User getUserByCredentials(String username, String password) {
 	        Session session = sf.openSession();
 	        Transaction tx = session.beginTransaction();
 	        Query query = session.createQuery("from User where username=:username and password=:password");
-	        query.setString("email", email); 
+	        query.setString("username", username); 
 	        query.setString("password", password);
 	        User user = (User) query.uniqueResult();
 	        if(user != null){
 	            System.out.println("User Retrieved from DB::"+user);
+	        } else {
+	        	System.out.println("User non esistente");
 	        }
 	        tx.commit();
 	        session.close();

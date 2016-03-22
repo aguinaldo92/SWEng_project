@@ -6,7 +6,7 @@
 </s:if>
 
 <s:form action="Login">
-	<s:textfield name="email" label="Email"/>
+	<s:textfield name="username" label="Username"/>
 	<s:password name="password" label="Password"/> 
 	<s:submit value="Invia"/>
 </s:form>

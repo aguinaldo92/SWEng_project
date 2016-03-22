@@ -108,15 +108,15 @@ public class AddUser extends ActionSupport implements ModelDriven<UserModel>, Se
 	public void validate() {
 		boolean errors = false;
 		
-		if (userForm.getDateOfBirth().before(Date.from(LocalDateTime.now().minusYears(18).atZone(ZoneId.systemDefault()).toInstant()))
-				&& userForm.getDateOfBirth().after(Date.from(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant()))) {
-			addFieldError("dateOfBirth", "Devi essere maggiorenne");
-			errors = true;
-		}
-		if (userForm.getDateOfBirth().before(Date.from(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant()))) {
-			addFieldError("dateOfBirth", "Data di nascita non accettata");
-			errors = true;
-		}
+//		if (userForm.getDateOfBirth().before(Date.from(LocalDateTime.now().minusYears(18).atZone(ZoneId.systemDefault()).toInstant()))
+//				&& userForm.getDateOfBirth().after(Date.from(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant()))) {
+//			addFieldError("dateOfBirth", "Devi essere maggiorenne");
+//			errors = true;
+//		}
+//		if (userForm.getDateOfBirth().before(Date.from(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant()))) {
+//			addFieldError("dateOfBirth", "Data di nascita non accettata");
+//			errors = true;
+//		}
 		if (errors) {
 			addActionError("Sono presenti errori all'interno del form");
 		}

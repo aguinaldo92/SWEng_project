@@ -35,17 +35,21 @@
 		<action name="contatti">
 			<result type="tiles">contatti</result>
 		</action>
+		<action name="profile">
+			<result type="tiles">profile</result>
+		</action>
 		<action name="AddUser" class="it.unisalento.SWEng_project.actions.AddUser">
 			<interceptor-ref name="mystack" />
 			<result name="success" type="tiles">success</result>
 			<result name="error" type="tiles">error</result>
-			<result name="input" type="tiles">error</result>
+			<result name="input" >/views/registration_user.jsp</result>
 		</action>
 		<action name="Login" class="it.unisalento.SWEng_project.actions.Login">
 			<interceptor-ref name="mystack" />
 			<result name="success" type="tiles">profile</result>
 			<result name="error" type="tiles">error</result>
-			<result name="input" type="tiles">input</result>
+			<result name="input" type="tiles">login</result>
+			
 		</action>
 	</package>
 

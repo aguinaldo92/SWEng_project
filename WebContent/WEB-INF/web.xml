@@ -13,7 +13,9 @@
 	<listener>
 		<listener-class>org.apache.struts2.tiles.StrutsTilesListener</listener-class>
 	</listener>
-	
+	<listener>
+	<listener-class>it.unisalento.SWEng_project.listeners.HibernateServletContextListener</listener-class>
+	</listener>
 	<filter>
 		<filter-name>struts2</filter-name>
 		<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
