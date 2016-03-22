@@ -6,14 +6,15 @@
 <html>
 <head>
 
-<!-- <link href="css/style.css" rel="stylesheet" type="text/css"> -->
-<!-- <link href="css/bootstrap.css" rel="stylesheet" type="text/css"> -->
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+<link href="css/style.css" rel="stylesheet" type="text/css" >
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title><tiles:insertAttribute name="title" ignore="true" /></title>
 </head>
 <body>
 <div id="layout">
-<%--   <div id="header"><tiles:insertAttribute name="header" /></div> --%>
+  <div id="header"><tiles:insertAttribute name="header" /></div> 
  
   <div id="body"><tiles:insertAttribute name="body" /></div>
   <div id="footer"><tiles:insertAttribute name="footer" /></div>

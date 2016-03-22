@@ -42,6 +42,11 @@
 		<put-attribute name="body" value="/views/contatti.jsp" />
 	</definition>
 	
+	<definition name="registrationUser" extends="baseLayout">
+		<put-attribute name="title" value="Login" />
+		<put-attribute name="body" value="/views/registration_user.jsp" />
+	</definition>
+	
 	<definition name="login" extends="baseLayout">
 		<put-attribute name="title" value="Login" />
 		<put-attribute name="body" value="/views/login.jsp" />

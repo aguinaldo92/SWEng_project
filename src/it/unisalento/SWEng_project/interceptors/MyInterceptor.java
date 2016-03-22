@@ -37,6 +37,7 @@ public class MyInterceptor implements Interceptor {
 		String result = action.invoke();
 		if(action.getAction().equals("Login")){
 			System.out.println(action.getResult());
+			System.out.println("interceptor in login");
 		}
 		System.out.println("CODICE CHE VIENE ESEGUITO DOPO L'INVOCAZIONE DELLA ACTION"+parametro);
 		
