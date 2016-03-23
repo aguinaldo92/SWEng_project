@@ -4,16 +4,14 @@
 		<s:actionerror />
 	</div>
 </s:if>
-<div class="container">
-	<div class="account">
-		<s:form action="Login">
+
+<s:div class="container">
+	<s:div class="account">
 			<h2 class="account-in">Account</h2>
-			<div>
-				<span class="name-in">Username</span>
-				<s:textfield name="username" />
-			</div>
-			<s:password cssClass="word" name="password" label="Password" />
+			<s:form action="Login">
+			<s:textfield name="username" label="Username"/>
+			<s:password name="password" label="Password"/>
 			<s:submit value="Invia" />
-		</s:form>
-	</div>
-</div>
+			</s:form>
+	</s:div>
+</s:div>

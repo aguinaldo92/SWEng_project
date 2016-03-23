@@ -1,5 +1,11 @@
-
 <%@ taglib prefix="s" uri="/struts-tags"%>
+<%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
+<head>
+<s:include value="/js/menu_header.html"></s:include>
+<%-- <sj:head/> serve al datetimepicker --%>
+<sj:head/>
+</head>
+
 <div class="header">
 	<div class="header-top">
 		<div class="container">

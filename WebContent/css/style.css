@@ -1291,6 +1291,10 @@ span.word{
 	color:#464646;
 	font-size:1em;	
 }
+.label{
+	color:#464646;
+	font-size: 1em;
+}
 .account textarea{
 	resize:none;
 	height:60px;		

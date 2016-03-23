@@ -6,5 +6,5 @@
 </s:if>
 
 
-<s:a action="registrationUser" cssClass="btn btn-primary" >Registrazione</s:a>
-<a href="views/login.jsp">Login</a>
+<s:a action="registrationUser" cssClass="btn btn-primary" type="tiles" >Registrazione</s:a>
+<a href="login" type="tiles">Login</a>

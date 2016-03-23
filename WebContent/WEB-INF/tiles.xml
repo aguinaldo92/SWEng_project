@@ -43,7 +43,7 @@
 	</definition>
 	
 	<definition name="registrationUser" extends="baseLayout">
-		<put-attribute name="title" value="Login" />
+		<put-attribute name="title" value="Registrazione Utente" />
 		<put-attribute name="body" value="/views/registration_user.jsp" />
 	</definition>
 	

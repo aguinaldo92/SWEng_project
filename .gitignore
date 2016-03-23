@@ -11,7 +11,11 @@
 .classpath
 .project
 hibernate.reveng.xml
-
+/src/it/unisalento/SWEng_project/domain/*
+/src/hibernate.cfg.xml
+*.jpg
+*.png
+*.jpeg
 
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml

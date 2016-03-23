@@ -25,7 +25,7 @@ public class LoginInterceptor implements Interceptor {
 
         Boolean login = (Boolean) userSession.get("login");
         
-        
+        return null;
 	}
 
 }
