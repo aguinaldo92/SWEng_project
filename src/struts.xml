@@ -9,26 +9,39 @@
 
 	<package name="default" extends="struts-default">
 		<result-types>
-			<result-type name="tiles"
-				class="org.apache.struts2.views.tiles.TilesResult" />
+			<result-type name="tiles"	class="org.apache.struts2.views.tiles.TilesResult" />
 		</result-types>
-
+		
 		<interceptors>
-			<interceptor name="myInterceptor"
-				class="it.unisalento.SWEng_project.interceptors.MyInterceptor" />
+			<interceptor name="myInterceptor" class="it.unisalento.SWEng_project.interceptors.MyInterceptor" />
 			<interceptor-stack name="mystack">
 				<interceptor-ref name="myInterceptor">
 					<param name="parametro">Parametro passato</param>
 				</interceptor-ref>
 				<interceptor-ref name="timer" />
-
 				<interceptor-ref name="defaultStack">
-<!-- 	per il momento commento questo interceptor per i problemi di sicurezza di sessionAware <param name="params.excludeParams">dojo\..*,^struts\..*,^session\..*,^request\..*,^application\..*,^servlet(Request|Response)\..*,parameters\...*</param> -->
+					<!-- per il momento commento questo interceptor per i problemi di sicurezza di sessionAware <param name="params.excludeParams">dojo\..*,^struts\..*,^session\..*,^request\..*,^application\..*,^servlet(Request|Response)\..*,parameters\...*</param> -->
+				</interceptor-ref>
+			</interceptor-stack>
+			
+			<interceptor name="LoginInterceptor" class="it.unisalento.SWEng_project.interceptors.LoginInterceptor" />
+			<interceptor-stack name="loginStack">
+				<interceptor-ref name="LoginInterceptor">
+					<!-- <param name="parametro">Parametro passato</param> -->
+				</interceptor-ref>
+				<interceptor-ref name="timer" />
+				<interceptor-ref name="defaultStack">
+					<!-- per il momento commento questo interceptor per i problemi di sicurezza di sessionAware <param name="params.excludeParams">dojo\..*,^struts\..*,^session\..*,^request\..*,^application\..*,^servlet(Request|Response)\..*,parameters\...*</param> -->
 				</interceptor-ref>
 			</interceptor-stack>
 		</interceptors>
 
 		<default-action-ref name="index" />
+		
+		<global-results>
+			<result name="login" type="redirect">/loginUser.action</result>
+		</global-results>
+		
 		<action name="index">
 			<result type="tiles">index</result>
 		</action>
@@ -48,14 +61,15 @@
 			<interceptor-ref name="mystack" />
 			<result name="success" type="tiles">success</result>
 			<result name="error" type="tiles">error</result>
-			<result name="input" type="tiles" >registrationUser</result>
+			<result name="input" type="tiles">registrationUser</result>
 		</action>
+		
 		<action name="Login" class="it.unisalento.SWEng_project.actions.Login">
 			<interceptor-ref name="mystack" />
 			<result name="success" type="tiles">profile</result>
 			<result name="error" type="tiles">error</result>
 			<result name="input" type="tiles">login</result>
-			
+
 		</action>
 	</package>
 

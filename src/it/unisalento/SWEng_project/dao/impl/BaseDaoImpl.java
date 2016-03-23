@@ -1,28 +1,56 @@
 package it.unisalento.SWEng_project.dao.impl;
 
-import java.util.List;
-
 import it.unisalento.SWEng_project.dao.BaseDao;
 
-public class BaseDaoImpl implements BaseDao {
+import java.util.List;
 
-	@Override
-	public int set(Object entity) {
-		// TODO Auto-generated method stub
-		return 0;
+import javax.servlet.ServletContext;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+
+public class BaseDaoImpl<T> implements BaseDao<T> {
+
+	protected SessionFactory sf;
+	private ServletContext ctx;
+
+	public BaseDaoImpl() {
+		this.sf = (SessionFactory) ctx.getAttribute("SessionFactory");
 	}
 
 	@Override
-	public Object get(int id, Class clazz) {
-		// TODO Auto-generated method stub
-		return null;
+	public int set(T entity) {
+		Session session = sf.openSession();
+		Transaction tx = session.beginTransaction();
+		int id = (int) session.save(entity);
+		tx.commit();
+		session.close();
+		return id;
 	}
 
+
 	@Override
-	public List getAll(Class clazz) {
-		// TODO Auto-generated method stub
-		return null;
+	public T get(int id, Class clazz){
+		Session session = sf.openSession();
+		Transaction tx = session.beginTransaction();
+		T entity= (T)session.get(clazz, id);
+		tx.commit();
+		session.close();
+		return entity;
 	}
-	
+
+
+	@Override
+	public List<T> getAll(Class clazz) {
+		Session session = sf.openSession();
+		Transaction tx = session.beginTransaction();
+		List<T> list= (List<T>)session.createQuery("from "+clazz.getName()).list();
+		tx.commit();
+		session.close();
+		return list;
+	}
+
+
 
 }

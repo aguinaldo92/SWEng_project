@@ -1,28 +1,18 @@
 package it.unisalento.SWEng_project.actions;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.util.Calendar;
+import it.unisalento.SWEng_project.domain.Location;
+import it.unisalento.SWEng_project.domain.LocationId;
+import it.unisalento.SWEng_project.domain.User;
+import it.unisalento.SWEng_project.factories.FactoryDao;
+import it.unisalento.SWEng_project.models.UserModel;
+
 import java.util.Date;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import javax.servlet.ServletContext;
-
 import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.SessionAware;
-import org.apache.struts2.util.ServletContextAware;
-import org.hibernate.SessionFactory;
-
-import it.unisalento.SWEng_project.dao.UserDao;
-import it.unisalento.SWEng_project.dao.impl.UserDaoImpl;
-import it.unisalento.SWEng_project.models.UserModel;
-import it.unisalento.SWEng_project.domain.*;
-import it.unisalento.SWEng_project.factories.FactoryDao;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
@@ -34,7 +24,7 @@ import com.opensymphony.xwork2.ModelDriven;
  *
  *	Per sfuttare l'interceptor ModelDriven la action deve implementare l'interfaccia ModelDriven
  */
-public class AddUser extends ActionSupport implements ModelDriven<UserModel>, ServletContextAware, SessionAware{
+public class AddUser extends ActionSupport implements ModelDriven<UserModel>, SessionAware{
 	
 	/***
 	 * Dichiarare delle proprietà il cui nome corrisponde a quello specificato nel nome
@@ -42,7 +32,6 @@ public class AddUser extends ActionSupport implements ModelDriven<UserModel>, Se
 	 */
 	
 	private UserModel userForm = new UserModel();
-    private ServletContext ctx;
     private SessionMap<String, Object> userSession ;
     
 	
@@ -55,7 +44,6 @@ public class AddUser extends ActionSupport implements ModelDriven<UserModel>, Se
 		System.out.println("Sono entrato nella action");
 		System.out.println("Nome inserito: "+userForm.getName());
 		
-		SessionFactory sf = (SessionFactory) ctx.getAttribute("SessionFactory");
 		
 		User user = new User();
 		Date datenow = new Date();
@@ -92,7 +80,7 @@ public class AddUser extends ActionSupport implements ModelDriven<UserModel>, Se
 		user_location.add(location);
 		user.setLocations(user_location);
 		
-		int iduser=FactoryDao.getIstance().getUserDao(sf).set(user);
+		int iduser=FactoryDao.getIstance().getUserDao().set(user);
 		
 		locationID.setUserId(iduser);
 		location.setId(locationID);
@@ -130,11 +118,6 @@ public class AddUser extends ActionSupport implements ModelDriven<UserModel>, Se
 		return userForm;
 	}
 
-	@Override
-	public void setServletContext(ServletContext sc) {
-		 this.ctx = sc;
-		
-	}
 
 	@Override
 	public void setSession(Map<String, Object> map) {

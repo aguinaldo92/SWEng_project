@@ -1,7 +1,5 @@
 package it.unisalento.SWEng_project.listeners;
 
-import java.net.URL;
-
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 

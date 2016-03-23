@@ -8,10 +8,7 @@
 	<div class="account">
 		<s:form action="Login">
 			<h2 class="account-in">Account</h2>
-			<div>
-				<span class="name-in">Username</span>
-				<s:textfield name="username" />
-			</div>
+			<s:textfield cssClass="word" name="username" label="Username" />
 			<s:password cssClass="word" name="password" label="Password" />
 			<s:submit value="Invia" />
 		</s:form>
