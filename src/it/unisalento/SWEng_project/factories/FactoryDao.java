@@ -1,11 +1,9 @@
 package it.unisalento.SWEng_project.factories;
 
-import javax.servlet.ServletContext;
-
-import org.hibernate.SessionFactory;
-
-import it.unisalento.SWEng_project.dao.*;
-import it.unisalento.SWEng_project.dao.impl.*;
+import it.unisalento.SWEng_project.dao.LocationDao;
+import it.unisalento.SWEng_project.dao.UserDao;
+import it.unisalento.SWEng_project.dao.impl.LocationDaoImpl;
+import it.unisalento.SWEng_project.dao.impl.UserDaoImpl;
 
 public class FactoryDao {
 	/*IMPLEMENTAZIONE PATTERN SINGLETON --> PERFORMANCE SCARSE
@@ -81,8 +79,8 @@ public class FactoryDao {
 		return Holder.ISTANCE;
 	}
 	
-	public UserDao getUserDao(SessionFactory sf){
-		return new UserDaoImpl(sf);
+	public UserDao getUserDao(){
+		return new UserDaoImpl();
 	}
 	
 	public LocationDao getLocationDao(){

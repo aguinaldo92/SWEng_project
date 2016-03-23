@@ -3,41 +3,29 @@ package it.unisalento.SWEng_project.actions;
 import it.unisalento.SWEng_project.domain.User;
 import it.unisalento.SWEng_project.factories.FactoryDao;
 
-import java.util.Date;
 import java.util.Map;
-
-import javax.servlet.ServletContext;
 
 import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.SessionAware;
-import org.apache.struts2.util.ServletContextAware;
-import org.hibernate.SessionFactory;
 
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.interceptor.ParameterNameAware;
 import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
-import com.opensymphony.xwork2.validator.annotations.Validation;
 
 
-public class Login extends ActionSupport implements ModelDriven<User>, SessionAware, ServletContextAware, ParameterNameAware  {
+public class Login extends ActionSupport implements ModelDriven<User>, SessionAware, ParameterNameAware  {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	private User user = new User();
-	private ServletContext ctx;
 	private SessionMap<String, Object> userSession ;
-	private SessionFactory sf;
+	
 	private String username;
 	private String password;
 	
 
-	@Override
-	public void setServletContext(ServletContext sc) {
-		this.ctx = sc;
-	}
 
 	@Override
 	public User getModel() {
@@ -57,13 +45,9 @@ public class Login extends ActionSupport implements ModelDriven<User>, SessionAw
 
 	public void validate() {
 		boolean errors = false;
-		try {
-			sf = (SessionFactory) ctx.getAttribute("SessionFactory");
-		} catch (Exception eSessionFactory) {
-			System.out.println("SessionFactory non esistente nella servletContext:" + eSessionFactory.getMessage());
-		}
+		
 		try {	 
-			FactoryDao.getIstance().getUserDao(sf).getUserByCredentials(user.getUsername(), user.getPassword()).getUsername();
+			FactoryDao.getIstance().getUserDao().getUserByCredentials(user.getUsername(), user.getPassword()).getUsername();
 			System.out.println(" login fatto!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		} catch (NullPointerException enull){
 			System.out.println("Utente non presente nel Database");
@@ -86,7 +70,7 @@ public class Login extends ActionSupport implements ModelDriven<User>, SessionAw
 
 	@Override
 	public void setSession(Map<String,Object> map) {  		 
-		this.userSession = (SessionMap)map;
+		this.userSession = (SessionMap<String,Object>)map;
 
 	}  
 

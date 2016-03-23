@@ -16,7 +16,7 @@
 				<div class="header-in">
 					<ul class="icon1 sub-icon1">
 						<li><s:a action="index">Home</s:a></li>
-						<li><s:if test="#session.login != null">
+						<li><s:if test="#session.login == null">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown"> <s:property value="#session.username" /> <b class="caret"></b></a>
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 									<ul class="dropdown-menu">
