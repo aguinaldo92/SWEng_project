@@ -1,10 +1,6 @@
 package it.unisalento.SWEng_project.models;
 
-import it.unisalento.SWEng_project.domain.*;
-
 import java.util.Date;
-import java.util.List;
-import java.util.Set;
 
 public class UserModel {
 	

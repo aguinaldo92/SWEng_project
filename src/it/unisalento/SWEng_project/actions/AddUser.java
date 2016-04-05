@@ -1,7 +1,6 @@
 package it.unisalento.SWEng_project.actions;
 
 import it.unisalento.SWEng_project.domain.Location;
-import it.unisalento.SWEng_project.domain.LocationId;
 import it.unisalento.SWEng_project.domain.User;
 import it.unisalento.SWEng_project.factories.FactoryDao;
 import it.unisalento.SWEng_project.models.UserModel;
@@ -26,12 +25,17 @@ import com.opensymphony.xwork2.ModelDriven;
  */
 public class AddUser extends ActionSupport implements ModelDriven<UserModel>, SessionAware{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6034781884159620742L;
 	/***
 	 * Dichiarare delle proprietà il cui nome corrisponde a quello specificato nel nome
 	 * CREA IL GETTER E IL SETTER
 	 */
 	
 	private UserModel userForm = new UserModel();
+	private Location loc = new Location();
     private SessionMap<String, Object> userSession ;
     
 	
@@ -63,12 +67,12 @@ public class AddUser extends ActionSupport implements ModelDriven<UserModel>, Se
 		user.setVatNumber(userForm.getVAT_number());
 		
 		Set<Location> user_location = new HashSet<Location>();
-		LocationId locationID = new LocationId();
 		
-		locationID.setName("Residenza");
+		
 		
 		Location location = new Location();
-		
+
+		location.setName("Residenza");
 		location.setAddress(userForm.getAddress());
 		location.setCap(userForm.getCap());
 		location.setCity(userForm.getCity());
@@ -81,9 +85,7 @@ public class AddUser extends ActionSupport implements ModelDriven<UserModel>, Se
 		user.setLocations(user_location);
 		
 		int iduser=FactoryDao.getIstance().getUserDao().set(user);
-		
-		locationID.setUserId(iduser);
-		location.setId(locationID);
+
 		int iduser_loc=FactoryDao.getIstance().getLocationDao().set(location);
 		
 		System.out.println("ID USER="+iduser);

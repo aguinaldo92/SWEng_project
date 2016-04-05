@@ -14,28 +14,17 @@
 		
 		<interceptors>
 			<interceptor name="myInterceptor" class="it.unisalento.SWEng_project.interceptors.MyInterceptor" />
-			<interceptor-stack name="mystack">
-				<interceptor-ref name="myInterceptor">
-					<param name="parametro">Parametro passato</param>
-				</interceptor-ref>
-				<interceptor-ref name="timer" />
-				<interceptor-ref name="defaultStack">
-					<!-- per il momento commento questo interceptor per i problemi di sicurezza di sessionAware <param name="params.excludeParams">dojo\..*,^struts\..*,^session\..*,^request\..*,^application\..*,^servlet(Request|Response)\..*,parameters\...*</param> -->
-				</interceptor-ref>
-			</interceptor-stack>
-			
 			<interceptor name="LoginInterceptor" class="it.unisalento.SWEng_project.interceptors.LoginInterceptor" />
+			
 			<interceptor-stack name="loginStack">
-				<interceptor-ref name="LoginInterceptor">
-					<!-- <param name="parametro">Parametro passato</param> -->
-				</interceptor-ref>
+				<interceptor-ref name="LoginInterceptor"/>
 				<interceptor-ref name="timer" />
 				<interceptor-ref name="defaultStack">
 					<!-- per il momento commento questo interceptor per i problemi di sicurezza di sessionAware <param name="params.excludeParams">dojo\..*,^struts\..*,^session\..*,^request\..*,^application\..*,^servlet(Request|Response)\..*,parameters\...*</param> -->
 				</interceptor-ref>
 			</interceptor-stack>
 		</interceptors>
-
+		
 		<default-action-ref name="index" />
 		
 		<global-results>
@@ -58,19 +47,46 @@
 			<result type="tiles">login</result>
 		</action>
 		<action name="AddUser" class="it.unisalento.SWEng_project.actions.AddUser">
-			<interceptor-ref name="mystack" />
 			<result name="success" type="tiles">success</result>
 			<result name="error" type="tiles">error</result>
 			<result name="input" type="tiles">registrationUser</result>
 		</action>
 		
 		<action name="Login" class="it.unisalento.SWEng_project.actions.Login">
-			<interceptor-ref name="mystack" />
 			<result name="success" type="tiles">profile</result>
 			<result name="error" type="tiles">error</result>
 			<result name="input" type="tiles">login</result>
-
 		</action>
+		
+		<action name="Categories" class="it.unisalento.SWEng_project.actions.Categories" >
+			<result name="error" type="tiles">error</result>
+			<result name="input" type="tiles">input</result>
+		</action>
+		
+		<action name="TypeOfProductsBy" class="it.unisalento.SWEng_project.actions.TypeOfProductsBy" >
+			<result name="success" type="tiles">typeOfProducts</result>
+			<result name="error" type="tiles">error</result>
+			<result name="input" type="tiles">input</result>
+		</action>
+		
+		<action name="BestDeals" class="it.unisalento.SWEng_project.actions.BestDeals" >
+			<result name="success" type="tiles">typeOfProducts</result>
+			<result name="error" type="tiles">error</result>
+			<result name="input" type="tiles">input</result>
+		</action>
+		
+		<action name="ImagesOfTypeOfProduct" class="it.unisalento.SWEng_project.actions.ImagesOfTypeOfProduct" >
+			<result name="success" type="tiles">ImagesOfTypeOfProduct</result>
+			<result name="error" type="tiles">error</result>
+			<result name="input" type="tiles">input</result>
+		</action>
+		
+		<action name="ProductsOfTypeOfProduct" class="it.unisalento.SWEng_project.actions.ProductsOfTypeOfProduct" >
+			<result name="success" type="tiles">product</result>
+			<result name="error" type="tiles">error</result>
+			<result name="input" type="tiles">input</result>
+		</action>
+		
 	</package>
 
 </struts>

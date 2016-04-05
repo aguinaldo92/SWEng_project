@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.ServletContext;
 
+import org.apache.struts2.ServletActionContext;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -16,6 +17,7 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 	private ServletContext ctx;
 
 	public BaseDaoImpl() {
+		 ctx = ServletActionContext.getServletContext(); 
 		this.sf = (SessionFactory) ctx.getAttribute("SessionFactory");
 	}
 

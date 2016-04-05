@@ -12,7 +12,8 @@ public class LoginInterceptor implements Interceptor {
 	 * 
 	 */
 	private static final long serialVersionUID = 6805865333376694437L;
-
+	private SessionMap<String, Object> userSession;
+	private  Boolean login;
 	@Override
 	public void destroy() {
 		// TODO Auto-generated method stub
@@ -21,16 +22,15 @@ public class LoginInterceptor implements Interceptor {
 
 	@Override
 	public void init() {
-		// TODO Auto-generated method stub
-		
+			
 	}
 
 	@Override
 	public String intercept(ActionInvocation invocation) throws Exception {
-		SessionMap<String, Object> userSession = (SessionMap<String, Object>)invocation.getInvocationContext().getSession();
+		userSession = (SessionMap<String, Object>)invocation.getInvocationContext().getSession();	
 
-        Boolean login = (Boolean) userSession.get("login");
-		
+        login = (Boolean) userSession.get("login");
+		System.out.println("login è" + login);
 		
 		if (!login) 
         {
@@ -41,7 +41,6 @@ public class LoginInterceptor implements Interceptor {
                 return invocation.invoke();
         }
         
-        return null;
 	}
 
 }

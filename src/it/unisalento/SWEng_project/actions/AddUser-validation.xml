@@ -30,7 +30,7 @@
          </field-validator>
      </field>
      <field name="dateOfBirth">
-         <field-validator type="requiredstring">
+         <field-validator type="required">
              <message>Data di nascita richiesta</message>
          </field-validator>
      </field>

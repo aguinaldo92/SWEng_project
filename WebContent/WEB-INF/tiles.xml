@@ -6,7 +6,6 @@
 <tiles-definitions>
 	<definition name="baseLayout" template="/baselayout/baseLayout.jsp">
 		<put-attribute name="title" value="" />
-		
 		<put-attribute name="header" value="/baselayout/header.jsp" />
 		<put-attribute name="menu" value="/baselayout/menu.jsp" />
 		<put-attribute name="body" value="" />
@@ -55,6 +54,21 @@
 	<definition name="profile" extends="baseLayout">
 		<put-attribute name="title" value="Profile" />
 		<put-attribute name="body" value="/views/profile.jsp" />
+	</definition>
 		
+	<definition name="typeOfProducts" extends="baseLayout">
+		<put-attribute name="title" value="Tipi di Prodotti" />
+		<put-attribute name="body" value="/views/typeOfProducts.jsp" />
+	</definition>
+	
+	<definition name="product" extends="baseLayout">
+		<put-attribute name="title" value="Prodotto" />
+		<put-attribute name="body" value="/views/product.jsp" />
+	</definition>
+	
+	<definition name="ImagesOfTypeOfProduct" extends="baseLayout">
+		<put-attribute name="body" value="/views/ajax/imagesOfTypeOfProduct.jsp" />
+		<put-attribute name="footer" value="" />
+		<put-attribute name="header" value="" />
 	</definition>
 </tiles-definitions>

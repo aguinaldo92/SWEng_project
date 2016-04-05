@@ -1,8 +1,14 @@
 package it.unisalento.SWEng_project.factories;
 
+import it.unisalento.SWEng_project.dao.CategoryDao;
 import it.unisalento.SWEng_project.dao.LocationDao;
+import it.unisalento.SWEng_project.dao.ProductPhotoDao;
+import it.unisalento.SWEng_project.dao.TypeOfProductDao;
 import it.unisalento.SWEng_project.dao.UserDao;
+import it.unisalento.SWEng_project.dao.impl.CategoryDaoImpl;
 import it.unisalento.SWEng_project.dao.impl.LocationDaoImpl;
+import it.unisalento.SWEng_project.dao.impl.ProductPhotoDaoImpl;
+import it.unisalento.SWEng_project.dao.impl.TypeOfProductDaoImpl;
 import it.unisalento.SWEng_project.dao.impl.UserDaoImpl;
 
 public class FactoryDao {
@@ -85,5 +91,17 @@ public class FactoryDao {
 	
 	public LocationDao getLocationDao(){
 		return new LocationDaoImpl();
+	}
+	
+	public CategoryDao getCategoryDao(){
+		return new CategoryDaoImpl();
+	}
+	
+	public TypeOfProductDao getTypeOfProductDao(){
+		return new TypeOfProductDaoImpl();
+	}
+	
+	public ProductPhotoDao getProductPhotoDao(){
+		return new ProductPhotoDaoImpl();
 	}
 }
