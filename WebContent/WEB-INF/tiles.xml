@@ -47,6 +47,10 @@
 		<put-attribute name="body" value="/views/registration_user.jsp" />
 	</definition>
 	
+	<definition name="registrationShop" extends="baseLayout">
+		<put-attribute name="title" value="Registrazione Shop" />
+		<put-attribute name="body" value="/views/registration_shop.jsp" />
+	</definition>
 	<definition name="login" extends="baseLayout">
 		<put-attribute name="title" value="Login" />
 		<put-attribute name="body" value="/views/login.jsp" />
@@ -55,6 +59,22 @@
 	<definition name="profile" extends="baseLayout">
 		<put-attribute name="title" value="Profile" />
 		<put-attribute name="body" value="/views/profile.jsp" />
-		
 	</definition>
+	
+	<definition name="shopdetails" extends="baseLayout">
+		<put-attribute name="title" value="Dettaglio negozio" />
+		<put-attribute name="body" value="/views/shop_details.jsp" />
+	</definition>
+	
+	<definition name="myshops" extends="baseLayout">
+		<put-attribute name="title" value="I miei negozi" />
+		<put-attribute name="body" value="/views/myshops.jsp" />
+	</definition>
+	
+	<definition name="mylocations" extends="baseLayout">
+		<put-attribute name="title" value="I miei indirizzi" />
+		<put-attribute name="body" value="/views/mylocations.jsp" />
+	</definition>
+	
+	
 </tiles-definitions>

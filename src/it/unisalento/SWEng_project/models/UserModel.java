@@ -1,32 +1,23 @@
 package it.unisalento.SWEng_project.models;
 
-import it.unisalento.SWEng_project.domain.*;
-
 import java.util.Date;
-import java.util.List;
-import java.util.Set;
 
 public class UserModel {
 	
 	private String ssn;
 	private String username;
 	private String password;
+	private String confirm_password;
 	private String name;
 	private String surname;
 	private Date dateOfBirth;
 	private String gender;
 	private String email;
-	private String tel;
-	private String cell;
-	private String location_name;
-	private String cap;
-	private String address;
-	private String number;
-	private String city;
-	private String province;
-	private String state;
+	private String telephone;
+	private String cellular;
 	private Boolean seller;
-	private String VAT_number;
+	private String vatNumber;
+	
 	public String getSsn() {
 		return ssn;
 	}
@@ -44,6 +35,12 @@ public class UserModel {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public String getConfirm_password() {
+		return confirm_password;
+	}
+	public void setConfirm_password(String confirm_password) {
+		this.confirm_password = confirm_password;
 	}
 	public String getName() {
 		return name;
@@ -75,59 +72,17 @@ public class UserModel {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getTel() {
-		return tel;
+	public String getTelephone() {
+		return telephone;
 	}
-	public void setTel(String tel) {
-		this.tel = tel;
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
 	}
-	public String getCell() {
-		return cell;
+	public String getCellular() {
+		return cellular;
 	}
-	public void setCell(String cell) {
-		this.cell = cell;
-	}
-	public String getLocation_name() {
-		return location_name;
-	}
-	public void setLocation_name(String location_name) {
-		this.location_name = location_name;
-	}
-	public String getCap() {
-		return cap;
-	}
-	public void setCap(String cap) {
-		this.cap = cap;
-	}
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
-	}
-	public String getNumber() {
-		return number;
-	}
-	public void setNumber(String number) {
-		this.number = number;
-	}
-	public String getCity() {
-		return city;
-	}
-	public void setCity(String city) {
-		this.city = city;
-	}
-	public String getProvince() {
-		return province;
-	}
-	public void setProvince(String province) {
-		this.province = province;
-	}
-	public String getState() {
-		return state;
-	}
-	public void setState(String state) {
-		this.state = state;
+	public void setCellular(String cellular) {
+		this.cellular = cellular;
 	}
 	public Boolean getSeller() {
 		return seller;
@@ -135,10 +90,11 @@ public class UserModel {
 	public void setSeller(Boolean seller) {
 		this.seller = seller;
 	}
-	public String getVAT_number() {
-		return VAT_number;
+	public String getVatNumber() {
+		return vatNumber;
 	}
-	public void setVAT_number(String vAT_number) {
-		VAT_number = vAT_number;
+	public void setVatNumber(String vatNumber) {
+		this.vatNumber = vatNumber;
 	}
+	
 }

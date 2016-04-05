@@ -19,6 +19,11 @@
              <message>Password richiesta</message>
          </field-validator>
      </field>
+     <field name="confirm_password">
+         <field-validator type="requiredstring">
+             <message>Conferma della password richiesta</message>
+         </field-validator>   
+     </field>
      <field name="name">
          <field-validator type="requiredstring">
              <message>Nome richiesto</message>
@@ -30,7 +35,7 @@
          </field-validator>
      </field>
      <field name="dateOfBirth">
-         <field-validator type="requiredstring">
+         <field-validator type="required">
              <message>Data di nascita richiesta</message>
          </field-validator>
      </field>
@@ -44,9 +49,14 @@
      </field>
      <field name="tel">
          <field-validator type="regex">
-            <param name="regex">[0-9]{10}</param>
+            <param name="regex">0[0-9]{9}</param>
             <message>Formato Telefono non corretto</message>
          </field-validator>
      </field>
-     
+     <field name="cell">
+         <field-validator type="regex">
+            <param name="regex">3[0-9]{9}</param>
+            <message>Formato Telefono non corretto</message>
+         </field-validator>
+     </field>
  </validators>

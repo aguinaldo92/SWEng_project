@@ -27,6 +27,7 @@ public class LoginInterceptor implements Interceptor {
 
 	@Override
 	public String intercept(ActionInvocation invocation) throws Exception {
+		
 		SessionMap<String, Object> userSession = (SessionMap<String, Object>)invocation.getInvocationContext().getSession();
 
         Boolean login = (Boolean) userSession.get("login");
@@ -41,7 +42,7 @@ public class LoginInterceptor implements Interceptor {
                 return invocation.invoke();
         }
         
-        return null;
+        
 	}
 
 }

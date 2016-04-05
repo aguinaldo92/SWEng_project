@@ -1,9 +1,16 @@
 package it.unisalento.SWEng_project.actions;
 
+import it.unisalento.SWEng_project.domain.Location;
+import it.unisalento.SWEng_project.domain.Shop;
 import it.unisalento.SWEng_project.domain.User;
 import it.unisalento.SWEng_project.factories.FactoryDao;
+import it.unisalento.SWEng_project.models.UserModel;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.SessionAware;
@@ -14,12 +21,13 @@ import com.opensymphony.xwork2.interceptor.ParameterNameAware;
 import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
 
 
-public class Login extends ActionSupport implements ModelDriven<User>, SessionAware, ParameterNameAware  {
+public class Login extends ActionSupport implements ModelDriven<UserModel>, SessionAware, ParameterNameAware  {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private User user = new User();
+	private UserModel userLogin = new UserModel();
+	private User user= new User();
 	private SessionMap<String, Object> userSession ;
 	
 	private String username;
@@ -28,17 +36,18 @@ public class Login extends ActionSupport implements ModelDriven<User>, SessionAw
 
 
 	@Override
-	public User getModel() {
-		return user;
+	public UserModel getModel() {
+		return userLogin;
 	}
 
 	public String execute() {
 
 		System.out.println("Sono entrato nella action Login");
 		userSession.put("login", true);
-		userSession.put("username",(String)user.getUsername());
-		System.out.println(userSession.get("username"));
-		System.out.println(userSession.get("login"));
+		userSession.put("user", user);
+		System.out.println("username: "+user.getUsername());
+		System.out.println("login: "+userSession.get("login"));
+		System.out.println("seller: "+user.getSeller());
 		System.out.println("success final");
 		return SUCCESS;
 	}
@@ -46,27 +55,25 @@ public class Login extends ActionSupport implements ModelDriven<User>, SessionAw
 	public void validate() {
 		boolean errors = false;
 		
-		try {	 
-			FactoryDao.getIstance().getUserDao().getUserByCredentials(user.getUsername(), user.getPassword()).getUsername();
-			System.out.println(" login fatto!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-		} catch (NullPointerException enull){
-			System.out.println("Utente non presente nel Database");
-			errors = true;
-
-		} catch (Exception egeneric) {
-			System.out.println("errore generico" + egeneric.getMessage());
-			errors = true;
-		}	
-
-		if (errors) {
-			addActionError("Username or Password errati");
+		if (userSession.isEmpty()){//controllo se la userSession è stata impostata
+			try {	 
+				//ottengo anagrafica e indirizzi salvati dallo user loggato
+				user=FactoryDao.getIstance().getUserDao().getUserByCredentials(userLogin.getUsername(), userLogin.getPassword());
+				System.out.println(" login fatto!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+			} catch (NullPointerException enull){
+				System.out.println("Utente non presente nel Database");
+				errors = true;
+	
+			} catch (Exception egeneric) {
+				System.out.println("errore generico" + egeneric.getMessage());
+				errors = true;
+			}	
+	
+			if (errors) {
+				addActionError("Username o Password errati");
+			}
 		}
 	}
-
-	public String logout(){  
-		userSession.invalidate();  
-		return SUCCESS;  
-	}  
 
 	@Override
 	public void setSession(Map<String,Object> map) {  		 
@@ -92,7 +99,7 @@ public class Login extends ActionSupport implements ModelDriven<User>, SessionAw
 		return username;
 	}
 
-	@RequiredStringValidator(message = "Please enter your username.")
+	@RequiredStringValidator(message = "Username richiesto")
 	public void setUsername(String username) {
 		this.username = username;
 	}
@@ -100,7 +107,7 @@ public class Login extends ActionSupport implements ModelDriven<User>, SessionAw
 	public String getPassword() {
 		return password;
 	}
-	@RequiredStringValidator(message = "Please enter your password.")
+	@RequiredStringValidator(message = "Password richiesta")
 	public void setPassword(String password) {
 		this.password = password;
 	}

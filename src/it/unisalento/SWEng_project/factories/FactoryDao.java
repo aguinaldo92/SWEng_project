@@ -1,8 +1,10 @@
 package it.unisalento.SWEng_project.factories;
 
 import it.unisalento.SWEng_project.dao.LocationDao;
+import it.unisalento.SWEng_project.dao.ShopDao;
 import it.unisalento.SWEng_project.dao.UserDao;
 import it.unisalento.SWEng_project.dao.impl.LocationDaoImpl;
+import it.unisalento.SWEng_project.dao.impl.ShopDaoImpl;
 import it.unisalento.SWEng_project.dao.impl.UserDaoImpl;
 
 public class FactoryDao {
@@ -76,14 +78,20 @@ public class FactoryDao {
 	}
 	
 	public static FactoryDao getIstance(){
+		System.out.println("FactoryDao: getIstance()");
 		return Holder.ISTANCE;
 	}
 	
 	public UserDao getUserDao(){
+		System.out.println("FactoryDao: getUserDao");
 		return new UserDaoImpl();
 	}
 	
 	public LocationDao getLocationDao(){
 		return new LocationDaoImpl();
+	}
+	
+	public ShopDao getShopDao(){
+		return new ShopDaoImpl();
 	}
 }
