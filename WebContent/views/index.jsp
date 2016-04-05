@@ -6,5 +6,4 @@
 </s:if>
 
 
-<s:a action="registrationUser" cssClass="btn btn-primary" type="tiles" >Registrazione</s:a>
-<a href="login" type="tiles">Login</a>
+QUESTA è LA PAGINA DI INDEX

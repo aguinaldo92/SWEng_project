@@ -17,12 +17,13 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 	private ServletContext ctx;
 
 	public BaseDaoImpl() {
-		 ctx = ServletActionContext.getServletContext(); 
+		this.ctx = ServletActionContext.getServletContext();
 		this.sf = (SessionFactory) ctx.getAttribute("SessionFactory");
 	}
 
 	@Override
 	public int set(T entity) {
+		System.out.println("BaseDaoImpl: set()");
 		Session session = sf.openSession();
 		Transaction tx = session.beginTransaction();
 		int id = (int) session.save(entity);
@@ -42,7 +43,6 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 		return entity;
 	}
 
-
 	@Override
 	public List<T> getAll(Class clazz) {
 		Session session = sf.openSession();
@@ -52,7 +52,4 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 		session.close();
 		return list;
 	}
-
-
-
 }

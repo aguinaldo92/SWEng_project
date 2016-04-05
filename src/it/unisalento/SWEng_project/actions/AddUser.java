@@ -25,29 +25,20 @@ import com.opensymphony.xwork2.ModelDriven;
  */
 public class AddUser extends ActionSupport implements ModelDriven<UserModel>, SessionAware{
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -6034781884159620742L;
 	/***
 	 * Dichiarare delle propriet√† il cui nome corrisponde a quello specificato nel nome
 	 * CREA IL GETTER E IL SETTER
 	 */
 	
 	private UserModel userForm = new UserModel();
-	private Location loc = new Location();
-    private SessionMap<String, Object> userSession ;
+    private SessionMap<String, Object> userSession;
     
-	
-	
-	/* E' necessario implementare il metodo execute() 
-	 * Deve ritornare una stringa che rappresenta il nostro "result"
-	 * 
-	 * */
 	public String execute () {
+		boolean error=false;
+		
 		System.out.println("Sono entrato nella action");
 		System.out.println("Nome inserito: "+userForm.getName());
-		
+		System.out.println("Password: "+userForm.getPassword());
 		
 		User user = new User();
 		Date datenow = new Date();
@@ -61,57 +52,38 @@ public class AddUser extends ActionSupport implements ModelDriven<UserModel>, Se
 		user.setDateOfBirth(userForm.getDateOfBirth());
 		user.setGender(userForm.getGender());
 		user.setEmail(userForm.getEmail());
-		user.setTelephone(userForm.getTel());
-		user.setCellular(userForm.getCell());
+		user.setTelephone(userForm.getTelephone());
+		user.setCellular(userForm.getCellular());
 		user.setSeller(userForm.getSeller());
-		user.setVatNumber(userForm.getVAT_number());
+		user.setVatNumber(userForm.getVatNumber());
+		try{
+			user.setId(FactoryDao.getIstance().getUserDao().set(user));
+		}catch(Exception e){
+			System.out.println("Errore nell'inserimento del nuovo utente: "+e.getMessage());
+			error=true;
+		}
 		
-		Set<Location> user_location = new HashSet<Location>();
-		
-		
-		
-		Location location = new Location();
-
-		location.setName("Residenza");
-		location.setAddress(userForm.getAddress());
-		location.setCap(userForm.getCap());
-		location.setCity(userForm.getCity());
-		location.setNumber(userForm.getNumber());
-		location.setProvince(userForm.getProvince());
-		location.setState(userForm.getState());
-		location.setUser(user);
-		
-		user_location.add(location);
-		user.setLocations(user_location);
-		
-		int iduser=FactoryDao.getIstance().getUserDao().set(user);
-
-		int iduser_loc=FactoryDao.getIstance().getLocationDao().set(location);
-		
-		System.out.println("ID USER="+iduser);
-		System.out.println("ID USER IN LOCATION="+iduser_loc);
+		if(!error){		
+			System.out.println("ID USER="+user.getId());
+		}else{
+			addFieldError("username", "Username non disponibile");
+			return INPUT;
+		}
 				
-		return "success";
+		return SUCCESS;
 	}
 	
-	// Se sono presenti errori viene ritornato result = "input";
 	public void validate() {
+		
 		boolean errors = false;
 		
-//		if (userForm.getDateOfBirth().before(Date.from(LocalDateTime.now().minusYears(18).atZone(ZoneId.systemDefault()).toInstant()))
-//				&& userForm.getDateOfBirth().after(Date.from(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant()))) {
-//			addFieldError("dateOfBirth", "Devi essere maggiorenne");
-//			errors = true;
-//		}
-//		if (userForm.getDateOfBirth().before(Date.from(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant()))) {
-//			addFieldError("dateOfBirth", "Data di nascita non accettata");
-//			errors = true;
-//		}
+		if (!userForm.getPassword().equals(userForm.getConfirm_password())){
+			addFieldError("confirm_password", "La password confermata Ë scorretta");
+			errors = true;
+		}
 		if (errors) {
 			addActionError("Sono presenti errori all'interno del form");
 		}
-		
-		
 	}
 
 	@Override
@@ -123,7 +95,7 @@ public class AddUser extends ActionSupport implements ModelDriven<UserModel>, Se
 
 	@Override
 	public void setSession(Map<String, Object> map) {
-		this.userSession = (SessionMap)map;
+		this.userSession = (SessionMap) map;
 		
 	}	
 }

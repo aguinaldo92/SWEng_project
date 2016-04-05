@@ -18,27 +18,32 @@
 				<div class="header-in">
 					<ul class="icon1 sub-icon1">
 						<li><s:a action="index">Home</s:a></li>
-						<li><s:if test="#session.login != null">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-									<s:property value="#session.username" /> <b class="caret"></b>
-								</a>
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-									<ul class="dropdown-menu">
-										<li><s:a action="profile">Profile</s:a></li>
+						<s:if test="#session.login == true">
+							<li>
+							<a href="#"><s:property value="#session.user.username" /> <b class="caret"></b></a>
+									<ul>
+									<li> <s:a action="profile">Il mio profilo</s:a>
+									</li>
+								<s:if test="#session.user.seller == true">
+									<li> <s:a action="myshops">I miei negozi</s:a></li>
+								</s:if>
+									<li><s:a action="logoutUser">Logout</s:a></li>
 									</ul>
-							</s:if> <s:else>
-								<s:a action="loginUser">Login</s:a>
-							</s:else></li>
-						<ul class="dropdown-menu">
-							<li class="nav-header">View</li>
-							<li><a href="<s:url namespace="/" action="todo"/>">My
-									TODOs</a></li>
-							<li class="divider"></li>
-							<li class="nav-header">Manage</li>
-							<s:url var="newtodourl" namespace="/" action="todo-edit" />
-							<li><sj:a id="newTodoLink" href="%{newtodourl}"
-									openDialog="todoDialog" openDialogTitle="New TODO ...">New TODO ...</sj:a></li>
-						</ul>
+							</li>
+						</s:if>
+						<s:else>
+							<li>
+							<s:a action="loginUser">Login</s:a>
+							</li>
+						</s:else>
+							<ul class="dropdown-menu">
+                            <li class="nav-header">View</li>
+                            <li><a href="<s:url namespace="/" action="todo"/>">My TODOs</a></li>
+                            <li class="divider"></li>
+                            <li class="nav-header">Manage</li>
+	                        <s:url var="newtodourl" namespace="/" action="todo-edit"/>
+                            <li><sj:a id="newTodoLink" href="%{newtodourl}" openDialog="todoDialog" openDialogTitle="New TODO ...">New TODO ...</sj:a></li>
+                        </ul>
 						<li><a href="#"> SHOPPING CART</a></li>
 						<li><a href="checkout.html">CHECKOUT</a></li>
 						<li><div class="cart">
@@ -149,7 +154,12 @@
 		<div class="container">
 			<div class="header-bottom-on">
 				<p class="wel">
-					<a href="#">Welcome visitor you can login or create an account.</a>
+					<s:if test="#session.login != true">
+					<s:a action="loginUser">Benvenuto. Puoi loggarti o registrare un nuovo account</s:a>
+					</s:if>
+					<s:else>
+					<a href="#">Benvenuto <s:property value="#session.user.name"/></a>
+					</s:else>
 				</p>
 				<div class="header-can">
 					<ul class="social-in">

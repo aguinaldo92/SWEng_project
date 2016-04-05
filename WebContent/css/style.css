@@ -4,6 +4,21 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 --*/
+
+/*aggiunta la seguente parte per il footer*/
+/* html, body { */
+/* height: 100%; */
+
+/* background: #fff ;		 */
+/* font-family: 'Exo', sans-serif; */
+/* } */
+/* .wrapper { */
+/* min-height: 100%; */
+/* height: auto !important; */
+/* height: 100%; */
+/* margin: 0 auto -7em; */
+/* } */
+
 body{
 	background: #fff ;		
 	font-family: 'Exo', sans-serif;
@@ -183,15 +198,16 @@ ul.icon1{
 	color: #fafafa;
 }
 .icon1 ul {
-	width:250px;
+	width:120px;
 	margin: 20px 0 0 0;
 	opacity: 0;
 	visibility: hidden;
 	position: absolute;
-	top:70px;
-	z-index: 1;
+	top:50px;
+	left:4px;
+	z-index: 10;
 	right: -100px;
-	background: #ffffff;
+	background: #fc754e;
 	-webkit-transition: all .2s ease-in-out;
 	-moz-transition: all .2s ease-in-out;
 	-ms-transition: all .2s ease-in-out;
@@ -238,7 +254,7 @@ ul.icon1{
 .active-icon{
 	display: block;
 }
-.icon1 ul li:first-child > a:after {
+.icon1 ul li:first-child > a:after {/*freccetta del menu a tendina dello username nell'header*/
 	content: '';
 	position: absolute;
 	left: 45%;
@@ -246,6 +262,7 @@ ul.icon1{
 	border-left: 10px solid transparent;
 	border-right:10px solid transparent;
 	border-bottom:10px solid #f0f0f0;
+	visibility: hidden;
 }
 .icon1 ul ul li:first-child a:after {
 	left: -100px;
@@ -811,7 +828,7 @@ ul.callbacks_tabs.callbacks1_tabs {
 	background:#d9d9d9;
 	padding:0.5em;
 	border:1px solid #BBBBBB;
-	border-radius:5px;
+	border-radius:10px;
 }
 .col-md img{
 	width:100%;
@@ -1021,7 +1038,7 @@ a.cart-to{
 .single-bottom h4{
 	color:#747272;
 	font-size:1.5em;
-	padding:0.9em;
+	padding: 0.9em;
 	background:#eee;
 	text-transform:uppercase;
 }
@@ -1251,7 +1268,7 @@ ul.social {
 h2.account-in{
 	color:#747272;
 	font-size:1.3em;
-	padding:0 0em 2em;
+	padding:0em 0em 2em;
 }
 h2.account-in:after{ 
 	content: "";
@@ -1277,7 +1294,7 @@ span.word{
 .account div{
 	padding:1em 0;
 }
-.account input[type="text"],.account textarea,.account input[type="password"]{
+.account input[type="text"],.account textarea,.account select,.account input[type="password"]{
 	padding:0.7em;
 	width:60%;
 	background:none;
@@ -1468,12 +1485,14 @@ ul.start li a i.next {
 .footer-middle-in  ul li a:hover{
 	color:#f95a32;
 }
-.footer-class{
-	color:#c9c9c9;
+.footer-class, .push{
+	color:#e9e9e9;
 	font-size:1em;
 	text-align:center;
-	background:#4b4b4b;
+	background:#a6a6a6;
 	padding:2em 0;
+	
+/* 	height:7em; */
 }
 .footer-class a{
 	color:#f95a32;

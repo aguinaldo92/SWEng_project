@@ -11,10 +11,10 @@
 
 <script lang="JavaScript">
 
-function enable_text(status)
+function enable_vatnumber(status)
 {
-	document.registration.VAT_number.disabled = !status;
-	document.registration.VAT_number.value="";
+	document.registration.vatNumber.disabled = !status;
+	document.registration.vatNumber.value="";
 }
 
 </script>
@@ -25,27 +25,22 @@ function enable_text(status)
 	<s:div class="account">
 			<h2 class="account-in">Registrazione</h2>
 			<s:form name="registration" action="AddUser">
-				<s:textfield name="ssn" label="Codice Fiscale" />
+				<s:textfield name="ssn" label="Codice Fiscale" size="60%" maxlength="16"/>
 				<s:textfield name="username" label="Username" />
 				<s:password name="password" label="Password" />
-				<s:password name="password2" label="Conferma password"/>
+				<s:password name="confirm_password" label="Conferma password"/>
 				<s:textfield name="name" label="Nome" />
 				<s:textfield name="surname" label="Cognome"/>
 				<sj:datepicker name="dateOfBirth" label="Data di nascita" yearRange="-120:-18" minDate="-120y" maxDate="-18y" 
 				displayFormat="dd/mm/yy" changeMonth="true" changeYear="true" readonly="true"/> 
-				<s:radio name="gender" label="Sesso" list="#{'M':'Uomo','F':'Donna'}"/>
+				<s:select name="gender" label="Sesso" list="#{'M':'Maschio','F':'Femmina'}"/>
+				<s:label value="Contatti:" cssStyle="font-size: 150%;"/>
 				<s:textfield name="email" label="Email"/>
-				<s:textfield name="tel" label="Telefono"/>
-				<s:textfield name="cell" label="Cellulare"/>
-				<s:textfield name="cap" label="CAP"/>
-				<s:textfield name="address" label="Indirizzo"/>
-				<s:textfield name="number" label="Civico"/>
-				<s:textfield name="city" label="Città" />
-				<s:textfield name="province" label="Provincia"/>
-				<s:textfield name="state" label="Stato" value="Italia"/>
-				<s:checkbox name="seller" label="Venditore" value="aBoolean" onclick="enable_text(this.checked)"/>
-				<s:textfield name="VAT_number" label="Partita IVA" disabled="true"/>
+				<s:textfield name="telephone" label="Telefono"/>
+				<s:textfield name="cellular" label="Cellulare"/>
+				<s:checkbox name="seller" label="Venditore" value="0" onclick="enable_vatnumber(this.checked)"/>
+				<s:textfield name="vatNumber" label="Partita IVA" disabled="true" value="" maxlength="11"/>
 				<s:submit value="Invia"/>
-			</s:form>
+				</s:form>
 		</s:div>
 	</s:div>

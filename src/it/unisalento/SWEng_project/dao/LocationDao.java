@@ -2,6 +2,6 @@ package it.unisalento.SWEng_project.dao;
 
 import it.unisalento.SWEng_project.domain.Location;
 
-public interface LocationDao extends BaseDao<Location> {
-	public int set(Location location);
+public interface LocationDao extends BaseDao<Location>{
+	
 }

@@ -6,6 +6,4 @@ import it.unisalento.SWEng_project.domain.Location;
 
 public class LocationDaoImpl extends BaseDaoImpl<Location> implements LocationDao {
 	
-
-	
 }
