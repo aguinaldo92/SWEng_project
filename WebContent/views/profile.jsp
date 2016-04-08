@@ -35,7 +35,7 @@ function change_password()
 <s:div class="container">
 	<s:div class="account">
 			<s:a action="UpdatePassword"><s:submit name="change_pw_button" value="Modifica la password"/></s:a>
-			<s:a action="mylocations"><s:submit name="change_pw_button" value="Gestisci i tuoi indirizzi"/></s:a>
+			<s:a action="MyLocations"><s:submit name="change_pw_button" value="Gestisci i tuoi indirizzi"/></s:a>
 			
 			
 			<h2 class="account-in">Gestione account</h2>

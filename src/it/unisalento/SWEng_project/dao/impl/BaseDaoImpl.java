@@ -1,6 +1,7 @@
 package it.unisalento.SWEng_project.dao.impl;
 
 import it.unisalento.SWEng_project.dao.BaseDao;
+import it.unisalento.SWEng_project.domain.Shop;
 
 import java.util.List;
 
@@ -22,7 +23,7 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 	}
 
 	@Override
-	public int set(T entity) {
+	public int set(T entity){
 		System.out.println("BaseDaoImpl: set()");
 		Session session = sf.openSession();
 		Transaction tx = session.beginTransaction();
@@ -52,4 +53,24 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 		session.close();
 		return list;
 	}
+	
+	public void update(T entity) {
+		
+		Transaction tx = null;
+		Session session = sf.openSession();
+        try{
+			tx = session.beginTransaction();
+	        session.update(entity);
+	        tx.commit();
+        }
+        catch(RuntimeException e){
+        	if(tx != null){
+        		tx.rollback();
+        	}
+        }
+        finally{
+        session.flush();
+        session.close();
+        }
+    }
 }

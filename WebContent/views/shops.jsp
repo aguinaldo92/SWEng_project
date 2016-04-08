@@ -1,10 +1,12 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 
+<s:action name="Shops"/>
+
 <div class="top-products">
 
-<s:iterator value="#session.shops" status="st">
+<s:iterator value="shops">
 	<s:url var="shopURL" action="ShopDetails">
-		<s:param name="idshop"><s:property value="#st.index"/></s:param>
+		<s:param name="idshop"><s:property value="id"/></s:param>
 	</s:url>
 	<div class="col-md-3 md-col">
 		<div class="col-md">
@@ -32,4 +34,3 @@
 
 </div>
 <div class="clearfix"></div>
-</div>

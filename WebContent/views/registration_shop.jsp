@@ -16,14 +16,12 @@
 	</s:if>
 			<s:form name="update" action="AddShop">
 				
-				<s:textfield name="name" label="Nome dello shop" requiredLabel="true"/>
-				<s:textfield name="address" label="Indirizzo" size="80%" requiredLabel="true"/>
-				<s:textfield name="cap" label="CAP" requiredLabel="true"/>
-				<s:textfield name="city" label="Città" requiredLabel="true"/>
-				<s:textfield name="province" label="Provincia" requiredLabel="true"/>
-				<s:textfield name="state" label="Stato" value="Italia" requiredLabel="true" />
-				<s:select name="typology" label="Tipologia di negozio" 
-				list="#{NULL:'','Magazzino':'Magazzino','Negozio al dettaglio':'Negozio al dettaglio','Privato':'Privato','Filiale di catena comm.':'Filiale di catena comm.'}" />
+				<s:textfield name="name" label="Nome dello shop" requiredLabel="true" labelSeparator=" "/>
+				<s:textfield name="address" label="Indirizzo" size="80%" requiredLabel="true" labelSeparator=" "/>
+				<s:textfield name="cap" label="CAP" requiredLabel="true" labelSeparator=" "/>
+				<s:textfield name="city" label="Città" requiredLabel="true" labelSeparator=" "/>
+				<s:textfield name="province" label="Provincia" requiredLabel="true" labelSeparator=" "/>
+				<s:textfield name="state" label="Stato" value="Italia" requiredLabel="true" labelSeparator=" "/>
 				
 				<s:submit value="Aggiungi shop"/>
 			</s:form>
