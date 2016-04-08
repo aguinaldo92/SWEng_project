@@ -55,7 +55,6 @@ public class AddUser extends ActionSupport implements ModelDriven<UserModel>, Se
 		user.setTelephone(userForm.getTelephone());
 		user.setCellular(userForm.getCellular());
 		user.setSeller(userForm.getSeller());
-		user.setVatNumber(userForm.getVatNumber());
 		try{
 			user.setId(FactoryDao.getIstance().getUserDao().set(user));
 		}catch(Exception e){

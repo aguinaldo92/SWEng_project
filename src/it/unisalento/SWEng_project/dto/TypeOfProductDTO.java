@@ -23,6 +23,7 @@ public class TypeOfProductDTO implements Serializable {
 	private BigDecimal maxSellingDiscount;
 //	private HashSet<String> photoUris;
 	private Long quantityAvailable;
+	private String photoUri;
 	
 	
 	/**
@@ -65,6 +66,18 @@ public class TypeOfProductDTO implements Serializable {
 	}
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	public BigDecimal getMaxSellingDiscount() {
+		return maxSellingDiscount;
+	}
+	public void setMaxSellingDiscount(BigDecimal maxSellingDiscount) {
+		this.maxSellingDiscount = maxSellingDiscount;
+	}
+	public String getPhotoUri() {
+		return photoUri;
+	}
+	public void setPhotoUri(String photoUri) {
+		this.photoUri = photoUri;
 	}
 
 	

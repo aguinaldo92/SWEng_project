@@ -7,19 +7,7 @@
 	</div>
 </s:if>
 
-<head>
 
-<script lang="JavaScript">
-
-function enable_vatnumber(status)
-{
-	document.registration.vatNumber.disabled = !status;
-	document.registration.vatNumber.value="";
-}
-
-</script>
-
-</head>
 
 <s:div class="container">
 	<s:div class="account">
@@ -39,7 +27,6 @@ function enable_vatnumber(status)
 				<s:textfield name="telephone" label="Telefono"/>
 				<s:textfield name="cellular" label="Cellulare"/>
 				<s:checkbox name="seller" label="Venditore" value="0" onclick="enable_vatnumber(this.checked)"/>
-				<s:textfield name="vatNumber" label="Partita IVA" disabled="true" value="" maxlength="11"/>
 				<s:submit value="Invia"/>
 				</s:form>
 		</s:div>

@@ -61,11 +61,7 @@ public class UpdateShop extends ActionSupport implements ModelDriven<ShopModel>,
 			newshop.setLon(new BigDecimal("0.00000"));
 		}
 		
-		User user=(User) userSession.get("user");
-		newshop.setUser(user);
 		
-		System.out.println("ID seller (sessione): "+user.getId());
-		System.out.println("Nome seller (sessione): "+user.getName());
 		System.out.println("ID shop: "+updated_shop.getId());
 		System.out.println("Data registrazione shop: "+updated_shop.getRegistrationDate());
 		
@@ -75,9 +71,8 @@ public class UpdateShop extends ActionSupport implements ModelDriven<ShopModel>,
 		System.out.println("Shop aggiornato");
 		
 		//aggiorno gli shop nella sessione
-		userSession.replace("shops", FactoryDao.getIstance().getShopDao().getShopsByUser(user));
+		//userSession.replace("shops", FactoryDao.getIstance().getShopDao().getShopsByUser(user)); deve diventare getallshops
 		
-		System.out.println("Shop di "+user.getName()+" aggiornato nella sessione");
 		
 		return SUCCESS;
 	}

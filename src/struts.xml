@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.i18n.reload" value="false" />
+	<constant name="struts.configuration.xml.reload" value="false" />
+
+	<package name="default" extends="struts-default">
+		<result-types>
+			<result-type name="tiles"
+				class="org.apache.struts2.views.tiles.TilesResult" />
+		</result-types>
+
+		<interceptors>
+			<interceptor name="myInterceptor"
+				class="it.unisalento.SWEng_project.interceptors.MyInterceptor" />
+			<interceptor name="LoginInterceptor"
+				class="it.unisalento.SWEng_project.interceptors.LoginInterceptor" />
+
+			<interceptor-stack name="loginStack">
+				<interceptor-ref name="LoginInterceptor" />
+				<interceptor-ref name="timer" />
+				<interceptor-ref name="defaultStack">
+					<!-- per il momento commento questo interceptor per i problemi di sicurezza 
+						di sessionAware <param name="params.excludeParams">dojo\..*,^struts\..*,^session\..*,^request\..*,^application\..*,^servlet(Request|Response)\..*,parameters\...*</param> -->
+				</interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+
+		<default-action-ref name="index" />
+
+		<global-results>
+			<result name="login" type="redirect">/loginUser.action</result>
+		</global-results>
+
+		<action name="index">
+			<result type="tiles">index</result>
+		</action>
+		<action name="profile">
+			<result type="tiles">profile</result>
+		</action>
+		<action name="registrationUser">
+			<result type="tiles">registrationUser</result>
+		</action>
+		<action name="registrationShop">
+			<result type="tiles">registrationShop</result>
+		</action>
+		<action name="loginUser">
+			<result type="tiles">login</result>
+		</action>
+		<action name="logoutUser" class="it.unisalento.SWEng_project.actions.Logout">
+		
+			<result name="success" type="tiles">index</result>
+			<result name="error" type="tiles">login</result>
+		</action>
+		<action name="AddUser" class="it.unisalento.SWEng_project.actions.AddUser">
+			<result name="success" type="tiles">success</result>
+			<result name="error" type="tiles">error</result>
+			<result name="input" type="tiles">registrationUser</result>
+		</action>
+
+		<action name="myShops">
+			<result type="tiles">myShops</result>
+		</action>
+		
+		<action name="ShopDetails">
+			<result type="tiles">shopDetails</result>
+		</action>
+
+		<action name="myLocations">
+			<result type="tiles">myLocations</result>
+		</action>
+
+		<action name="UpdateShop" class="it.unisalento.SWEng_project.actions.UpdateShop">
+			<interceptor-ref name="loginStack" />
+			<result name="success" type="tiles">myShops</result>
+			<result name="error" type="tiles">error</result>
+			<result name="input" type="tiles">shopDetails</result>
+		</action>
+
+		<action name="AddShop" class="it.unisalento.SWEng_project.actions.AddShop">
+			<interceptor-ref name="loginStack" />
+			<result name="success" type="tiles">myShops</result>
+			<result name="error" type="tiles">error</result>
+			<result name="input" type="tiles">shopDetails</result>
+		</action>
+		<action name="Login" class="it.unisalento.SWEng_project.actions.Login">
+			<result name="success" type="tiles">profile</result>
+			<result name="error" type="tiles">error</result>
+			<result name="input" type="tiles">login</result>
+		</action>
+
+		<action name="Categories" class="it.unisalento.SWEng_project.actions.Categories">
+			<result name="error" type="tiles">error</result>
+			<result name="input" type="tiles">input</result>
+		</action>
+
+		<action name="TypeOfProductsBy"
+			class="it.unisalento.SWEng_project.actions.TypeOfProductsBy">
+			<result name="success" type="tiles">typeOfProducts</result>
+			<result name="error" type="tiles">error</result>
+			<result name="input" type="tiles">input</result>
+		</action>
+
+		<action name="BestDeals" class="it.unisalento.SWEng_project.actions.BestDeals">
+			<result name="success" type="tiles">typeOfProducts</result>
+			<result name="error" type="tiles">error</result>
+			<result name="input" type="tiles">input</result>
+		</action>
+
+		<action name="ImagesOfTypeOfProduct"
+			class="it.unisalento.SWEng_project.actions.ImagesOfTypeOfProduct">
+			<result name="success" type="tiles">imagesOfTypeOfProduct</result>
+			<result name="error" type="tiles">error</result>
+			<result name="input" type="tiles">input</result>
+		</action>
+
+		<action name="ProductsOfTypeOfProduct"
+			class="it.unisalento.SWEng_project.actions.ProductsOfTypeOfProduct">
+			<result name="success" type="tiles">product</result>
+			<result name="error" type="tiles">error</result>
+			<result name="input" type="tiles">input</result>
+		</action>
+
+	</package>
+
+</struts>

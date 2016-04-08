@@ -60,8 +60,6 @@ public class AddShop extends ActionSupport implements ModelDriven<ShopModel>, Se
 		}
 
 		
-		User user=(User) userSession.get("user");
-		newshop.setUser(user);
 		
 		//inserimento shop nel DB
 		newshop.setId(FactoryDao.getIstance().getShopDao().set(newshop));
@@ -69,7 +67,7 @@ public class AddShop extends ActionSupport implements ModelDriven<ShopModel>, Se
 		System.out.println("Inserimento shop effettuato: ID shop="+newshop.getId());
 		
 		//aggiornamento lista shops nella sessione
-		userSession.replace("shops", FactoryDao.getIstance().getShopDao().getShopsByUser(user));
+		//userSession.replace("shops", FactoryDao.getIstance().getShopDao().getShopsByUser(user)); lo modifica totu
 		
 		List<Shop> shops= (List<Shop>) userSession.get("shops");
 		System.out.println("L'utente ora ha "+shops.size()+" shop");

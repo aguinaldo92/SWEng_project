@@ -13,14 +13,14 @@ import org.hibernate.Transaction;
 public class ProductPhotoDaoImpl extends BaseDaoImpl<ProductPhoto> implements ProductPhotoDao{
 
 	@Override
-	public ArrayList<ProductPhotoDTO> getAllPhotosByIdProduct(Integer id) {
+	public ArrayList<ProductPhoto> getAllPhotosByIdTypeOfProduct(Integer id) {
 		
 		Session session = sf.openSession();
         Transaction tx = session.beginTransaction();
         String hql = "select f from TypeOfProduct t inner join t.products  p inner join p.productPhotos f where t.id = :id";
         Query query = session.createQuery(hql);
         query.setInteger("id", id);
-        ArrayList<ProductPhotoDTO> photos = (ArrayList<ProductPhotoDTO>) query.list();
+        ArrayList<ProductPhoto> photos = (ArrayList<ProductPhoto>) query.list();
         tx.commit();
         session.close();
         return photos;
@@ -28,9 +28,17 @@ public class ProductPhotoDaoImpl extends BaseDaoImpl<ProductPhoto> implements Pr
 	}
 
 	@Override
-	public ProductPhotoDTO getPhotoByIdProduct(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+	public ProductPhoto getPhotoByIdTypeOfProduct(Integer id) {
+		
+		Session session = sf.openSession();
+        Transaction tx = session.beginTransaction();
+        String hql = "select f from TypeOfProduct t inner join t.products  p inner join p.productPhotos f where t.id = :id";
+        Query query = session.createQuery(hql);
+        query.setInteger("id", id);
+        ProductPhoto photo = (ProductPhoto) query.uniqueResult();
+        tx.commit();
+        session.close();
+        return photo;
 	}
 
 }

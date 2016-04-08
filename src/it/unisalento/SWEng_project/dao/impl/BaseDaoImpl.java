@@ -52,4 +52,16 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 		session.close();
 		return list;
 	}
+
+	@Override
+	public void update(T entity) {
+		System.out.println("BaseDaoImpl: update()");
+		Session session = sf.openSession();
+		Transaction tx = session.beginTransaction();
+		session.update(entity);
+		tx.commit();
+		session.close();
+		
+		
+	}
 }

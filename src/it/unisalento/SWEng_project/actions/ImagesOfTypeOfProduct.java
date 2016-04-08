@@ -25,7 +25,7 @@ public class ImagesOfTypeOfProduct extends ActionSupport implements SessionAware
 	private String key;
 	// mi serve questa radice per creare una chiave da salvare nella userSession dove conservare le foto di ogni tipo di prodotto
 	private static final String radice = "photoPerTypeOfProductWithId";
-	private ArrayList<ProductPhotoDTO>  photos;
+	private ArrayList<ProductPhoto>  photos;
 
 
 	public String execute() {
@@ -33,10 +33,10 @@ public class ImagesOfTypeOfProduct extends ActionSupport implements SessionAware
 		key = radice.concat(id.toString());
 		//if (!userSession.containsKey(key)) { 
 			try {
-				photos = new ArrayList<ProductPhotoDTO>();
+				photos = new ArrayList<ProductPhoto>();
 				System.out.println("ArrayList ottenuto");
 				// ottengo le foto in base all'id del tipo di prodotto
-				photos = (ArrayList<ProductPhotoDTO>)FactoryDao.getIstance().getProductPhotoDao().getAllPhotosByIdProduct(id);				
+				photos = (ArrayList<ProductPhoto>)FactoryDao.getIstance().getProductPhotoDao().getAllPhotosByIdTypeOfProduct(id);				
 				Iterator photosIterator = photos.iterator();
 				int index = 0;
 				while(photosIterator.hasNext()) {
@@ -71,13 +71,13 @@ public class ImagesOfTypeOfProduct extends ActionSupport implements SessionAware
 	}
 	
 
-	public ArrayList<ProductPhotoDTO> getPhotos() {
+	public ArrayList<ProductPhoto> getPhotos() {
 		return photos;
 	}
 
 
 
-	public void setPhotos(ArrayList<ProductPhotoDTO> photos) {
+	public void setPhotos(ArrayList<ProductPhoto> photos) {
 		this.photos = photos;
 	}
 
