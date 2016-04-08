@@ -33,8 +33,8 @@ public class LoginInterceptor implements Interceptor {
 		userSession = (SessionMap<String, Object>)invocation.getInvocationContext().getSession();	
         try {
         	user = (User) userSession.get("user");
-        	 role = user.getRole();
-        	if (role > 2)
+        	role = user.getRole();
+        	if (role <= 2)
         		return invocation.invoke();
         	else
         		return "DENIED";
