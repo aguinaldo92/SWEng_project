@@ -45,7 +45,6 @@ public class Login extends ActionSupport implements ModelDriven<UserModel>, Sess
 		userSession.put("user", user);
 		System.out.println("username: "+user.getUsername());
 		System.out.println("login: "+userSession.get("login"));
-		System.out.println("seller: "+user.getSeller());
 		System.out.println("success final");
 		return SUCCESS;
 	}
