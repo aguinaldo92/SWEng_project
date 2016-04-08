@@ -31,20 +31,6 @@ public class LoginInterceptor implements Interceptor {
 	@Override
 	public String intercept(ActionInvocation invocation) throws Exception {
 		userSession = (SessionMap<String, Object>)invocation.getInvocationContext().getSession();	
-        user = (User) userSession.get("user");
-        role = user.getRole();
-		System.out.println("role è" + role);
-		
-		if (!userSession.containsKey("user")) 
-        {
-                
-        } 
-        else
-        {
-        	user = (User) userSession.get("user");
-            role = user.getRole();
-           return invocation.invoke();
-        }
         try {
         	user = (User) userSession.get("user");
         	 role = user.getRole();
