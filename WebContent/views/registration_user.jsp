@@ -24,7 +24,6 @@
 				<s:textfield name="email" label="Email" requiredLabel="true" labelSeparator=" "/>
 				<s:textfield name="telephone" label="Telefono"/>
 				<s:textfield name="cellular" label="Cellulare"/>
-				<s:checkbox name="seller" label="Venditore" value="0" onclick="enable_vatnumber(this.checked)"/>
 				<s:submit value="Invia"/>
 				</s:form>
 		</s:div>

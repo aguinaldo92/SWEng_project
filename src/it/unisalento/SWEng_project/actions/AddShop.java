@@ -17,10 +17,9 @@ import org.apache.struts2.interceptor.SessionAware;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
-public class AddShop extends ActionSupport implements ModelDriven<ShopModel>, SessionAware{
+public class AddShop extends ActionSupport implements ModelDriven<ShopModel>{
 	
 	private ShopModel shopForm = new ShopModel();
-    private SessionMap<String, Object> userSession;
     
 	public String execute () throws Exception {
 		System.out.println("Sono entrato nella action");
@@ -70,12 +69,5 @@ public class AddShop extends ActionSupport implements ModelDriven<ShopModel>, Se
 	public ShopModel getModel() {
 		// TODO Auto-generated method stub
 		return shopForm;
-	}
-
-
-	@Override
-	public void setSession(Map<String, Object> map) {
-		this.userSession = (SessionMap) map;
-		
 	}	
 }

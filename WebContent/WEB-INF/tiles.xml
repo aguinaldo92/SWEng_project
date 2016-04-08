@@ -92,7 +92,6 @@
 	
 	<definition name="myLocations" extends="baseLayout">
 		<put-attribute name="title" value="I miei indirizzi" />
-
 		<put-attribute name="body" value="/views/mylocations.jsp" />
 	</definition>
 </tiles-definitions>
