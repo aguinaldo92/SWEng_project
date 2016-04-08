@@ -40,6 +40,10 @@
 		<put-attribute name="title" value="Contatti" />
 		<put-attribute name="body" value="/views/contatti.jsp" />
 	</definition>
+	<definition name="denied" extends="baseLayout">
+		<put-attribute name="title" value="Permesso Negato" />
+		<put-attribute name="body" value="/views/denied.jsp" />
+	</definition>
 	
 	<definition name="registrationUser" extends="baseLayout">
 		<put-attribute name="title" value="Registrazione Utente" />

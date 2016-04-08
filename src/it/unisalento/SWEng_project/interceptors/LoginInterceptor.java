@@ -1,5 +1,7 @@
 package it.unisalento.SWEng_project.interceptors;
 
+import it.unisalento.SWEng_project.domain.User;
+
 import org.apache.struts2.dispatcher.SessionMap;
 
 import com.opensymphony.xwork2.Action;
@@ -13,7 +15,8 @@ public class LoginInterceptor implements Interceptor {
 	 */
 	private static final long serialVersionUID = 6805865333376694437L;
 	private SessionMap<String, Object> userSession;
-	private  Boolean login;
+	private  int role;
+	private User user;
 	@Override
 	public void destroy() {
 		// TODO Auto-generated method stub
@@ -28,19 +31,31 @@ public class LoginInterceptor implements Interceptor {
 	@Override
 	public String intercept(ActionInvocation invocation) throws Exception {
 		userSession = (SessionMap<String, Object>)invocation.getInvocationContext().getSession();	
-
-        login = (Boolean) userSession.get("login");
-		System.out.println("login è" + login);
+        user = (User) userSession.get("user");
+        role = user.getRole();
+		System.out.println("role è" + role);
 		
-		if (!login) 
+		if (!userSession.containsKey("user")) 
         {
-                return Action.LOGIN;
+                
         } 
-        else 
+        else
         {
-                return invocation.invoke();
+        	user = (User) userSession.get("user");
+            role = user.getRole();
+           return invocation.invoke();
         }
-        
+        try {
+        	user = (User) userSession.get("user");
+        	 role = user.getRole();
+        	if (role > 2)
+        		return invocation.invoke();
+        	else
+        		return "DENIED";
+        } catch (NullPointerException nullException){
+        	System.out.println("L'utente deve essere loggato per arrivare alla pagina ");
+        	return Action.LOGIN;
+        }
 
         
 	}

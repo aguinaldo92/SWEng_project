@@ -28,6 +28,8 @@ public class HibernateServletContextListener implements ServletContextListener {
 			sce.getServletContext().setAttribute("SessionFactory", sf);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
+			System.out.println("Non è possibile collegarsi al database");
+			System.exit(1);
 		}
 	}
 

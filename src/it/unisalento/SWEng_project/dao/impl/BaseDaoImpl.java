@@ -15,6 +15,9 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 
 	protected SessionFactory sf;
 	private ServletContext ctx;
+	private Transaction tx;
+	private int id;
+	private Session session;
 
 	public BaseDaoImpl() {
 		this.ctx = ServletActionContext.getServletContext();
@@ -24,11 +27,24 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 	@Override
 	public int set(T entity) {
 		System.out.println("BaseDaoImpl: set()");
-		Session session = sf.openSession();
-		Transaction tx = session.beginTransaction();
-		int id = (int) session.save(entity);
-		tx.commit();
-		session.close();
+		try {
+			session = sf.openSession();
+			tx = session.beginTransaction();
+			id = (int) session.save(entity);
+			tx.commit();
+			System.out.println("try");
+			
+		}
+		catch (Exception e) {
+			System.out.println("catch");
+			if (tx != null) tx.rollback();
+			throw e;
+		}
+		 finally {
+				System.out.println("finally");
+		     session.close();
+		 }
+		System.out.println("return");
 		return id;
 	}
 
@@ -61,7 +77,7 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 		session.update(entity);
 		tx.commit();
 		session.close();
-		
-		
+
+
 	}
 }

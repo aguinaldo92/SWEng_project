@@ -12,11 +12,10 @@ public class UserModel {
 	private String surname;
 	private Date dateOfBirth;
 	private String gender;
+	private Integer role;
 	private String email;
 	private String telephone;
 	private String cellular;
-	private Boolean seller;
-	private String vatNumber;
 	
 	public String getSsn() {
 		return ssn;
@@ -66,6 +65,13 @@ public class UserModel {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
+	
+	public Integer getRole() {
+		return role;
+	}
+	public void setRole(Integer role) {
+		this.role = role;
+	}
 	public String getEmail() {
 		return email;
 	}
@@ -84,17 +90,4 @@ public class UserModel {
 	public void setCellular(String cellular) {
 		this.cellular = cellular;
 	}
-	public Boolean getSeller() {
-		return seller;
-	}
-	public void setSeller(Boolean seller) {
-		this.seller = seller;
-	}
-	public String getVatNumber() {
-		return vatNumber;
-	}
-	public void setVatNumber(String vatNumber) {
-		this.vatNumber = vatNumber;
-	}
-	
 }
