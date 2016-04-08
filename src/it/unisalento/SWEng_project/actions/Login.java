@@ -41,10 +41,11 @@ public class Login extends ActionSupport implements ModelDriven<UserModel>, Sess
 	public String execute() {
 
 		System.out.println("Sono entrato nella action Login");
-		userSession.put("login", true);
 		userSession.put("user", user);
 		System.out.println("username: "+user.getUsername());
 		System.out.println("login: "+userSession.get("login"));
+
+		System.out.println("role: "+user.getRole());
 		System.out.println("success final");
 		return SUCCESS;
 	}
@@ -56,7 +57,7 @@ public class Login extends ActionSupport implements ModelDriven<UserModel>, Sess
 			try {	 
 				//ottengo anagrafica e indirizzi salvati dallo user loggato
 				user=FactoryDao.getIstance().getUserDao().getUserByCredentials(userLogin.getUsername(), userLogin.getPassword());
-				System.out.println(" login fatto!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+				System.out.println(" login fatto!!!");
 			} catch (NullPointerException enull){
 				System.out.println("Utente non presente nel Database");
 				errors = true;

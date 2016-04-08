@@ -51,6 +51,7 @@ public class AddUser extends ActionSupport implements ModelDriven<UserModel>, Se
 		user.setEmail(userForm.getEmail());
 		user.setTelephone(userForm.getTelephone());
 		user.setCellular(userForm.getCellular());
+		user.setRole(3);
 		try{
 			user.setId(FactoryDao.getIstance().getUserDao().set(user));
 		}catch(Exception  e){
@@ -58,13 +59,12 @@ public class AddUser extends ActionSupport implements ModelDriven<UserModel>, Se
 			error=true;
 		}
 		
-		if(!error){		
-			System.out.println("ID USER="+user.getId());
-		}else{
+		if(error){
 			addFieldError("username", "Username non disponibile");
 			return INPUT;
 		}
-				
+		System.out.println("ID USER="+user.getId());
+		userSession.put("user", user);		
 		return SUCCESS;
 	}
 	

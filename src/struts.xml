@@ -33,6 +33,7 @@
 
 		<global-results>
 			<result name="login" type="redirect">/loginUser.action</result>
+			<result name="DENIED" type="redirect">/denied.action</result>
 		</global-results>
 
 		<action name="index">
@@ -43,6 +44,9 @@
 		</action>
 		<action name="registrationUser">
 			<result type="tiles">registrationUser</result>
+		</action>
+		<action name="denied">
+			<result type="tiles">denied</result>
 		</action>
 		<action name="registrationShop">
 			<result type="tiles">registrationShop</result>
