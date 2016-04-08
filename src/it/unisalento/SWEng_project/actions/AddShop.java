@@ -39,7 +39,6 @@ public class AddShop extends ActionSupport implements ModelDriven<ShopModel>, Se
 		newshop.setProvince(shopForm.getProvince());
 		newshop.setRegistrationDate(now);
 		newshop.setState(shopForm.getState());
-		newshop.setTypology(shopForm.getTypology());
 
 		//ottengo le coordinate geografiche in base all'indirizzo
 		try{
@@ -58,19 +57,11 @@ public class AddShop extends ActionSupport implements ModelDriven<ShopModel>, Se
 			newshop.setLat(new BigDecimal("90.00000"));
 			newshop.setLon(new BigDecimal("0.00000"));
 		}
-
-		
 		
 		//inserimento shop nel DB
 		newshop.setId(FactoryDao.getIstance().getShopDao().set(newshop));
 		
 		System.out.println("Inserimento shop effettuato: ID shop="+newshop.getId());
-		
-		//aggiornamento lista shops nella sessione
-		//userSession.replace("shops", FactoryDao.getIstance().getShopDao().getShopsByUser(user)); lo modifica totu
-		
-		List<Shop> shops= (List<Shop>) userSession.get("shops");
-		System.out.println("L'utente ora ha "+shops.size()+" shop");
 		
 		return SUCCESS;
 	}

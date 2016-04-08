@@ -1,14 +1,11 @@
 package it.unisalento.SWEng_project.actions;
 
-import it.unisalento.SWEng_project.domain.Location;
 import it.unisalento.SWEng_project.domain.User;
 import it.unisalento.SWEng_project.factories.FactoryDao;
 import it.unisalento.SWEng_project.models.UserModel;
 
 import java.util.Date;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 
 import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.SessionAware;
@@ -57,7 +54,7 @@ public class AddUser extends ActionSupport implements ModelDriven<UserModel>, Se
 		user.setSeller(userForm.getSeller());
 		try{
 			user.setId(FactoryDao.getIstance().getUserDao().set(user));
-		}catch(Exception e){
+		}catch(Exception  e){
 			System.out.println("Errore nell'inserimento del nuovo utente: "+e.getMessage());
 			error=true;
 		}

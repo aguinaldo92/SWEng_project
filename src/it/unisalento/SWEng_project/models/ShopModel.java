@@ -14,7 +14,6 @@ public class ShopModel {
 	private String city;
 	private String province;
 	private String state;
-	private String typology;
 	private Date registrationDate;
 	
 	public String getName() {
@@ -64,12 +63,6 @@ public class ShopModel {
 	}
 	public void setState(String state) {
 		this.state = state;
-	}
-	public String getTypology() {
-		return typology;
-	}
-	public void setTypology(String typology) {
-		this.typology = typology;
 	}
 	public Date getRegistrationDate() {
 		return registrationDate;

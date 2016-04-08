@@ -22,10 +22,10 @@
 							<li>
 							<a href="#"><s:property value="#session.user.username" /> <b class="caret"></b></a>
 									<ul>
-									<li> <s:a action="profile">Il mio profilo</s:a>
+									<li> <s:a action="profile">Gestione profilo</s:a>
 									</li>
 								<s:if test="#session.user.seller == true">
-									<li> <s:a action="myshops">I miei negozi</s:a></li>
+									<li> <s:a action="ListShops">Gestione negozi</s:a></li>
 								</s:if>
 									<li><s:a action="logoutUser">Logout</s:a></li>
 									</ul>
@@ -36,16 +36,9 @@
 							<s:a action="loginUser">Login</s:a>
 							</li>
 						</s:else>
-							<ul class="dropdown-menu">
-                            <li class="nav-header">View</li>
-                            <li><a href="<s:url namespace="/" action="todo"/>">My TODOs</a></li>
-                            <li class="divider"></li>
-                            <li class="nav-header">Manage</li>
-	                        <s:url var="newtodourl" namespace="/" action="todo-edit"/>
-                            <li><sj:a id="newTodoLink" href="%{newtodourl}" openDialog="todoDialog" openDialogTitle="New TODO ...">New TODO ...</sj:a></li>
-                        </ul>
-						<li><a href="#"> SHOPPING CART</a></li>
-						<li><a href="checkout.html">CHECKOUT</a></li>
+						
+						<li><a href="#" > SHOPPING CART</a></li>
+						<li> <a href="checkout.html" >CHECKOUT</a> </li>
 						<li><div class="cart">
 								<a href="#" class="cart-in"> </a> <span> 0</span>
 							</div>

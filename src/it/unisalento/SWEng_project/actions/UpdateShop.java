@@ -22,10 +22,9 @@ import com.opensymphony.xwork2.ModelDriven;
  *
  *	Per sfuttare l'interceptor ModelDriven la action deve implementare l'interfaccia ModelDriven
  */
-public class UpdateShop extends ActionSupport implements ModelDriven<ShopModel>, SessionAware{
+public class UpdateShop extends ActionSupport implements ModelDriven<ShopModel>{
 	
 	private ShopModel updated_shop = new ShopModel();
-	private SessionMap<String, Object> userSession;
  
 	
 	public String execute () throws Exception {
@@ -39,7 +38,6 @@ public class UpdateShop extends ActionSupport implements ModelDriven<ShopModel>,
 		newshop.setName(updated_shop.getName());
 		newshop.setProvince(updated_shop.getProvince());
 		newshop.setState(updated_shop.getState());
-		newshop.setTypology(updated_shop.getTypology());
 		newshop.setRegistrationDate(updated_shop.getRegistrationDate());
 		newshop.setId(updated_shop.getId());
 		
@@ -61,54 +59,20 @@ public class UpdateShop extends ActionSupport implements ModelDriven<ShopModel>,
 			newshop.setLon(new BigDecimal("0.00000"));
 		}
 		
-		
 		System.out.println("ID shop: "+updated_shop.getId());
 		System.out.println("Data registrazione shop: "+updated_shop.getRegistrationDate());
 		
 		//aggiorno lo shop nel DB
-		FactoryDao.getIstance().getShopDao().updateShop(newshop);
+		FactoryDao.getIstance().getShopDao().update(newshop);
 		
 		System.out.println("Shop aggiornato");
-		
-		//aggiorno gli shop nella sessione
-		//userSession.replace("shops", FactoryDao.getIstance().getShopDao().getShopsByUser(user)); deve diventare getallshops
-		
-		
+				
 		return SUCCESS;
 	}
-	
-//	 Se sono presenti errori viene ritornato result = "input";
-//	public void validate() {
-//		
-//		boolean errors = false;
-//		
-//		if (!(userForm.getPassword().equals(this.getConfirm_password()))){
-//			addFieldError("confirm_password", "La password confermata è scorretta");
-//			errors = true;
-//		}
-//		if (errors) {
-//			addActionError("Sono presenti errori all'interno del form");
-//		}
-//	}
 
 	@Override
 	public ShopModel getModel() {
 		// TODO Auto-generated method stub
 		return updated_shop;
-	}
-	
-	@Override
-	public void setSession(Map<String, Object> map) {
-		this.userSession = (SessionMap) map;
-		
-	}
-
-//	public String getConfirm_password() {
-//		return confirm_password;
-//	}
-//
-//	@RequiredStringValidator(message = "Conferma password richiesta")
-//	public void setConfirm_password(String confirm_password) {
-//		this.confirm_password = confirm_password;
-//	}	
+	}	
 }

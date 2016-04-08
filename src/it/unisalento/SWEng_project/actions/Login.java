@@ -33,8 +33,6 @@ public class Login extends ActionSupport implements ModelDriven<UserModel>, Sess
 	private String username;
 	private String password;
 	
-
-
 	@Override
 	public UserModel getModel() {
 		return userLogin;
@@ -55,7 +53,7 @@ public class Login extends ActionSupport implements ModelDriven<UserModel>, Sess
 	public void validate() {
 		boolean errors = false;
 		
-		if (userSession.isEmpty()){//controllo se la userSession è stata impostata
+		if (!(userSession.containsKey("login"))){//controllo se la userSession è stata impostata
 			try {	 
 				//ottengo anagrafica e indirizzi salvati dallo user loggato
 				user=FactoryDao.getIstance().getUserDao().getUserByCredentials(userLogin.getUsername(), userLogin.getPassword());

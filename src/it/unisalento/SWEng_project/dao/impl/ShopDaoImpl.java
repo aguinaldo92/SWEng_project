@@ -28,24 +28,4 @@ public class ShopDaoImpl extends BaseDaoImpl<Shop> implements ShopDao {
 	        session.close();
 	        return shops;
 	 }
-	
-	public void updateShop(Shop shop) {
-		
-		Transaction tx = null;
-		Session session = sf.openSession();
-        try{
-			tx = session.beginTransaction();
-	        session.update(shop);
-	        tx.commit();
-        }
-        catch(RuntimeException e){
-        	if(tx != null){
-        		tx.rollback();
-        	}
-        }
-        finally{
-        session.flush();
-        session.close();
-        }
-    }
 }

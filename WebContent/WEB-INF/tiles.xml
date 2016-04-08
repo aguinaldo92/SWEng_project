@@ -81,9 +81,9 @@
 		<put-attribute name="body" value="/views/shop_details.jsp" />
 	</definition>
 	
-	<definition name="myShops" extends="baseLayout">
-		<put-attribute name="title" value="I miei negozi" />
-		<put-attribute name="body" value="/views/myshops.jsp" />
+	<definition name="listShops" extends="baseLayout">
+		<put-attribute name="title" value="Gestione negozi" />
+		<put-attribute name="body" value="/views/shops.jsp" />
 	</definition>
 	
 	<definition name="myLocations" extends="baseLayout">

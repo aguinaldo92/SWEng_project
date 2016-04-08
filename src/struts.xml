@@ -61,11 +61,11 @@
 			<result name="input" type="tiles">registrationUser</result>
 		</action>
 
-		<action name="myShops">
-			<result type="tiles">myShops</result>
+		<action name="ListShops" class="it.unisalento.SWEng_project.actions.ListShops">
+			<result type="tiles">listShops</result>
 		</action>
 		
-		<action name="ShopDetails">
+		<action name="ShopDetails" class="it.unisalento.SWEng_project.actions.ShopDetails">
 			<result type="tiles">shopDetails</result>
 		</action>
 
@@ -75,14 +75,14 @@
 
 		<action name="UpdateShop" class="it.unisalento.SWEng_project.actions.UpdateShop">
 			<interceptor-ref name="loginStack" />
-			<result name="success" type="tiles">myShops</result>
+			<result name="success" type="tiles">listShops</result>
 			<result name="error" type="tiles">error</result>
 			<result name="input" type="tiles">shopDetails</result>
 		</action>
 
 		<action name="AddShop" class="it.unisalento.SWEng_project.actions.AddShop">
 			<interceptor-ref name="loginStack" />
-			<result name="success" type="tiles">myShops</result>
+			<result name="success" type="tiles">listShops</result>
 			<result name="error" type="tiles">error</result>
 			<result name="input" type="tiles">shopDetails</result>
 		</action>
