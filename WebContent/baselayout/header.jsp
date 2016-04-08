@@ -18,13 +18,13 @@
 				<div class="header-in">
 					<ul class="icon1 sub-icon1">
 						<li><s:a action="index">Home</s:a></li>
-						<s:if test="#session.login == true">
+						<s:if test="#session.user != null">
 							<li>
 							<a href="#"><s:property value="#session.user.username" /> <b class="caret"></b></a>
 									<ul>
 									<li> <s:a action="profile">Gestione profilo</s:a>
 									</li>
-								<s:if test="#session.user.seller == true">
+								<s:if test="#session.user.role == 1">
 									<li> <s:a action="ListShops">Gestione negozi</s:a></li>
 								</s:if>
 									<li><s:a action="logoutUser">Logout</s:a></li>
