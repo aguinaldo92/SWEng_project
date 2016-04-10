@@ -37,6 +37,11 @@
 		<put-attribute name="body" value="/views/update_password.jsp" />
 	</definition>
 	
+	<definition name="updateResidence" extends="baseLayout">
+		<put-attribute name="title" value="Gestione residenza" />
+		<put-attribute name="body" value="/views/update_residence.jsp" />
+	</definition>
+	
 	<definition name="profile" extends="baseLayout">
 		<put-attribute name="title" value="Gestione profilo" />
 		<put-attribute name="body" value="/views/profile.jsp" />
@@ -63,11 +68,6 @@
 	<definition name="login" extends="baseLayout">
 		<put-attribute name="title" value="Login" />
 		<put-attribute name="body" value="/views/login.jsp" />
-	</definition>
-	
-	<definition name="myLocations" extends="baseLayout">
-		<put-attribute name="title" value="Gestione indirizzi" />
-		<put-attribute name="body" value="/views/mylocations.jsp" />
 	</definition>
 	
 	<definition name="profile" extends="baseLayout">

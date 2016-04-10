@@ -26,7 +26,7 @@ public class AddUser extends ActionSupport implements ModelDriven<UserModel>, Se
 	 * Dichiarare delle propriet√† il cui nome corrisponde a quello specificato nel nome
 	 * CREA IL GETTER E IL SETTER
 	 */
-	private String confirm_password;
+	private String confirm_password, password;
 	private UserModel userForm = new UserModel();
     private SessionMap<String, Object> userSession;
     
@@ -35,14 +35,14 @@ public class AddUser extends ActionSupport implements ModelDriven<UserModel>, Se
 		
 		System.out.println("Sono entrato nella action");
 		System.out.println("Nome inserito: "+userForm.getName());
-		System.out.println("Password: "+userForm.getPassword());
+		System.out.println("Password: "+password);
 		
 		User user = new User();
 		Date datenow = new Date();
 		
 		user.setSsn(userForm.getSsn());
 		user.setUsername(userForm.getUsername());
-		user.setPassword(userForm.getPassword());
+		user.setPassword(password);
 		user.setCreateTime(datenow);
 		user.setName(userForm.getName());
 		user.setSurname(userForm.getSurname());
@@ -72,7 +72,7 @@ public class AddUser extends ActionSupport implements ModelDriven<UserModel>, Se
 		
 		boolean errors = false;
 		
-		if (!userForm.getPassword().equals(confirm_password)){
+		if (!password.equals(confirm_password)){
 			addFieldError("confirm_password", "La password confermata Ë scorretta");
 			errors = true;
 		}
@@ -100,5 +100,13 @@ public class AddUser extends ActionSupport implements ModelDriven<UserModel>, Se
 
 	public void setConfirm_password(String confirm_password) {
 		this.confirm_password = confirm_password;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}	
 }

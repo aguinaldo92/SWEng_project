@@ -3,11 +3,6 @@
  "http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
 
  <validators>
-     <field name="name">
-         <field-validator type="requiredstring">
-             <message>Nome dell'indirizzo richiesto</message>
-         </field-validator>
-     </field>
      <field name="address">
          <field-validator type="requiredstring">
              <message>Indirizzo richiesto</message>
@@ -32,7 +27,7 @@
              <message>Città richiesta</message>
          </field-validator>
          <field-validator type="regex">
-            <param name="regex"><![CDATA[^[A-Z,a-z, ]+$]]></param>
+            <param name="regex"><![CDATA[^[A-Z,a-z, ,']+$]]></param>
             <message>Formato città non corretto</message>
          </field-validator>
      </field>

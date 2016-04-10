@@ -7,6 +7,7 @@ import it.unisalento.SWEng_project.models.ShopModel;
 import it.unisalento.SWEng_project.services.LongLatService;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -20,8 +21,10 @@ import com.opensymphony.xwork2.ModelDriven;
 public class AddShop extends ActionSupport implements ModelDriven<ShopModel>{
 	
 	private ShopModel shopForm = new ShopModel();
+	private List<Shop> shops = new ArrayList<Shop>();
     
 	public String execute () throws Exception {
+		
 		System.out.println("Sono entrato nella action");
 		System.out.println("Shop inserito: "+shopForm.getName());
 		
@@ -62,6 +65,8 @@ public class AddShop extends ActionSupport implements ModelDriven<ShopModel>{
 		
 		System.out.println("Inserimento shop effettuato: ID shop="+newshop.getId());
 		
+		this.shops=FactoryDao.getIstance().getShopDao().getAll(Shop.class);
+		
 		return SUCCESS;
 	}
 
@@ -69,5 +74,13 @@ public class AddShop extends ActionSupport implements ModelDriven<ShopModel>{
 	public ShopModel getModel() {
 		// TODO Auto-generated method stub
 		return shopForm;
+	}
+
+	public List<Shop> getShops() {
+		return shops;
+	}
+
+	public void setShops(List<Shop> shops) {
+		this.shops = shops;
 	}	
 }

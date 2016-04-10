@@ -1,17 +1,15 @@
 package it.unisalento.SWEng_project.factories;
 
 import it.unisalento.SWEng_project.dao.CategoryDao;
-import it.unisalento.SWEng_project.dao.LocationDao;
 import it.unisalento.SWEng_project.dao.ProductPhotoDao;
-import it.unisalento.SWEng_project.dao.TypeOfProductDao;
 import it.unisalento.SWEng_project.dao.ShopDao;
+import it.unisalento.SWEng_project.dao.TypeOfProductDao;
 import it.unisalento.SWEng_project.dao.UserDao;
 import it.unisalento.SWEng_project.dao.impl.CategoryDaoImpl;
-import it.unisalento.SWEng_project.dao.impl.LocationDaoImpl;
 import it.unisalento.SWEng_project.dao.impl.ProductPhotoDaoImpl;
+import it.unisalento.SWEng_project.dao.impl.ShopDaoImpl;
 import it.unisalento.SWEng_project.dao.impl.TypeOfProductDaoImpl;
 import it.unisalento.SWEng_project.dao.impl.UserDaoImpl;
-import it.unisalento.SWEng_project.dao.impl.ShopDaoImpl;
 
 public class FactoryDao {
 	/*IMPLEMENTAZIONE PATTERN SINGLETON --> PERFORMANCE SCARSE
@@ -91,10 +89,6 @@ public class FactoryDao {
 	public UserDao getUserDao(){
 		System.out.println("FactoryDao: getUserDao");
 		return new UserDaoImpl();
-	}
-	
-	public LocationDao getLocationDao(){
-		return new LocationDaoImpl();
 	}
 	
 	public CategoryDao getCategoryDao(){

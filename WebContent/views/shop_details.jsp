@@ -32,6 +32,9 @@
 		<div class="account">
 			<s:form name="update" action="UpdateShop">
 				
+				<s:hidden name="id"/>
+				<s:hidden name="name"/>
+				<s:hidden name="registrationDate"/>
 				<s:textfield name="address" label="Indirizzo" size="60%" requiredLabel="true" labelSeparator=" "/>
 				<s:textfield name="cap" label="CAP" requiredLabel="true" labelSeparator=" "/>
 				<s:textfield name="city" label="Città" requiredLabel="true" labelSeparator=" "/>
