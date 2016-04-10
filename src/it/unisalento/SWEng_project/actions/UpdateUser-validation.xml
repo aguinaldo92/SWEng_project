@@ -44,4 +44,19 @@
             <message>Formato Telefono non corretto</message>
          </field-validator>
      </field>
+     <field name="old_password">
+         <field-validator type="requiredstring">
+             <message>Vecchia password richiesta</message>
+         </field-validator>
+     </field>
+     <field name="password">
+         <field-validator type="requiredstring">
+             <message>Nuova password richiesta</message>
+         </field-validator>
+     </field>
+     <field name="confirm_password">
+         <field-validator type="requiredstring">
+             <message>Conferma nuova password richiesta</message>
+         </field-validator>
+     </field>
  </validators>

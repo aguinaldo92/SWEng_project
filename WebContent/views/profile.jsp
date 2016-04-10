@@ -18,7 +18,7 @@
 		</s:if>
 			
 			<h2 class="account-in">Gestione account</h2>
-			<s:form name="account_management" action="UpdateUser">
+			<s:form name="account_management" action="UpdateProfile">
 				<s:textfield name="ssn" label="Codice Fiscale" size="60%" maxlength="16"/>
 				<s:textfield name="name" label="Nome" requiredLabel="true" labelSeparator=" "/>
 				<s:textfield name="surname" label="Cognome" requiredLabel="true" labelSeparator=" "/>
@@ -30,7 +30,7 @@
 				<s:textfield name="email" label="Email" requiredLabel="true" labelSeparator=" "/>
 				<s:textfield name="telephone" label="Telefono"/>
 				<s:textfield name="cellular" label="Cellulare"/>
-				<s:submit value="Aggiorna profilo"/>
+				<s:submit value="Aggiorna profilo"  name="submit_name"/>
 			</s:form>
 		</s:div>
 				

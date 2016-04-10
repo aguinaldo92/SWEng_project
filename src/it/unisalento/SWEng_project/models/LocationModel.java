@@ -1,7 +1,7 @@
 package it.unisalento.SWEng_project.models;
 
 public class LocationModel {
-
+	
 	private String name;
 	private String cap;
 	private String address;

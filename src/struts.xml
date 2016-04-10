@@ -73,7 +73,7 @@
 			<result type="tiles">shopDetails</result>
 		</action>
 
-		<action name="MyLocations" class="it.unisalento.SWEng_project.actions.ListLocations" method="listLocation">
+		<action name="MyLocations" class="it.unisalento.SWEng_project.actions.ListLocations">
 			<result type="tiles">myLocations</result>
 		</action>
 		
@@ -87,22 +87,28 @@
 			<result name="input" type="tiles">shopDetails</result>
 		</action>
 		
-		<action name="UpdateLocation" class="it.unisalento.SWEng_project.actions.ListLocations" method="updateLocation">
+		<action name="UpdateLocation" class="it.unisalento.SWEng_project.actions.ManageLocations" method="updateLocation">
 			<result name="success" type="tiles">profile</result>
 			<result name="error" type="tiles">error</result>
 			<result name="input" type="tiles">myLocations</result>
 		</action>
 		
-		<action name="AddLocation" class="it.unisalento.SWEng_project.actions.ListLocations" method="addLocation">
+		<action name="AddLocation" class="it.unisalento.SWEng_project.actions.ManageLocations" method="addLocation">
 			<result name="success" type="tiles">profile</result>
 			<result name="error" type="tiles">error</result>
 			<result name="input" type="tiles">myLocations</result>
 		</action>
 		
-		<action name="UpdateUser" class="it.unisalento.SWEng_project.actions.UpdateUser">
+		<action name="UpdatePassword" class="it.unisalento.SWEng_project.actions.UpdateUser" method="updatePW">
 			<result name="success" type="tiles">profile</result>
 			<result name="error" type="tiles">error</result>
 			<result name="input" type="tiles">updatePassword</result>
+		</action>
+		
+		<action name="UpdateProfile" class="it.unisalento.SWEng_project.actions.UpdateUser" method="updateProfile">
+			<result name="success" type="tiles">index</result>
+			<result name="error" type="tiles">error</result>
+			<result name="input" type="tiles">profile</result>
 		</action>
 
 		<action name="AddShop" class="it.unisalento.SWEng_project.actions.AddShop">

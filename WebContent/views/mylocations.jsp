@@ -7,6 +7,7 @@
 </s:if>
 
 <s:action name="ListLocations"/>
+<s:action name="ManageLocations"/>
 
 <s:div class="container">
 	
@@ -18,7 +19,7 @@
 				<s:hidden name="idlocation" value="%{residence.id}"/>
 				<s:hidden name="name" value="Residenza"/>
 				<s:textfield name="address" value="%{residence.address}" label="Indirizzo" size="80%" labelSeparator=" " requiredLabel="true"/>
-				<s:textfield name="number" value="%{residence.number}" label="Civico"/>
+				<s:textfield name="number" value="%{residence.number}" label="Civico" labelSeparator=" "/>
 				<s:textfield name="cap" value="%{residence.cap}" label="CAP" labelSeparator=" " requiredLabel="true"/>
 				<s:textfield name="city" value="%{residence.city}" label="Città" labelSeparator=" " requiredLabel="true"/>
 				<s:textfield name="province" value="%{residence.province}" label="Provincia" labelSeparator=" " requiredLabel="true"/>
@@ -30,7 +31,7 @@
 			<s:form name="manageresidence" action="AddLocation">
 				<s:hidden name="name" value="Residenza"/>
 				<s:textfield name="address" value="%{residence.address}" label="Indirizzo" size="80%" labelSeparator=" " requiredLabel="true"/>
-				<s:textfield name="number" value="%{residence.number}" label="Civico"/>
+				<s:textfield name="number" value="%{residence.number}" label="Civico" labelSeparator=" "/>
 				<s:textfield name="cap" value="%{residence.cap}" label="CAP" labelSeparator=" " requiredLabel="true"/>
 				<s:textfield name="city" value="%{residence.city}" label="Città" labelSeparator=" " requiredLabel="true"/>
 				<s:textfield name="province" value="%{residence.province}" label="Provincia" labelSeparator=" " requiredLabel="true"/>
@@ -50,7 +51,7 @@
 				<s:hidden name="idlocation" value="%{id}"/>		
 				<s:textfield name="name" label="Nome dell'indirizzo" labelSeparator=" " requiredLabel="true"/>
 				<s:textfield name="address" label="Indirizzo" size="80%" labelSeparator=" " requiredLabel="true"/>
-				<s:textfield name="number" label="Civico"/>
+				<s:textfield name="number" label="Civico" labelSeparator=" "/>
 				<s:textfield name="cap" label="CAP" labelSeparator=" " requiredLabel="true"/>
 				<s:textfield name="city" label="Città" labelSeparator=" " requiredLabel="true"/>
 				<s:textfield name="province" label="Provincia" labelSeparator=" " requiredLabel="true"/>
@@ -67,7 +68,7 @@
 			<s:form name="registrationaddress" action="AddLocation">			
 				<s:textfield name="name" value="" label="Nome" labelSeparator=" " requiredLabel="true"/>
 				<s:textfield name="address" value="" label="Indirizzo" size="80%" labelSeparator=" " requiredLabel="true"/>
-				<s:textfield name="number" value="" label="Civico"/>
+				<s:textfield name="number" value="" label="Civico" labelSeparator=" "/>
 				<s:textfield name="cap" value="" label="CAP" labelSeparator=" " requiredLabel="true"/>
 				<s:textfield name="city" value="" label="Città" labelSeparator=" " requiredLabel="true"/>
 				<s:textfield name="province" value="" label="Provincia" labelSeparator=" " requiredLabel="true"/>
