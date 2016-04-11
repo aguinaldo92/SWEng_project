@@ -11,6 +11,7 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
+import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
 
 /***
  * 
@@ -20,10 +21,9 @@ import com.opensymphony.xwork2.ModelDriven;
  *	Per sfuttare l'interceptor ModelDriven la action deve implementare l'interfaccia ModelDriven
  */
 public class UpdateUser extends ActionSupport implements ModelDriven<UserModel>, SessionAware{
-	
+		
 	private UserModel userForm = new UserModel();
     private SessionMap<String, Object> userSession;
-    
 	
 	public String execute() {
 		

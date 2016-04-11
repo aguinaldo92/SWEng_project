@@ -23,25 +23,28 @@ import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
  */
 public class UpdatePassword extends ActionSupport implements SessionAware{
 	
-	private String old_password, confirm_password, password, submit_name;
+	private String old_password, confirm_password, password;
 	
     private SessionMap<String, Object> userSession;
     
 	
 	public void validate() {
-
 		User user_loggato = (User) userSession.get("user");
 		boolean errors = false;
-	
+	 System.out.println("1");
 		if (!password.equals(confirm_password)){
+			 System.out.println("2");
 			addFieldError("confirm_password", "La password confermata non è corretta");
 			errors = true;
 		}
-		else if(!old_password.equals(user_loggato.getPassword())){
+		if(!old_password.equals(user_loggato.getPassword())){
+			 System.out.println("3");
 			addFieldError("old_password", "La password non è corretta");
 			errors = true;
 		}
+		 System.out.println("4");
 		if (errors) {
+			 System.out.println("5");
 			addActionError("Sono presenti errori all'interno del form");
 		}
 	}
@@ -70,7 +73,6 @@ public class UpdatePassword extends ActionSupport implements SessionAware{
 		
 	}
 
-	@RequiredStringValidator(message = "Vecchia password richiesta")
 	public String getOld_password() {
 		return old_password;
 	}
@@ -79,7 +81,6 @@ public class UpdatePassword extends ActionSupport implements SessionAware{
 		this.old_password = old_password;
 	}
 
-	@RequiredStringValidator(message = "Conferma della nuova password richiesta")
 	public String getConfirm_password() {
 		return confirm_password;
 	}
@@ -88,15 +89,6 @@ public class UpdatePassword extends ActionSupport implements SessionAware{
 		this.confirm_password = confirm_password;
 	}
 
-	public String getSubmit_name() {
-		return submit_name;
-	}
-
-	public void setSubmit_name(String submit_name) {
-		this.submit_name = submit_name;
-	}
-
-	@RequiredStringValidator(message = "Nuova password richiesta")
 	public String getPassword() {
 		return password;
 	}
