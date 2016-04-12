@@ -55,10 +55,10 @@
 			<result type="tiles">login</result>
 		</action>
 		<action name="logoutUser" class="it.unisalento.SWEng_project.actions.Logout">
-		
 			<result name="success" type="tiles">index</result>
 			<result name="error" type="tiles">login</result>
 		</action>
+		
 		<action name="AddUser" class="it.unisalento.SWEng_project.actions.AddUser">
 			<result name="success" type="tiles">success</result>
 			<result name="error" type="tiles">error</result>
@@ -68,27 +68,57 @@
 		<action name="ListShops" class="it.unisalento.SWEng_project.actions.ListShops">
 			<result type="tiles">listShops</result>
 		</action>
-		
+
 		<action name="ShopDetails" class="it.unisalento.SWEng_project.actions.ShopDetails">
 			<result type="tiles">shopDetails</result>
 		</action>
 
-		<action name="myLocations">
+		<action name="MyLocations" class="it.unisalento.SWEng_project.actions.ListLocations">
 			<result type="tiles">myLocations</result>
 		</action>
-
+		
+		<action name="updatePassword">
+			<result type="tiles">updatePassword</result>
+		</action>
+	
+		<action name="gotoAddProduct">
+		<interceptor-ref name="loginStack" />
+			<result type="tiles">addProduct</result>
+		</action>
 		<action name="UpdateShop" class="it.unisalento.SWEng_project.actions.UpdateShop">
-			<interceptor-ref name="loginStack" />
 			<result name="success" type="tiles">listShops</result>
 			<result name="error" type="tiles">error</result>
 			<result name="input" type="tiles">shopDetails</result>
+		</action>
+		
+		<action name="UpdateLocation" class="it.unisalento.SWEng_project.actions.ManageLocations" method="updateLocation">
+			<result name="success" type="tiles">profile</result>
+			<result name="error" type="tiles">error</result>
+			<result name="input" type="tiles">myLocations</result>
+		</action>
+		
+		<action name="AddLocation" class="it.unisalento.SWEng_project.actions.ManageLocations" method="addLocation">
+			<result name="success" type="tiles">profile</result>
+			<result name="error" type="tiles">error</result>
+			<result name="input" type="tiles">myLocations</result>
+		</action>
+		
+		<action name="UpdatePassword" class="it.unisalento.SWEng_project.actions.UpdateUser" method="updatePW">
+			<result name="success" type="tiles">profile</result>
+			<result name="error" type="tiles">error</result>
+			<result name="input" type="tiles">updatePassword</result>
+		</action>
+		
+		<action name="UpdateProfile" class="it.unisalento.SWEng_project.actions.UpdateUser" method="updateProfile">
+			<result name="success" type="tiles">index</result>
+			<result name="error" type="tiles">error</result>
+			<result name="input" type="tiles">profile</result>
 		</action>
 
 		<action name="AddShop" class="it.unisalento.SWEng_project.actions.AddShop">
-			<interceptor-ref name="loginStack" />
 			<result name="success" type="tiles">listShops</result>
 			<result name="error" type="tiles">error</result>
-			<result name="input" type="tiles">shopDetails</result>
+			<result name="input" type="tiles">registrationShop</result>
 		</action>
 		<action name="Login" class="it.unisalento.SWEng_project.actions.Login">
 			<result name="success" type="tiles">profile</result>
@@ -96,10 +126,12 @@
 			<result name="input" type="tiles">login</result>
 		</action>
 
-		<action name="Categories" class="it.unisalento.SWEng_project.actions.Categories">
+		<action name="CategoriesAndBrands"
+			class="it.unisalento.SWEng_project.actions.Categories">
 			<result name="error" type="tiles">error</result>
 			<result name="input" type="tiles">input</result>
 		</action>
+
 
 		<action name="TypeOfProductsBy"
 			class="it.unisalento.SWEng_project.actions.TypeOfProductsBy">
@@ -124,6 +156,33 @@
 		<action name="ProductsOfTypeOfProduct"
 			class="it.unisalento.SWEng_project.actions.ProductsOfTypeOfProduct">
 			<result name="success" type="tiles">product</result>
+			<result name="error" type="tiles">error</result>
+			<result name="input" type="tiles">input</result>
+		</action>
+
+		<action name="AddProduct" 
+			class="it.unisalento.SWEng_project.actions.AddProduct">
+			<interceptor-ref name="loginStack" />
+			<result name="success" type="tiles">characteristic</result>
+			<result name="error" type="tiles">error</result>
+			<result name="input" type="tiles">input</result>
+		</action>
+		<action name="AddModel" method="addModel"
+			class="it.unisalento.SWEng_project.actions.AddProduct">
+			<interceptor-ref name="loginStack" />
+			<result name="error" type="tiles">error</result>
+			<result name="input" type="tiles">input</result>
+		</action>
+		<action name="AddBrand" method="addBrand"
+			class="it.unisalento.SWEng_project.actions.AddProduct">
+			<interceptor-ref name="loginStack" />
+			<result name="error" type="tiles">error</result>
+			<result name="input" type="tiles">input</result>
+		</action>
+		<action name="AddCategory" method="addCategory"
+			class="it.unisalento.SWEng_project.actions.AddProduct">
+			<interceptor-ref name="loginStack" />
+			<result name="success" type="tiles">characteristic</result>
 			<result name="error" type="tiles">error</result>
 			<result name="input" type="tiles">input</result>
 		</action>

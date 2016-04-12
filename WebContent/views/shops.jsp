@@ -1,6 +1,6 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 
-<s:action name="Shops"/>
+<s:action name="ListShops"/>
 
 <div class="top-products">
 

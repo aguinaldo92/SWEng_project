@@ -7,3 +7,6 @@
 
 
 QUESTA è LA PAGINA DI INDEX
+<br>
+<s:url action="gotoAddProduct.action" var="addProd"></s:url>
+<s:a href="%{addProd}">Aggiungi un prodotto </s:a>

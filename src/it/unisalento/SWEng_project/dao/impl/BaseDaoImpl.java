@@ -77,7 +77,5 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 		session.update(entity);
 		tx.commit();
 		session.close();
-
-
 	}
 }

@@ -6,13 +6,15 @@ public class ProductModel {
 	private String barcode;
 	private String title;
 	private String description;
-	private String size;
+	private String sizes;
 	private String weight;
 	private String brand;
 	private String model;
 	private String category;
 	private BigDecimal sellingPrice;
 	private BigDecimal sellingDiscount;
+	
+	
 	public String getBarcode() {
 		return barcode;
 	}
@@ -32,10 +34,10 @@ public class ProductModel {
 		this.description = description;
 	}
 	public String getSize() {
-		return size;
+		return sizes;
 	}
-	public void setSize(String size) {
-		this.size = size;
+	public void setSize(String sizes) {
+		this.sizes = sizes;
 	}
 	public String getWeight() {
 		return weight;

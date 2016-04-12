@@ -26,7 +26,7 @@ public class AddUser extends ActionSupport implements ModelDriven<UserModel>, Se
 	 * Dichiarare delle propriet√† il cui nome corrisponde a quello specificato nel nome
 	 * CREA IL GETTER E IL SETTER
 	 */
-	
+	private String confirm_password;
 	private UserModel userForm = new UserModel();
     private SessionMap<String, Object> userSession;
     
@@ -72,7 +72,7 @@ public class AddUser extends ActionSupport implements ModelDriven<UserModel>, Se
 		
 		boolean errors = false;
 		
-		if (!userForm.getPassword().equals(userForm.getConfirm_password())){
+		if (!userForm.getPassword().equals(confirm_password)){
 			addFieldError("confirm_password", "La password confermata Ë scorretta");
 			errors = true;
 		}
@@ -92,5 +92,13 @@ public class AddUser extends ActionSupport implements ModelDriven<UserModel>, Se
 	public void setSession(Map<String, Object> map) {
 		this.userSession = (SessionMap) map;
 		
+	}
+
+	public String getConfirm_password() {
+		return confirm_password;
+	}
+
+	public void setConfirm_password(String confirm_password) {
+		this.confirm_password = confirm_password;
 	}	
 }

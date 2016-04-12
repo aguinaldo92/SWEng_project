@@ -7,7 +7,7 @@
 </head>
 
 <%-- questa riga serve per far si che quando viene caricata la pagina header.jsp  sia eseguita la Action Categories <s:action name="Categories"  executeResult="true" /> --%>
-<s:action name="Categories" executeResult="true" />
+<s:action name="CategoriesAndBrands" executeResult="true" />
 <div class="header">
 	<div class="header-top">
 		<div class="container">
@@ -147,11 +147,11 @@
 		<div class="container">
 			<div class="header-bottom-on">
 				<p class="wel">
-					<s:if test="#session.login != true">
-					<s:a action="loginUser">Benvenuto. Puoi loggarti o registrare un nuovo account</s:a>
+					<s:if test="#session.user != null">
+					<a href="#">Benvenuto <s:property value="#session.user.name"/></a>
 					</s:if>
 					<s:else>
-					<a href="#">Benvenuto <s:property value="#session.user.name"/></a>
+					<s:a action="loginUser">Benvenuto. Puoi loggarti o registrare un nuovo account</s:a>
 					</s:else>
 				</p>
 				<div class="header-can">
