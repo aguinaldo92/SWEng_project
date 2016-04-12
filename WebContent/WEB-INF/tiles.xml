@@ -31,8 +31,19 @@
 		<put-attribute name="title" value="Success" />
 		<put-attribute name="body" value="/views/success.jsp" />
 	</definition>
+	
+	<definition name="updatePassword" extends="baseLayout">
+		<put-attribute name="title" value="Gestione profilo" />
+		<put-attribute name="body" value="/views/update_password.jsp" />
+	</definition>
+	
+	<definition name="updateResidence" extends="baseLayout">
+		<put-attribute name="title" value="Gestione residenza" />
+		<put-attribute name="body" value="/views/update_residence.jsp" />
+	</definition>
+	
 	<definition name="profile" extends="baseLayout">
-		<put-attribute name="title" value="Profile" />
+		<put-attribute name="title" value="Gestione profilo" />
 		<put-attribute name="body" value="/views/profile.jsp" />
 	</definition>
 
@@ -60,7 +71,7 @@
 	</definition>
 
 	<definition name="profile" extends="baseLayout">
-		<put-attribute name="title" value="Profile" />
+		<put-attribute name="title" value="Gestione profilo" />
 		<put-attribute name="body" value="/views/profile.jsp" />
 	</definition>
 
@@ -98,11 +109,6 @@
 	<definition name="listShops" extends="baseLayout">
 		<put-attribute name="title" value="Gestione negozi" />
 		<put-attribute name="body" value="/views/shops.jsp" />
-	</definition>
-
-	<definition name="myLocations" extends="baseLayout">
-		<put-attribute name="title" value="I miei indirizzi" />
-		<put-attribute name="body" value="/views/mylocations.jsp" />
 	</definition>
 
 </tiles-definitions>

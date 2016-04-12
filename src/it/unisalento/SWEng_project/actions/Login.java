@@ -1,16 +1,10 @@
 package it.unisalento.SWEng_project.actions;
 
-import it.unisalento.SWEng_project.domain.Location;
-import it.unisalento.SWEng_project.domain.Shop;
 import it.unisalento.SWEng_project.domain.User;
 import it.unisalento.SWEng_project.factories.FactoryDao;
 import it.unisalento.SWEng_project.models.UserModel;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.SessionAware;
@@ -21,23 +15,17 @@ import com.opensymphony.xwork2.interceptor.ParameterNameAware;
 import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
 
 
-public class Login extends ActionSupport implements ModelDriven<UserModel>, SessionAware, ParameterNameAware  {
+public class Login extends ActionSupport implements SessionAware, ParameterNameAware  {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private UserModel userLogin = new UserModel();
 	private User user= new User();
 	private SessionMap<String, Object> userSession ;
 	
 	private String username;
 	private String password;
 	
-	@Override
-	public UserModel getModel() {
-		return userLogin;
-	}
-
 	public String execute() {
 
 		System.out.println("Sono entrato nella action Login");
@@ -55,7 +43,7 @@ public class Login extends ActionSupport implements ModelDriven<UserModel>, Sess
 		if (!(userSession.containsKey("login"))){//controllo se la userSession è stata impostata
 			try {	 
 				//ottengo anagrafica e indirizzi salvati dallo user loggato
-				user=FactoryDao.getIstance().getUserDao().getUserByCredentials(userLogin.getUsername(), userLogin.getPassword());
+				user=FactoryDao.getIstance().getUserDao().getUserByCredentials(username, password);
 				System.out.println(" login fatto!!!");
 			} catch (NullPointerException enull){
 				System.out.println("Utente non presente nel Database");

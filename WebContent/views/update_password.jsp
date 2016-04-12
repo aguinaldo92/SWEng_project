@@ -13,7 +13,7 @@
 				<s:password name="old_password" label="Vecchia password" size="60%" requiredLabel="true" labelSeparator=" "/>
 				<s:password name="password" label="Nuova password" requiredLabel="true" labelSeparator=" "/>
 				<s:password name="confirm_password" label="Conferma password" requiredLabel="true" labelSeparator=" "/>
-				<s:submit value="Aggiorna password" name="submit_name"/>
+				<s:submit value="Aggiorna password"/>
 			</s:form>
 	</s:div>	
 </s:div>

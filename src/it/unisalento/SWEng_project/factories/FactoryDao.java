@@ -95,10 +95,6 @@ public class FactoryDao {
 		return new UserDaoImpl();
 	}
 	
-	public LocationDao getLocationDao(){
-		return new LocationDaoImpl();
-	}
-	
 	public CategoryDao getCategoryDao(){
 		return new CategoryDaoImpl();
 	}

@@ -24,7 +24,7 @@
      </field>
      <field name="city">
          <field-validator type="regex">
-            <param name="regex"><![CDATA[^[A-Z,a-z, ]+$]]></param>
+            <param name="regex"><![CDATA[^[A-Z,a-z, ,']+$]]></param>
          	<message>Formato della città non corretto</message>
          </field-validator>
          <field-validator type="requiredstring">

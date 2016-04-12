@@ -1,16 +1,13 @@
 package it.unisalento.SWEng_project.actions;
 
 import it.unisalento.SWEng_project.domain.Shop;
-import it.unisalento.SWEng_project.domain.User;
 import it.unisalento.SWEng_project.factories.FactoryDao;
 import it.unisalento.SWEng_project.models.ShopModel;
 import it.unisalento.SWEng_project.services.LongLatService;
 
 import java.math.BigDecimal;
-import java.util.Map;
-
-import org.apache.struts2.dispatcher.SessionMap;
-import org.apache.struts2.interceptor.SessionAware;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
@@ -25,6 +22,7 @@ import com.opensymphony.xwork2.ModelDriven;
 public class UpdateShop extends ActionSupport implements ModelDriven<ShopModel>{
 	
 	private ShopModel updated_shop = new ShopModel();
+	private List<Shop> shops = new ArrayList<Shop>();
  
 	
 	public String execute () throws Exception {
@@ -66,6 +64,8 @@ public class UpdateShop extends ActionSupport implements ModelDriven<ShopModel>{
 		FactoryDao.getIstance().getShopDao().update(newshop);
 		
 		System.out.println("Shop aggiornato");
+
+		this.shops=FactoryDao.getIstance().getShopDao().getAll(Shop.class);
 				
 		return SUCCESS;
 	}
@@ -74,5 +74,13 @@ public class UpdateShop extends ActionSupport implements ModelDriven<ShopModel>{
 	public ShopModel getModel() {
 		// TODO Auto-generated method stub
 		return updated_shop;
-	}	
+	}
+
+	public List<Shop> getShops() {
+		return shops;
+	}
+
+	public void setShops(List<Shop> shops) {
+		this.shops = shops;
+	}
 }
