@@ -1,17 +1,17 @@
 package it.unisalento.SWEng_project.actions;
 
+import it.unisalento.SWEng_project.domain.Category;
+import it.unisalento.SWEng_project.domain.Product;
+import it.unisalento.SWEng_project.domain.TypeOfProduct;
+import it.unisalento.SWEng_project.factories.FactoryDao;
+import it.unisalento.SWEng_project.models.ProductModel;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
 
 import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.SessionAware;
-
-import it.unisalento.SWEng_project.domain.Category;
-import it.unisalento.SWEng_project.domain.Product;
-import it.unisalento.SWEng_project.domain.TypeOfProduct;
-import it.unisalento.SWEng_project.factories.FactoryDao;
-import it.unisalento.SWEng_project.models.ProductModel;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
@@ -24,29 +24,31 @@ public class AddProduct extends ActionSupport implements ModelDriven<ProductMode
 	private static final long serialVersionUID = 6080237631998689309L;
 	private ProductModel productModel = new ProductModel();
 	private Product product = new Product();
+	 private String term;
 	private TypeOfProduct typeOfProduct = new TypeOfProduct();
 	private Category category = new Category();
 	private SessionMap<String, Object> userSession;
-	private ArrayList<String> categoryNames;
-	private ArrayList<String> models;
-	private ArrayList<String> brands;
-	private ArrayList<TypeOfProduct> listOfTypesOfProduct;
-	private ArrayList<Category> categories;
+	private ArrayList<String> categoryNames = new ArrayList<String> ();
+	private ArrayList<String> models = new ArrayList<String> ();
+	private ArrayList<String> brands = new ArrayList<String> ();
+	private ArrayList<TypeOfProduct> listOfTypesOfProduct = new ArrayList<TypeOfProduct> ();;
+	private ArrayList<Category> categories = new ArrayList<Category> ();
 
 
-	public	 void validate() {
-		System.out.println("AddProduct.validate()");
-	}
+
 
 	public String execute()  {
 		System.out.println("AddProduct.execute()");
+
+		this.categoryNames = (ArrayList<String>) this.userSession.get("categoryNames");
+		//this.models = FactoryDao.getIstance().
 
 		// riempiamo gli oggetti con il model.
 		// riempiamo prodotto
 		product.setBarCode(productModel.getBarcode());
 		product.setTitle(productModel.getTitle());
 		product.setDescription(productModel.getDescription());
-		product.setSize(productModel.getSize());
+		product.setSize(productModel.getSizes());
 		product.setWeight(productModel.getWeight());
 		product.setSellingPrice(productModel.getSellingPrice());
 		product.setSellingDiscount(productModel.getSellingDiscount());
@@ -54,7 +56,7 @@ public class AddProduct extends ActionSupport implements ModelDriven<ProductMode
 		typeOfProduct.setBrand(productModel.getBrand());
 		typeOfProduct.setModel(productModel.getModel());
 		// riempiamo la categoria
-		category.setName(productModel.getCategory());
+		category.setName(productModel.getCategoryName());
 
 		// eseguiamo le query in ordine.
 		// prima controllo che esistono le categorie, poi i tipi di prodotto e 
@@ -64,18 +66,21 @@ public class AddProduct extends ActionSupport implements ModelDriven<ProductMode
 			if(!this.categoryNames.contains(category.getName())){
 				// se non è già stata inserita una categoria con questo nome inseriscila nel DB
 				category.setId(FactoryDao.getIstance().getCategoryDao().set(category));
-			} // forse devo inserire un else per prendere dal database la categoria compresa di ID prima di settarla nel tipo di prodotto, stessa cosa per tipo di prodotto con prodotto
+			} else {
+				category = (Category) FactoryDao.getIstance().getCategoryDao().getByName(productModel.getCategoryName());
+			}
+			// forse devo inserire un else per prendere dal database la categoria compresa di ID prima di settarla nel tipo di prodotto, stessa cosa per tipo di prodotto con prodotto
 			// imposta la categoria del prodotto che stiamo inserendo
-			typeOfProduct.setCategory(category);
+			//typeOfProduct.setCategory(category);
 
 			if (!(this.brands.contains(typeOfProduct.getBrand()) && this.models.contains(typeOfProduct.getModel()))){
 				// se non è già stata inserito un tipo di prodotto con questa marca e modello inseriscilo nel DB
-				typeOfProduct.setId(FactoryDao.getIstance().getTypeOfProductDao().set(typeOfProduct));
+				//typeOfProduct.setId(FactoryDao.getIstance().getTypeOfProductDao().set(typeOfProduct));
 			} // forse devo inserire un else per prendere dal database la categoria compresa di ID prima di settarla nel tipo di prodotto, stessa cosa per tipo di prodotto con prodotto
 			// imposta il tipo di prodotto del prodotto
-			product.setTypeOfProduct(typeOfProduct);
+			//product.setTypeOfProduct(typeOfProduct);
 			// inserisce il prodotto e ne prende l'ID
-			product.setId(FactoryDao.getIstance().getProductDao().set(product));
+			//product.setId(FactoryDao.getIstance().getProductDao().set(product));
 		} catch (Exception e) {
 			System.out.println("AddProduct.addProduct()");
 			System.out.println(e.getLocalizedMessage());
@@ -83,48 +88,13 @@ public class AddProduct extends ActionSupport implements ModelDriven<ProductMode
 			System.out.println( e.getStackTrace());
 		}
 
-		return null;
+		return SUCCESS;
 	}
 
-	public String addCategory() {
-		System.out.println("Sono entrato nella action Categories metodo categories ");
-		if (!userSession.containsKey("categoryNames")) { 	
-			try {
-				categories = (ArrayList<Category>)FactoryDao.getIstance().getCategoryDao().getAllSorted(Category.class);
-				System.out.println("categories ottenute");
-				categories.removeIf(e -> e.getName() == null);
-				Iterator categoriesIterator = categories.iterator();
-				while(categoriesIterator.hasNext()) {
-					Category currentCategory = (Category) categoriesIterator.next(); 
-					categoryNames.add(currentCategory.getName());
-				} 
-			} catch (Exception e){
-				System.out.println("AddProduct.addCategory()");
-				System.out.println(e.getLocalizedMessage());
-				System.out.println(e.getCause());
-				System.out.println( e.getStackTrace());
-			}
-		}
-		return ActionSupport.NONE;
-	}
-	// faccio in modo da mostrare i brand o aggiungerli
-	public String addBrand() {
-		System.out.println("Sono entrato nella AddProduct Categories metodo  AddBrand");
-		try {
-			Iterator<TypeOfProduct> listOfTypesOfProductIterator = getIteratorOfTypeOfProduct();
-			while(listOfTypesOfProductIterator.hasNext()) {
-				TypeOfProduct currentTypeOfProduct = (TypeOfProduct) listOfTypesOfProductIterator.next(); 
-				brands.add(currentTypeOfProduct.getBrand());
-			} 
-		} catch (Exception e){
-			System.out.println("AddProduct.addBrand()");
-			System.out.println(e.getLocalizedMessage());
-			System.out.println(e.getCause());
-			System.out.println( e.getStackTrace());
-		}
 
-		return ActionSupport.NONE;
-	}
+	
+
+	
 
 	// faccio in modo da mostrare i modelli o aggiungerli
 	public String addModel() {
@@ -175,6 +145,15 @@ public class AddProduct extends ActionSupport implements ModelDriven<ProductMode
 
 	public void setBrands(ArrayList<String> brands) {
 		this.brands = brands;
+	}
+	
+
+	public String getTerm() {
+		return term;
+	}
+
+	public void setTerm(String term) {
+		this.term = term;
 	}
 
 	@Override

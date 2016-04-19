@@ -7,7 +7,7 @@
 	<constant name="struts.i18n.reload" value="false" />
 	<constant name="struts.configuration.xml.reload" value="false" />
 
-	<package name="default" extends="struts-default">
+	<package name="default" extends="struts-default, json-default" namespace="/">
 		<result-types>
 			<result-type name="tiles"
 				class="org.apache.struts2.views.tiles.TilesResult" />
@@ -54,7 +54,7 @@
 		<action name="loginUser">
 			<result type="tiles">login</result>
 		</action>
-		<action name="updateResidence">
+		<action name="gotoUpdateResidence">
 			<result type="tiles">updateResidence</result>
 		</action>
 		<action name="UpdateResidence" class="it.unisalento.SWEng_project.actions.UpdateResidence">
@@ -100,8 +100,6 @@
 			<result name="error" type="tiles">error</result>
 			<result name="input" type="tiles">shopDetails</result>
 		</action>
-		
-		
 		
 		<action name="UpdateProfile" class="it.unisalento.SWEng_project.actions.UpdateUser" method="updateProfile">
 			<result name="success" type="tiles">index</result>
@@ -159,26 +157,18 @@
 			<interceptor-ref name="loginStack" />
 			<result name="success" type="tiles">characteristic</result>
 			<result name="error" type="tiles">error</result>
-			<result name="input" type="tiles">input</result>
+<!-- 			<result name="input" type="tiles">addProduct</result> -->
 		</action>
 		<action name="AddModel" method="addModel"
 			class="it.unisalento.SWEng_project.actions.AddProduct">
 			<interceptor-ref name="loginStack" />
-			<result name="error" type="tiles">error</result>
-			<result name="input" type="tiles">input</result>
 		</action>
-		<action name="AddBrand" method="addBrand"
-			class="it.unisalento.SWEng_project.actions.AddProduct">
-			<interceptor-ref name="loginStack" />
-			<result name="error" type="tiles">error</result>
-			<result name="input" type="tiles">input</result>
+		<action name="AddBrand" class="it.unisalento.SWEng_project.actions.AddBrand">
+			<result name="success" type="json" />
 		</action>
-		<action name="AddCategory" method="addCategory"
-			class="it.unisalento.SWEng_project.actions.AddProduct">
-			<interceptor-ref name="loginStack" />
-			<result name="success" type="tiles">characteristic</result>
-			<result name="error" type="tiles">error</result>
-			<result name="input" type="tiles">input</result>
+		<action name="AddCategory" 
+			class="it.unisalento.SWEng_project.actions.AddCategory">
+			<result name="success" type="json"/>
 		</action>
 
 	</package>

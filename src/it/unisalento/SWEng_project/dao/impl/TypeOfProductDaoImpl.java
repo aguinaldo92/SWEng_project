@@ -103,6 +103,36 @@ public class TypeOfProductDaoImpl extends BaseDaoImpl<TypeOfProduct> implements 
         session.close();
         return typeOfProductDTOs;
 	}
+	@Override
+	public ArrayList<String> getBrands() {
+		ArrayList<String> brands = new ArrayList<String>();
+		Session session = sf.openSession();
+        Transaction tx = session.beginTransaction();
+        String hql = "select distinct t.brand " + 
+        		" from TypeOfProduct  t  " + 
+        		" order by t.brand asc";
+        Query query = session.createQuery(hql);
+        brands = (ArrayList<String>) query.list();
+        tx.commit();
+        session.close();
+        return brands;
+	}
+	@Override
+	public ArrayList<String> getBrandsByCategory(String categoryName) {
+		ArrayList<String> brands = new ArrayList<String>();
+		Session session = sf.openSession();
+        Transaction tx = session.beginTransaction();
+        String hql = "select distinct t.brand " + 
+        		" from Category c inner join c.typeOfProducts  t  " + 
+        		" where c.name = :category " + 
+        		" order by t.brand asc";
+        Query query = session.createQuery(hql);
+        query.setString("category", categoryName);
+        brands = (ArrayList<String>) query.list();
+        tx.commit();
+        session.close();
+        return brands;
+	}
 	
 
 

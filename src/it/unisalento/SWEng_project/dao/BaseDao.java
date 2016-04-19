@@ -1,6 +1,7 @@
 package it.unisalento.SWEng_project.dao;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.exception.internal.SQLExceptionTypeDelegate;

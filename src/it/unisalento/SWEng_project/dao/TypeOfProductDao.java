@@ -8,6 +8,8 @@ import java.util.ArrayList;
 
 public interface TypeOfProductDao extends BaseDao<TypeOfProduct> {
 	public ArrayList<String> getBrandsByCategory(Category category); // da modificare per usare brand dto e cambiare il nome in getBrands
+	public ArrayList<String> getBrandsByCategory(String categoryName); // da modificare per usare brand dto e cambiare il nome in getBrands
+	public ArrayList<String> getBrands(); 
 	public ArrayList<TypeOfProductDTO> getTypeOfProductsDTOByCategory(String category);
 	public ArrayList<TypeOfProductDTO> getTypeOfProductsByCategoryAndBrand(String category,String brand);
 	public ArrayList<TypeOfProductDTO> getBestDeals();

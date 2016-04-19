@@ -44,20 +44,17 @@
              <message>Categoria richiesta</message>
          </field-validator>
          </field>
-     <field name="sellingPrice">
-     <field-validator type="requiredstring">
-             <message>Categoria richiesta</message>
-         </field-validator>
-         <field-validator type="bigDecimalValidator">
-            <message>Formato Prezzo non corretto</message>
-         </field-validator>
-         </field>
-     <field name="sellingDiscount">
-     <field-validator type="requiredstring">
-             <message>Categoria richiesta</message>
-         </field-validator>
-         <field-validator type="bigDecimalValidator">
-            <message>Formato Sconto non corretto</message>
-         </field-validator>
-     </field>
+<!--      <field name="sellingPrice"> -->
+<!--      <field-validator type="requiredstring"> -->
+<!--              <message>Prezzo richiesto</message> -->
+<!--          </field-validator> -->
+<!--          <field-validator type="bigDecimalValidator"> -->
+<!--             <message>Formato Prezzo non corretto</message> -->
+<!--          </field-validator> -->
+<!--          </field> -->
+<!--      <field name="sellingDiscount"> -->
+<!--          <field-validator type="bigDecimalValidator"> -->
+<!--             <message>Formato Sconto non corretto</message> -->
+<!--          </field-validator> -->
+<!--      </field> -->
  </validators>

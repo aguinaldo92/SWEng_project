@@ -84,10 +84,13 @@
 		<put-attribute name="title" value="Prodotto" />
 		<put-attribute name="body" value="/views/product.jsp" />
 	</definition>
+	
 	<definition name="addProduct" extends="baseLayout">
-		<put-attribute name="title" value="Aggiungi Prodotto" />
 		<put-attribute name="body" value="/views/product/addProduct.jsp" />
+		<put-attribute name="title" value="Aggiungi Prodotto" />
+		
 	</definition>
+
 
 	<definition name="characteristic" extends="baseLayout">
 		<put-attribute name="title" value="Prodotto" />

@@ -10,11 +10,9 @@ public class ProductModel {
 	private String weight;
 	private String brand;
 	private String model;
-	private String category;
+	private String categoryName;
 	private BigDecimal sellingPrice;
 	private BigDecimal sellingDiscount;
-	
-	
 	public String getBarcode() {
 		return barcode;
 	}
@@ -33,10 +31,10 @@ public class ProductModel {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public String getSize() {
+	public String getSizes() {
 		return sizes;
 	}
-	public void setSize(String sizes) {
+	public void setSizes(String sizes) {
 		this.sizes = sizes;
 	}
 	public String getWeight() {
@@ -57,11 +55,12 @@ public class ProductModel {
 	public void setModel(String model) {
 		this.model = model;
 	}
-	public String getCategory() {
-		return category;
+	
+	public String getCategoryName() {
+		return categoryName;
 	}
-	public void setCategory(String category) {
-		this.category = category;
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
 	}
 	public BigDecimal getSellingPrice() {
 		return sellingPrice;
@@ -75,6 +74,8 @@ public class ProductModel {
 	public void setSellingDiscount(BigDecimal sellingDiscount) {
 		this.sellingDiscount = sellingDiscount;
 	}
+	
+
 	
 	
 	

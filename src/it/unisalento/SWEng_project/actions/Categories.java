@@ -24,6 +24,7 @@ public class Categories extends ActionSupport implements SessionAware {
 	private ArrayList<String> categoryNames;
 	// contiene i brands di una categoria (viene sovrascritto ad ogni ciclo dell'iterator)
 	private ArrayList<String> brandsPerCategory;
+	private Category currentCategory;
 	// contiene tutti i brands divisi per categoria
 	private LinkedHashMap<String, ArrayList<String>> brandsPerCategories;
 
@@ -42,10 +43,11 @@ public class Categories extends ActionSupport implements SessionAware {
 				
 				// creo un hashmap per salvare una lista di brand associata ad ogni categoria
 				brandsPerCategories = new LinkedHashMap<String, ArrayList<String>>();
+				categoryNames = new ArrayList<String>();
 				System.out.println("iterator ottenuto");
 				// fintanto che esiste una nuova categoria da popolare con i rispettivi brands..
 				while(categoriesIterator.hasNext()) {
-					Category currentCategory = (Category) categoriesIterator.next();
+					 currentCategory = (Category) categoriesIterator.next();
 					// aggiungo il nome della categoria alla lista di nomi che andrà a finire nella sessione
 					categoryNames.add(currentCategory.getName());
 					// ottengo la lista di brands distinti dei vari tipi di prodotto della categoria oggetto della corrente iterazione
