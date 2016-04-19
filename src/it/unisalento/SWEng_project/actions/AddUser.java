@@ -83,7 +83,6 @@ public class AddUser extends ActionSupport implements ModelDriven<UserModel>, Se
 
 	@Override
 	public UserModel getModel() {
-		// TODO Auto-generated method stub
 		return userForm;
 	}
 

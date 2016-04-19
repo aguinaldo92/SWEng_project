@@ -7,7 +7,7 @@
 </head>
 
 <%-- questa riga serve per far si che quando viene caricata la pagina header.jsp  sia eseguita la Action Categories <s:action name="Categories"  executeResult="true" /> --%>
-<s:action name="Categories" executeResult="true" />
+<s:action name="CategoriesAndBrands" executeResult="true" />
 <div class="header">
 	<div class="header-top">
 		<div class="container">

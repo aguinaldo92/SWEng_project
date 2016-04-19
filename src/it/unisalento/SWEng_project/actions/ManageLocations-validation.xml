@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC "-//Apache Struts//XWork Validator 1.0.3//EN"
+ "http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+
+ <validators>
+     <field name="name">
+         <field-validator type="requiredstring">
+             <message>Nome dell'indirizzo richiesto</message>
+         </field-validator>
+     </field>
+     <field name="address">
+         <field-validator type="requiredstring">
+             <message>Indirizzo richiesto</message>
+         </field-validator>
+     </field>
+     <field name="number">
+         <field-validator type="int">
+             <message>Formato del numero civico non corretto</message>
+         </field-validator>
+     </field>
+     <field name="cap">
+         <field-validator type="requiredstring">
+             <message>CAP richiesto</message>
+         </field-validator>
+         <field-validator type="regex">
+             <param name="regex">[0-9]{5}</param>
+             <message>Formato CAP non corretto</message>
+         </field-validator>
+     </field>
+     <field name="city">
+         <field-validator type="requiredstring">
+             <message>Città richiesta</message>
+         </field-validator>
+         <field-validator type="regex">
+            <param name="regex"><![CDATA[^[A-Z,a-z, ]+$]]></param>
+            <message>Formato città non corretto</message>
+         </field-validator>
+     </field>
+     <field name="province">
+         <field-validator type="requiredstring">
+             <message>Provincia richiesta</message>
+         </field-validator>
+         <field-validator type="regex">
+            <param name="regex"><![CDATA[^[A-Z,a-z]+$]]></param>
+            <message>Formato provincia non corretto</message>
+         </field-validator>
+     </field>
+     <field name="state">
+         <field-validator type="requiredstring">
+             <message>Stato richiesto</message>
+         </field-validator>
+         <field-validator type="regex">
+            <param name="regex"><![CDATA[^[A-Z,a-z, ]+$]]></param>
+            <message>Formato stato non corretto</message>
+         </field-validator>
+     </field>
+ </validators>

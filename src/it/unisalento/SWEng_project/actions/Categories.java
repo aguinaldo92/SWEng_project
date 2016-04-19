@@ -21,16 +21,15 @@ public class Categories extends ActionSupport implements SessionAware {
 	private static final long serialVersionUID = 5326646070196603226L;
 	private SessionMap<String, Object> userSession;
 	private ArrayList<Category> categories;
-
-
+	private ArrayList<String> categoryNames;
 	// contiene i brands di una categoria (viene sovrascritto ad ogni ciclo dell'iterator)
 	private ArrayList<String> brandsPerCategory;
+	private Category currentCategory;
 	// contiene tutti i brands divisi per categoria
 	private LinkedHashMap<String, ArrayList<String>> brandsPerCategories;
 
 
 	public String execute() {
-		System.out.println("Sono entrato nella action Categories");
 		if (!userSession.containsKey("categories")) { 	
 			try {
 				/**
@@ -38,18 +37,23 @@ public class Categories extends ActionSupport implements SessionAware {
 				 */
 				categories = (ArrayList<Category>)FactoryDao.getIstance().getCategoryDao().getAllSorted(Category.class);
 				System.out.println("categories ottenute");
+				categories.removeIf(e -> e.getName() == null);
 				Iterator categoriesIterator = categories.iterator();
 				//salvo le categorie nella sessione
-				userSession.put("categories", categories);
+				
 				// creo un hashmap per salvare una lista di brand associata ad ogni categoria
 				brandsPerCategories = new LinkedHashMap<String, ArrayList<String>>();
+				categoryNames = new ArrayList<String>();
 				System.out.println("iterator ottenuto");
 				// fintanto che esiste una nuova categoria da popolare con i rispettivi brands..
 				while(categoriesIterator.hasNext()) {
-					Category currentCategory = (Category) categoriesIterator.next();
+					 currentCategory = (Category) categoriesIterator.next();
+					// aggiungo il nome della categoria alla lista di nomi che andrà a finire nella sessione
+					categoryNames.add(currentCategory.getName());
 					// ottengo la lista di brands distinti dei vari tipi di prodotto della categoria oggetto della corrente iterazione
 					brandsPerCategory = (ArrayList<String>)FactoryDao.getIstance().getTypeOfProductDao().getBrandsByCategory(currentCategory);
 					// salvo il nome della categoria come chiave e la lista dei ripettivi brands come valore
+					
 					brandsPerCategories.put(currentCategory.getName(), brandsPerCategory);
 					// da qui in poi è solo codice di debug che si può rimuovere fino a userSession.put(etc,..)
 					Iterator productsIterator = brandsPerCategory.iterator();
@@ -63,7 +67,10 @@ public class Categories extends ActionSupport implements SessionAware {
 					System.out.println("categoria " + currentCategory.getName());
 
 				}
-				// salvo la mappa con categorie e brands nella sessione per accedervi dalla pagina jsp dell'header
+				// salvo i nomi delle categorie
+				userSession.put("categoryNames", categoryNames);
+				userSession.put("categories", categories);
+				// salvo i nomi dei brands per categoria
 				userSession.put("brandsPerCategories", brandsPerCategories);
 
 			} catch (Exception e) {
@@ -76,6 +83,10 @@ public class Categories extends ActionSupport implements SessionAware {
 		return ActionSupport.NONE;
 	}
 
+	
+
+
+
 
 
 
@@ -85,31 +96,15 @@ public class Categories extends ActionSupport implements SessionAware {
 
 
 
-
-
-
-
-
-
 	public void setCategories(ArrayList<Category> categories) {
 		this.categories = categories;
 	}
 
 
 
-
-
-
-
-
-
 	public ArrayList<String> getBrandsPerCategory() {
 		return brandsPerCategory;
 	}
-
-
-
-
 
 
 
@@ -122,19 +117,9 @@ public class Categories extends ActionSupport implements SessionAware {
 
 
 
-
-
-
-
-
 	public LinkedHashMap<String, ArrayList<String>> getBrandsPerCategories() {
 		return brandsPerCategories;
 	}
-
-
-
-
-
 
 
 
@@ -143,10 +128,6 @@ public class Categories extends ActionSupport implements SessionAware {
 			LinkedHashMap<String, ArrayList<String>> brandsPerCategories) {
 		this.brandsPerCategories = brandsPerCategories;
 	}
-
-
-
-
 
 
 

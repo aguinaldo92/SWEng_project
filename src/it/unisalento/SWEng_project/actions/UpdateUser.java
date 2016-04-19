@@ -15,7 +15,7 @@ import com.opensymphony.xwork2.ModelDriven;
 /***
  * 
  * Per sfruttare il meccaniscmo di validazione all'interno della Action
- * Ã¨ necessario estendere la classe con ActionSupport (ovviamente dovete fare l'import!!!!)
+ * è necessario estendere la classe con ActionSupport (ovviamente dovete fare l'import!!!!)
  *
  *	Per sfuttare l'interceptor ModelDriven la action deve implementare l'interfaccia ModelDriven
  */

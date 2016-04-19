@@ -22,10 +22,10 @@ public class Login extends ActionSupport implements SessionAware, ParameterNameA
 	private static final long serialVersionUID = 1L;
 	private User user= new User();
 	private SessionMap<String, Object> userSession ;
-	
+
 	private String username;
 	private String password;
-	
+
 	public String execute() {
 
 		System.out.println("Sono entrato nella action Login");
@@ -39,27 +39,27 @@ public class Login extends ActionSupport implements SessionAware, ParameterNameA
 
 	public void validate() {
 		boolean errors = false;
-		
-		if (!(userSession.containsKey("login"))){//controllo se la userSession è stata impostata
+
+		if (!(userSession.containsKey("user"))){//controllo se la userSession è stata impostata
 			try {	 
 				//ottengo anagrafica e indirizzi salvati dallo user loggato
 				user=FactoryDao.getIstance().getUserDao().getUserByCredentials(username, password);
-				System.out.println(" login fatto!!!");
-			} catch (NullPointerException enull){
-				System.out.println("Utente non presente nel Database");
+				
+				if (user == null ){
+					errors = true;
+					addFieldError("username", "Utente non presente nel sistema");
+				}
+
+			} catch (Exception e){
+				System.out.println(e.getLocalizedMessage());
 				errors = true;
-	
-			} catch (Exception egeneric) {
-				System.out.println("errore generico" + egeneric.getMessage());
-				errors = true;
-			}	
-	
-			if (errors) {
-				addActionError("Username o Password errati");
 			}
 		}
+		if (errors) {
+			addActionError("Username o Password errati");
+		}
 	}
-
+	
 	@Override
 	public void setSession(Map<String,Object> map) {  		 
 		this.userSession = (SessionMap<String,Object>)map;
@@ -79,11 +79,10 @@ public class Login extends ActionSupport implements SessionAware, ParameterNameA
 
 		return allowedParameterName;
 	}
-	
+
 	public String getUsername() {
 		return username;
 	}
-
 	@RequiredStringValidator(message = "Username richiesto")
 	public void setUsername(String username) {
 		this.username = username;

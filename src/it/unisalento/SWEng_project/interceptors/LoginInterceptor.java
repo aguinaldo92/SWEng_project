@@ -20,30 +20,35 @@ public class LoginInterceptor implements Interceptor {
 	@Override
 	public void destroy() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void init() {
-			
+
 	}
 
 	@Override
 	public String intercept(ActionInvocation invocation) throws Exception {
 		userSession = (SessionMap<String, Object>)invocation.getInvocationContext().getSession();	
-        try {
-        	user = (User) userSession.get("user");
-        	role = user.getRole();
-        	if (role <= 2)
-        		return invocation.invoke();
-        	else
-        		return "DENIED";
-        } catch (NullPointerException nullException){
-        	System.out.println("L'utente deve essere loggato per arrivare alla pagina ");
-        	return Action.LOGIN;
-        }
+			if (userSession.containsKey("user")) {
+				user = (User) userSession.get("user");
+				role = user.getRole();
+				if (role <= 2) {
+					System.out.println("permessi ok");
+					return invocation.invoke();
+				}
+				else {
+					System.out.println("permessi Insufficieneti ");
+					return "DENIED";
+				}
+			} else {
+				System.out.println("L'utente deve essere loggato per arrivare alla pagina ");
+				return Action.LOGIN;
+			}
 
-        
+
+
+		}
+
 	}
-
-}

@@ -2,10 +2,10 @@ package it.unisalento.SWEng_project.dao;
 
 import it.unisalento.SWEng_project.domain.Category;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public interface CategoryDao extends BaseDao<Category> {
 	public int set(Category category);
-	public List<Category> getAll(Class categoryClass);
-	public List<Category> getAllSorted(Class categoryClass);
+	public Category getByName(String categoryName);
+	public ArrayList<Category> getAllSorted(Class categoryClass);
 }
