@@ -112,8 +112,9 @@
 			<result name="error" type="tiles">error</result>
 			<result name="input" type="tiles">registrationShop</result>
 		</action>
+		
 		<action name="Login" class="it.unisalento.SWEng_project.actions.Login">
-			<result name="success" type="tiles">profile</result>
+			<result name="success" type="tiles">index</result>
 			<result name="error" type="tiles">error</result>
 			<result name="input" type="tiles">login</result>
 		</action>

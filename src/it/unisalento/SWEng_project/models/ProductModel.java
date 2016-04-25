@@ -14,8 +14,10 @@ public class ProductModel {
 	private String newModel;
 	private String categoryName;
 	private String newCategory;
-	private BigDecimal sellingPrice;
-	private BigDecimal sellingDiscount;
+	private String sellingPrice;
+	private String sellingDiscount;
+	
+	
 	public String getBarcode() {
 		return barcode;
 	}
@@ -92,18 +94,22 @@ public class ProductModel {
 	public void setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
 	}
-	public BigDecimal getSellingPrice() {
+	public String getSellingPrice() {
 		return sellingPrice;
 	}
-	public void setSellingPrice(BigDecimal sellingPrice) {
+	public void setSellingPrice(String sellingPrice) {
 		this.sellingPrice = sellingPrice;
 	}
-	public BigDecimal getSellingDiscount() {
+	public String getSellingDiscount() {
 		return sellingDiscount;
 	}
-	public void setSellingDiscount(BigDecimal sellingDiscount) {
+	public void setSellingDiscount(String sellingDiscount) {
+		if (sellingDiscount.isEmpty()){
+			this.sellingDiscount =(String) "0";
+		}
 		this.sellingDiscount = sellingDiscount;
 	}
+
 	
 
 	

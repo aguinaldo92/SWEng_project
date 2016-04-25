@@ -24,12 +24,16 @@
 	};
 	
 </script>
-
+<script>
+function alertCiao(){
+	alert("ciao");
+}
+</script>
 <s:div class="container">
 	<s:div class="product">
 		<h2 class="product-in">Inserisci nuovo prodotto</h2>
 
-		<s:form name="addProduct" id="idAddProduct" action="AddProduct">
+		<s:form name="addProduct" id="idAddProduct" action="AddProduct" onload="alertCiao()">
 
 			<s:url action="Categories" var="aCategory" />
 <%-- 			<s:div cssClass="col-md-1">  funziona --%>

@@ -6,6 +6,7 @@ import it.unisalento.SWEng_project.domain.TypeOfProduct;
 import it.unisalento.SWEng_project.factories.FactoryDao;
 import it.unisalento.SWEng_project.models.ProductModel;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
@@ -30,6 +31,7 @@ public class AddProduct extends ActionSupport implements ModelDriven<ProductMode
 	private ArrayList<String> categoryNames = new ArrayList<String> ();
 	private ArrayList<String> models = new ArrayList<String> ();
 	private ArrayList<String> brands = new ArrayList<String> ();
+	
 
 
 	public void validate(){
@@ -65,8 +67,8 @@ public class AddProduct extends ActionSupport implements ModelDriven<ProductMode
 		product.setDescription(productModel.getDescription());
 		product.setSize(productModel.getSizes());
 		product.setWeight(productModel.getWeight());
-		product.setSellingPrice(productModel.getSellingPrice());
-		product.setSellingDiscount(productModel.getSellingDiscount());
+		product.setSellingPrice(new BigDecimal(productModel.getSellingPrice()));
+		product.setSellingDiscount(new BigDecimal(productModel.getSellingDiscount()));
 		//reimpiamo tipo di prodotto;
 
 		typeOfProduct.setBrand(productModel.getBrandName());
