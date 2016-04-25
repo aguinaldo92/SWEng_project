@@ -8,9 +8,12 @@ public class ProductModel {
 	private String description;
 	private String sizes;
 	private String weight;
-	private String brand;
-	private String model;
+	private String brandName;
+	private String newBrand;
+	private String modelName;
+	private String newModel;
 	private String categoryName;
+	private String newCategory;
 	private BigDecimal sellingPrice;
 	private BigDecimal sellingDiscount;
 	public String getBarcode() {
@@ -43,20 +46,47 @@ public class ProductModel {
 	public void setWeight(String weight) {
 		this.weight = weight;
 	}
-	public String getBrand() {
-		return brand;
+
+	public String getNewBrand() {
+		return newBrand;
 	}
-	public void setBrand(String brand) {
-		this.brand = brand;
+	public void setNewBrand(String newBrand) {
+		this.newBrand = newBrand;
 	}
-	public String getModel() {
-		return model;
+	public String getNewModel() {
+		return newModel;
 	}
-	public void setModel(String model) {
-		this.model = model;
+	public void setNewModel(String newModel) {
+		this.newModel = newModel;
 	}
-	
+	public String getNewCategory() {
+		return newCategory;
+	}
+	public void setNewCategory(String newCategory) {
+		this.newCategory = newCategory;
+	}
+	public String getBrandName() {
+		if(brandName.equals("-1")){
+			return newBrand;
+		}
+		return brandName;
+	}
+	public void setBrandName(String brandName) {
+		this.brandName = brandName;
+	}
+	public String getModelName() {
+		if(modelName.equals("-1")){
+			return newModel;
+		}
+		return modelName;
+	}
+	public void setModelName(String modelName) {
+		this.modelName = modelName;
+	}
 	public String getCategoryName() {
+		if(categoryName.equals("-1")){
+			return newCategory;
+		}
 		return categoryName;
 	}
 	public void setCategoryName(String categoryName) {

@@ -88,6 +88,7 @@
 	<definition name="addProduct" extends="baseLayout">
 		<put-attribute name="body" value="/views/product/addProduct.jsp" />
 		<put-attribute name="title" value="Aggiungi Prodotto" />
+		<put-attribute name="header" value="" />
 		
 	</definition>
 

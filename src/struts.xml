@@ -157,17 +157,17 @@
 			<interceptor-ref name="loginStack" />
 			<result name="success" type="tiles">characteristic</result>
 			<result name="error" type="tiles">error</result>
-<!-- 			<result name="input" type="tiles">addProduct</result> -->
+			<result name="input" type="tiles">addProduct</result>
 		</action>
-		<action name="AddModel" method="addModel"
-			class="it.unisalento.SWEng_project.actions.AddProduct">
-			<interceptor-ref name="loginStack" />
-		</action>
-		<action name="AddBrand" class="it.unisalento.SWEng_project.actions.AddBrand">
+		<action name="Models"
+			class="it.unisalento.SWEng_project.actions.json.Models">
 			<result name="success" type="json" />
 		</action>
-		<action name="AddCategory" 
-			class="it.unisalento.SWEng_project.actions.AddCategory">
+		<action name="Brands" class="it.unisalento.SWEng_project.actions.json.Brands">
+			<result name="success" type="json" />
+		</action>
+		<action name="Categories" 
+			class="it.unisalento.SWEng_project.actions.json.Categories">
 			<result name="success" type="json"/>
 		</action>
 

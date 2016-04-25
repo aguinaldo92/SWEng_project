@@ -133,7 +133,61 @@ public class TypeOfProductDaoImpl extends BaseDaoImpl<TypeOfProduct> implements 
         session.close();
         return brands;
 	}
-	
+	@Override
+	public ArrayList<String> getModelsByCategoryAndBrand(String categoryName,String brandName) {
+		ArrayList<String> models = new ArrayList<String>();
+		Session session = sf.openSession();
+        Transaction tx = session.beginTransaction();
+        String hql = "select distinct t.model " + 
+        		" from Category c inner join c.typeOfProducts  t  " + 
+        		" where c.name = :category " + 
+        		" and t.brand = :brand " ;
+        Query query = session.createQuery(hql);
+        query.setString("category", categoryName);
+        query.setString("brand", brandName);
+        models = (ArrayList<String>) query.list();
+        tx.commit();
+        session.close();
+        return models;
+	}
+	@Override
+	public TypeOfProduct getTypeOfProductByCategoryBrandAndModel(String category,String brand,String model){
+			TypeOfProduct typeOfProduct = new TypeOfProduct();
 
+			Session session = sf.openSession();
+	        Transaction tx = session.beginTransaction();
+	        String hql = "select t.id as id, t.brand as brand, t.model as model " + 
+	        		" from Category c inner join c.typeOfProducts t " + 
+	        		" where c.name = :category " +
+	        		" and t.brand = :brand " +
+	        		" and t.model = :model "; 
+	        Query query = session.createQuery(hql);
+	        query.setString("category", category);
+	        query.setString("brand", brand);
+	        query.setString("model", model);
+	        typeOfProduct = (TypeOfProduct) query.uniqueResult();
+	        tx.commit();
+	        session.close();
+	        return typeOfProduct;
+	}
+	
+	@Override
+	public TypeOfProduct getTypeOfProductByBrandAndModel(String brand,String model){
+			TypeOfProduct typeOfProduct = new TypeOfProduct();
+
+			Session session = sf.openSession();
+	        Transaction tx = session.beginTransaction();
+	        String hql = "select t.id as id, t.brand as brand, t.model as model t.category " + 
+	        		" from TypeOfProduct t " + 
+	        		" where t.brand = :brand " +
+	        		" and t.model = :model "; 
+	        Query query = session.createQuery(hql);
+	        query.setString("brand", brand);
+	        query.setString("model", model);
+	        typeOfProduct = (TypeOfProduct) query.uniqueResult();
+	        tx.commit();
+	        session.close();
+	        return typeOfProduct;
+	}
 
 }

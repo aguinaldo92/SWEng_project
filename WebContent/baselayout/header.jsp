@@ -3,7 +3,7 @@
 <head>
 <s:include value="/js/menu_header.html"></s:include>
 <%-- <sj:head/> serve al datetimepicker --%>
-<sj:head />
+<sj:head debug="true" compressed="false" />
 </head>
 
 <%-- questa riga serve per far si che quando viene caricata la pagina header.jsp  sia eseguita la Action Categories <s:action name="Categories"  executeResult="true" /> --%>

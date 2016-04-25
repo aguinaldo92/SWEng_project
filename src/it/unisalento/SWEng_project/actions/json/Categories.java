@@ -1,4 +1,4 @@
-package it.unisalento.SWEng_project.actions;
+package it.unisalento.SWEng_project.actions.json;
 
 import it.unisalento.SWEng_project.domain.Category;
 import it.unisalento.SWEng_project.factories.FactoryDao;
@@ -8,7 +8,7 @@ import java.util.Iterator;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-public class AddCategory extends ActionSupport  {
+public class Categories extends ActionSupport  {
 	
 	/**
 	 * 

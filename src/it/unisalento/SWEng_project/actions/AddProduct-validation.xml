@@ -29,21 +29,8 @@
              <message>Peso richiesto</message>
          </field-validator>
      </field>
-     <field name="brand">
-         <field-validator type="required">
-             <message>Marca richiesta</message>
-         </field-validator>
-     </field>
-     <field name="model">
-         <field-validator type="requiredstring">
-             <message>Modello richiesto</message>
-         </field-validator>
-     </field>
-     <field name="category">
-        <field-validator type="requiredstring">
-             <message>Categoria richiesta</message>
-         </field-validator>
-         </field>
+
+
 <!--      <field name="sellingPrice"> -->
 <!--      <field-validator type="requiredstring"> -->
 <!--              <message>Prezzo richiesto</message> -->
