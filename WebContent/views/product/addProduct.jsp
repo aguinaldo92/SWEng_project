@@ -1,8 +1,6 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
-<head>
-<sj:head />
-</head>
+
 
 <s:if test="hasActionErrors()">
 	<div style="color: red">
@@ -13,13 +11,11 @@
 
 <script>
 	function showDiv(selectBox,idNewValue) {
-		var chosenCategory;
-		if(selectBox.options[selectBox.selectedIndex].text.substring(0,8) === "Aggiungi") {
+		if(selectBox.options[selectBox.selectedIndex].value === "-1") {
 			$('#'+idNewValue.id).show();
 		} else {
 			$('#'+idNewValue.id).hide();
 			idNewValue.value = "";
-			chosenCategory = selectBox.options[selectBox.selectedIndex].value ;
 		}
 	};
 	
@@ -33,12 +29,12 @@ function alertCiao(){
 	<s:div class="product">
 		<h2 class="product-in">Inserisci nuovo prodotto</h2>
 
-		<s:form name="addProduct" id="idAddProduct" action="AddProduct" onload="alertCiao()">
+		<s:form name="addProduct" id="idAddProduct" action="AddProduct" >
 
-			<s:url action="Categories" var="aCategory" />
+			<s:url action="Categories" var="aCategories" />
 <%-- 			<s:div cssClass="col-md-1">  funziona --%>
 				<sj:select name="categoryName" id="idCategoryName"
-					href="%{aCategory}" list="categoryNames" label="Category*"
+					href="%{aCategories}" list="categoryNames" label="Category*"
 					headerKey="-1" headerValue="Aggiungi Categoria"
 					listKey="categoryNames"
 					onChange="showDiv(this,idNewCategory)"
@@ -49,7 +45,7 @@ function alertCiao(){
 				<s:textfield name="newCategory" id="idNewCategory" />
 <%-- 			</s:div> --%>
 			<s:url id="idaBrand" var="aBrand" action="Brands">
-				<s:param name="categoryName" value="%{#chosenCategory}" />
+				<s:param name="categoryName" value="" />
 			</s:url>
 
 			<sj:select name="brandName" id="idBrandName" formIds="idAddProduct"
@@ -59,10 +55,10 @@ function alertCiao(){
 				value="-1"/>
 
 			<s:textfield name="newBrand" id="idNewBrand" />
-
+<%-- il value="" serve per evitare che jquery aggiunga la virgola iniziale quando struts passa i parametri --%>
 			<s:url id="idaModel" var="aModel" action="Models">
-				<s:param name="categoryName" value="%{#chosenCategory}" />
-				<s:param name="brandName" value="%{#chosenBrand}" />
+				<s:param name="categoryName" value="" />
+				<s:param name="brandName" value="" />
 			</s:url>
 
 			<sj:select name="modelName" id="idModelName" formIds="idAddProduct"

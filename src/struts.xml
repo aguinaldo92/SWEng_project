@@ -7,7 +7,8 @@
 	<constant name="struts.i18n.reload" value="false" />
 	<constant name="struts.configuration.xml.reload" value="false" />
 
-	<package name="default" extends="struts-default, json-default" namespace="/">
+	<package name="default" extends="struts-default, json-default"
+		namespace="/">
 		<result-types>
 			<result-type name="tiles"
 				class="org.apache.struts2.views.tiles.TilesResult" />
@@ -57,7 +58,8 @@
 		<action name="gotoUpdateResidence">
 			<result type="tiles">updateResidence</result>
 		</action>
-		<action name="UpdateResidence" class="it.unisalento.SWEng_project.actions.UpdateResidence">
+		<action name="UpdateResidence"
+			class="it.unisalento.SWEng_project.actions.UpdateResidence">
 			<result name="success" type="tiles">profile</result>
 			<result name="error" type="tiles">error</result>
 			<result name="input" type="tiles">updateResidence</result>
@@ -66,7 +68,7 @@
 			<result name="success" type="tiles">index</result>
 			<result name="error" type="tiles">login</result>
 		</action>
-		
+
 		<action name="AddUser" class="it.unisalento.SWEng_project.actions.AddUser">
 			<result name="success" type="tiles">success</result>
 			<result name="error" type="tiles">error</result>
@@ -81,18 +83,19 @@
 			<result type="tiles">shopDetails</result>
 		</action>
 
-		<action name="UpdatePassword" class="it.unisalento.SWEng_project.actions.UpdatePassword">
+		<action name="UpdatePassword"
+			class="it.unisalento.SWEng_project.actions.UpdatePassword">
 			<result name="success" type="tiles">profile</result>
 			<result name="error" type="tiles">error</result>
 			<result name="input" type="tiles">updatePassword</result>
 		</action>
-		
+
 		<action name="managePassword">
 			<result type="tiles">updatePassword</result>
 		</action>
-	
+
 		<action name="gotoAddProduct">
-		<interceptor-ref name="loginStack" />
+			<interceptor-ref name="loginStack" />
 			<result type="tiles">addProduct</result>
 		</action>
 		<action name="UpdateShop" class="it.unisalento.SWEng_project.actions.UpdateShop">
@@ -100,8 +103,9 @@
 			<result name="error" type="tiles">error</result>
 			<result name="input" type="tiles">shopDetails</result>
 		</action>
-		
-		<action name="UpdateProfile" class="it.unisalento.SWEng_project.actions.UpdateUser" method="updateProfile">
+
+		<action name="UpdateProfile" class="it.unisalento.SWEng_project.actions.UpdateUser"
+			method="updateProfile">
 			<result name="success" type="tiles">index</result>
 			<result name="error" type="tiles">error</result>
 			<result name="input" type="tiles">profile</result>
@@ -112,15 +116,14 @@
 			<result name="error" type="tiles">error</result>
 			<result name="input" type="tiles">registrationShop</result>
 		</action>
-		
+
 		<action name="Login" class="it.unisalento.SWEng_project.actions.Login">
 			<result name="success" type="tiles">index</result>
 			<result name="error" type="tiles">error</result>
 			<result name="input" type="tiles">login</result>
 		</action>
 
-		<action name="CategoriesAndBrands"
-			class="it.unisalento.SWEng_project.actions.Categories">
+		<action name="CategoriesAndBrands" class="it.unisalento.SWEng_project.actions.Categories">
 			<result name="error" type="tiles">error</result>
 			<result name="input" type="tiles">input</result>
 		</action>
@@ -153,23 +156,31 @@
 			<result name="input" type="tiles">input</result>
 		</action>
 
-		<action name="AddProduct" 
-			class="it.unisalento.SWEng_project.actions.AddProduct">
+		<action name="AddProduct" class="it.unisalento.SWEng_project.actions.AddProduct">
 			<interceptor-ref name="loginStack" />
 			<result name="success" type="tiles">characteristic</result>
 			<result name="error" type="tiles">error</result>
 			<result name="input" type="tiles">addProduct</result>
 		</action>
-		<action name="Models"
-			class="it.unisalento.SWEng_project.actions.json.Models">
+
+		<action name="AddCharacteristic"
+			class="it.unisalento.SWEng_project.actions.AddCharacteristic">
+			<interceptor-ref name="loginStack" />
+			<result name="success" type="tiles">product</result>
+			<result name="new" type="tiles">addCharacteristic</result>
+			<result name="error" type="tiles">error</result>
+			<result name="input" type="tiles">addCharacteristic</result>
+		</action>
+
+		<action name="Models" class="it.unisalento.SWEng_project.actions.json.Models">
 			<result name="success" type="json" />
 		</action>
 		<action name="Brands" class="it.unisalento.SWEng_project.actions.json.Brands">
 			<result name="success" type="json" />
 		</action>
-		<action name="Categories" 
+		<action name="Categories"
 			class="it.unisalento.SWEng_project.actions.json.Categories">
-			<result name="success" type="json"/>
+			<result name="success" type="json" />
 		</action>
 
 	</package>

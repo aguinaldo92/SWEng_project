@@ -150,4 +150,6 @@ public class AddProduct extends ActionSupport implements ModelDriven<ProductMode
 	public void setSession(Map<String, Object> map) {
 		this.userSession = 	(SessionMap<String, Object>) map;
 	}
+
+
 }
